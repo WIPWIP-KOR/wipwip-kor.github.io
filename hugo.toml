@@ -6,7 +6,7 @@ enableEmoji = true
 enableRobotsTXT = true
 
 [params]
-  description = "재테크·세금·보험·투자 정보를 정리하는 블로그"
+  description = "세금·법률·재테크 등 실생활에 필요한 정보를 정리하는 블로그"
   author = "WIPWIP"
   dateFormat = "2006-01-02"
 

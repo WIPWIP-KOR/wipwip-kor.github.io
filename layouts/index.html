@@ -1,0 +1,17 @@
+{{ define "main" }}
+<section class="post-list">
+  {{ range (where .Site.RegularPages "Type" "posts") }}
+  <article class="post-card">
+    <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
+    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    {{ if .Params.summary }}
+    <p class="post-summary">{{ .Params.summary }}</p>
+    {{ else }}
+    <p class="post-summary">{{ .Summary }}</p>
+    {{ end }}
+  </article>
+  {{ else }}
+  <p>아직 작성된 글이 없습니다.</p>
+  {{ end }}
+</section>
+{{ end }}

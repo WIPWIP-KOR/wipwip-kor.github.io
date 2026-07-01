@@ -1,0 +1,26 @@
+baseURL = "https://wipwip-kor.github.io/blog/"
+languageCode = "ko-kr"
+title = "WIPWIP"
+paginate = 10
+enableEmoji = true
+enableRobotsTXT = true
+
+[params]
+  description = "오늘의 배당·시황 노트"
+  author = "WIPWIP"
+  dateFormat = "2006-01-02"
+
+[menu]
+  [[menu.main]]
+    name = "홈"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "글"
+    url = "/posts/"
+    weight = 2
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

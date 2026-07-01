@@ -1,0 +1,14 @@
+{{ define "main" }}
+<h1 class="list-title">{{ .Title }}</h1>
+<section class="post-list">
+  {{ range .Pages }}
+  <article class="post-card">
+    <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
+    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    <p class="post-summary">{{ .Summary }}</p>
+  </article>
+  {{ else }}
+  <p>아직 작성된 글이 없습니다.</p>
+  {{ end }}
+</section>
+{{ end }}

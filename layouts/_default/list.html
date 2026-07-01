@@ -10,7 +10,16 @@
     </span>
     {{ end }}
     <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    {{ if .Description }}
+    <p class="post-summary">{{ .Description }}</p>
+    {{ else }}
     <p class="post-summary">{{ .Summary }}</p>
+    {{ end }}
+    {{ with .Params.tags }}
+    <span class="post-tags">
+      {{ range . }}<a class="post-tag" href="{{ (urlize (printf "/tags/%s/" .)) | relURL }}">#{{ . }}</a>{{ end }}
+    </span>
+    {{ end }}
   </article>
   {{ else }}
   <p>아직 작성된 글이 없습니다.</p>

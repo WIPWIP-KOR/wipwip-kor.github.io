@@ -12,5 +12,12 @@
   <div class="post-content">
     {{ .Content }}
   </div>
+  {{ with .Params.tags }}
+  <footer class="post-footer">
+    <span class="post-tags">
+      {{ range . }}<a class="post-tag" href="{{ (urlize (printf "/tags/%s/" .)) | relURL }}">#{{ . }}</a>{{ end }}
+    </span>
+  </footer>
+  {{ end }}
 </article>
 {{ end }}

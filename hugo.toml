@@ -1,4 +1,4 @@
-baseURL = "https://wipwip-kor.github.io/blog/"
+baseURL = "https://wipwip-kor.github.io/"
 languageCode = "ko-kr"
 title = "WIPWIP"
 paginate = 10

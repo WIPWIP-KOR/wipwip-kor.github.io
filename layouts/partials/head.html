@@ -5,5 +5,8 @@
 {{ with .Site.Params.googleSiteVerification }}
 <meta name="google-site-verification" content="{{ . }}">
 {{ end }}
-<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+{{ with resources.Get "css/style.css" }}
+{{ $style := . | fingerprint }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+{{ end }}
 <link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | relURL }}" title="{{ .Site.Title }}">

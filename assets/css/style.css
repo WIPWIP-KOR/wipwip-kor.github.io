@@ -191,25 +191,31 @@ a:hover {
   max-width: 100%;
 }
 
-/* The lead paragraph is always a direct, two-guk-sik answer per CLAUDE.md,
-   so style it as an at-a-glance summary callout instead of adding a
-   separate front-matter field that every post would need to fill in. */
-.post-content > p:first-of-type {
+.post-summary-box {
   background: #eff6ff;
   border-left: 4px solid var(--accent);
   border-radius: 6px;
   padding: 1rem 1.25rem;
-  font-size: 1.05rem;
-  font-weight: 500;
+  margin-bottom: 1.75rem;
 }
 
-.post-content > p:first-of-type::before {
-  content: "핵심 요약";
+.post-summary-label {
   display: block;
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--accent);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-summary-box ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.post-summary-box li {
+  font-size: 1.02rem;
+  font-weight: 500;
+  margin: 0.3em 0;
 }
 
 /* FAQ questions are written as a whole bold line ("**Q1. ...**"), which

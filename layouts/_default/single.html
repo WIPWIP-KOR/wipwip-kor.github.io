@@ -12,6 +12,14 @@
   {{ with .Params.thumbnail }}
   <img class="post-thumbnail-full" src="{{ . | relURL }}" alt="{{ $.Title }}">
   {{ end }}
+  {{ with .Params.key_points }}
+  <div class="post-summary-box">
+    <span class="post-summary-label">핵심 요약</span>
+    <ul>
+      {{ range . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+  </div>
+  {{ end }}
   <div class="post-content">
     {{ .Content }}
   </div>

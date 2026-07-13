@@ -1,0 +1,53 @@
+name: Generate post thumbnails
+
+on:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - "content/posts/**.md"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  thumbnail:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find posts without a thumbnail
+        id: find
+        run: |
+          files=$(grep -L '^thumbnail:' content/posts/*.md || true)
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$files" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Install thumbnail dependencies
+        if: steps.find.outputs.files != ''
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-nanum
+          pip install pillow
+
+      - name: Generate thumbnails
+        if: steps.find.outputs.files != ''
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          echo "${{ steps.find.outputs.files }}" | while read -r f; do
+            [ -z "$f" ] && continue
+            python3 scripts/generate_thumbnail.py "$f"
+          done
+
+      - name: Commit generated thumbnails
+        if: steps.find.outputs.files != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add static/images/posts content/posts
+          git diff --cached --quiet || git commit -m "Add generated thumbnail(s)"
+          git push origin HEAD:"${GITHUB_REF#refs/heads/}"

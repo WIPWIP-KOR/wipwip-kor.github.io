@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/jeonse-fraud-victim-support.png"
 title: "전세사기 피해자 지원 신청 방법 (2026년 기준)"
 date: 2026-07-01
 draft: false

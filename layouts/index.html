@@ -1,7 +1,11 @@
 {{ define "main" }}
 <section class="post-list">
   {{ range (where .Site.RegularPages "Type" "posts") }}
+  {{ $page := . }}
   <article class="post-card">
+    {{ with .Params.thumbnail }}
+    <a class="post-thumbnail" href="{{ $page.Permalink }}"><img src="{{ . | relURL }}" alt="{{ $page.Title }}" loading="lazy"></a>
+    {{ end }}
     <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
     {{ with .Params.categories }}
     <span class="post-categories">

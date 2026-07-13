@@ -164,12 +164,60 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
+.post-content {
+  font-size: 1.0625rem;
+}
+
 .post-content h2 {
-  margin-top: 2rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.post-content p {
+  margin: 1.1em 0;
+}
+
+.post-content ol,
+.post-content ul {
+  margin: 1.1em 0;
+  padding-left: 1.4em;
+}
+
+.post-content li {
+  margin: 0.45em 0;
 }
 
 .post-content img {
   max-width: 100%;
+}
+
+/* The lead paragraph is always a direct, two-guk-sik answer per CLAUDE.md,
+   so style it as an at-a-glance summary callout instead of adding a
+   separate front-matter field that every post would need to fill in. */
+.post-content > p:first-of-type {
+  background: #eff6ff;
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.post-content > p:first-of-type::before {
+  content: "핵심 요약";
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+/* FAQ questions are written as a whole bold line ("**Q1. ...**"), which
+   Goldmark renders as a <p> whose entire content is a single <strong>. */
+.post-content p:has(> strong:only-child) {
+  margin-top: 1.9em;
+  margin-bottom: 0.4em;
+  font-size: 1.05rem;
 }
 
 .post-content pre {

@@ -9,6 +9,7 @@ enableRobotsTXT = true
   description = "세금·법률·재테크 등 실생활에 필요한 정보를 정리하는 블로그"
   author = "WIPWIP"
   dateFormat = "2006-01-02"
+  googleSiteVerification = "yKpNCq_z0Ao2NcpB2k756Vtk9jqlVzz3W3HjACHlsdw"
 
 [menu]
   [[menu.main]]

@@ -4,6 +4,7 @@ title = "WIPWIP"
 paginate = 10
 enableEmoji = true
 enableRobotsTXT = true
+timeZone = "Asia/Seoul"
 
 [params]
   description = "세금·법률·재테크 등 실생활에 필요한 정보를 정리하는 블로그"

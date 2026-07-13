@@ -9,6 +9,9 @@
     </span>
     {{ end }}
   </header>
+  {{ with .Params.thumbnail }}
+  <img class="post-thumbnail-full" src="{{ . | relURL }}" alt="{{ $.Title }}">
+  {{ end }}
   <div class="post-content">
     {{ .Content }}
   </div>

@@ -129,6 +129,28 @@ a:hover {
   font-size: 1.35rem;
 }
 
+.post-thumbnail {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.post-thumbnail img {
+  width: 100%;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.post-thumbnail-full {
+  width: 100%;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
 .post-summary {
   color: #374151;
   margin: 0;

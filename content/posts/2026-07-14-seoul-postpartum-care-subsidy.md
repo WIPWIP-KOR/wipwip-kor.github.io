@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-14-seoul-postpartum-care-subsidy.png"
 title: "서울형 산후조리경비 지원 신청 방법 (2026년 다자녀 최대 150만 원)"
 date: 2026-07-14
 draft: true

@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-14-youth-monthly-rent-support.png"
 title: "청년월세지원 신청 방법 (2026년 상시 신청, 최대 480만 원)"
 date: 2026-07-14
 draft: true

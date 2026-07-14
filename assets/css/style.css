@@ -250,3 +250,11 @@ a:hover {
   display: flex;
   justify-content: space-between;
 }
+
+.footer-nav a {
+  color: var(--muted);
+}
+
+.footer-nav .powered {
+  margin-left: 1rem;
+}

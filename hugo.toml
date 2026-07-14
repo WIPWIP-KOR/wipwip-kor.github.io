@@ -28,6 +28,10 @@ timeZone = "Asia/Seoul"
     name = "카테고리"
     url = "/categories/"
     weight = 3
+  [[menu.main]]
+    name = "소개"
+    url = "/about/"
+    weight = 4
 
 [markup]
   [markup.goldmark]

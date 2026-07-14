@@ -1,6 +1,9 @@
 <footer class="site-footer">
   <div class="wrap">
     <span>&copy; {{ now.Format "2006" }} {{ .Site.Title }}</span>
-    <span class="powered">Powered by Hugo</span>
+    <nav class="footer-nav">
+      <a href="{{ "/privacy-policy/" | relURL }}">개인정보처리방침</a>
+      <span class="powered">Powered by Hugo</span>
+    </nav>
   </div>
 </footer>

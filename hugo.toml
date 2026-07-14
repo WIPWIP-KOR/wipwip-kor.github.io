@@ -13,7 +13,7 @@ timeZone = "Asia/Seoul"
   googleSiteVerification = "yKpNCq_z0Ao2NcpB2k756Vtk9jqlVzz3W3HjACHlsdw"
   # googleAdsenseId: AdSense 승인 후 발급받는 "ca-pub-XXXXXXXXXXXXXXXX" 값을
   # 여기 채우면 head.html이 자동으로 인증 메타태그와 광고 스크립트를 내보낸다.
-  googleAdsenseId = ""
+  googleAdsenseId = "ca-pub-5209561911330389"
 
 [menu]
   [[menu.main]]

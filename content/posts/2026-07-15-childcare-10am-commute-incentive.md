@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-15-childcare-10am-commute-incentive.png"
 title: "육아기 10시 출근제 신청 방법 (2026년 7월 근속요건 폐지)"
 date: 2026-07-15
 draft: true

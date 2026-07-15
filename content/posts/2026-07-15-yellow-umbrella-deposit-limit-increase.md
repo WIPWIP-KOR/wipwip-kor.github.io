@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-15-yellow-umbrella-deposit-limit-increase.png"
 title: "노란우산공제 납입한도, 월 150만원까지 늘었습니다 (2026년 7월 시행)"
 date: 2026-07-15
-draft: true
+draft: false
 categories: ["재테크"]
 tags: ["노란우산공제", "노란우산공제 납입한도", "소상공인 절세", "노란우산공제 소득공제"]
 description: "노란우산공제 납입한도가 2026년 7월 1일 납입분부터 월 100만 원에서 150만 원으로, 분기별로 나뉘어 있던 한도는 연 1,800만 원으로 통합됐습니다. 기존과 달라진 점을 표로 정리했습니다."

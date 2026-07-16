@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-16-dividend-income-separate-taxation.png"
 title: "배당소득 분리과세, 종합과세와 뭐가 다를까 (2026년 배당분부터 시행)"
 date: 2026-07-16
-draft: true
+draft: false
 categories: ["재테크"]
 tags: ["배당소득 분리과세", "배당소득세", "고배당주 절세", "금융소득종합과세"]
 description: "고배당 상장법인에서 받은 배당소득이 연 2,000만 원을 넘는 투자자라면, 2026년 배당분부터 최고 45%인 종합과세 대신 최고 30% 분리과세를 선택할 수 있습니다. 종합소득세 신고 때 직접 신청해야 하며, 2028년까지 한시 시행됩니다."

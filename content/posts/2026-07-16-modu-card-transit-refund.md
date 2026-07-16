@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-16-modu-card-transit-refund.png"
 title: "모두의카드 신청 방법 (대중교통비 기준금액 초과분 100% 환급)"
 date: 2026-07-16
 draft: true

@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-16-child-support-advance-payment.png"
 title: "양육비 선지급 신청 방법 (2026년 10월 소득기준 폐지 예정)"
 date: 2026-07-16
 draft: true

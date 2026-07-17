@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-16-stress-dsr-metro-vs-nonmetro.png"
 title: "스트레스 DSR, 수도권과 지방이 다르게 적용됩니다 (2026년 하반기 기준)"
 date: 2026-07-16
 draft: true

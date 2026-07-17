@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-17-youth-dream-account-vs-subscription-savings.png"
 title: "청년주택드림청약통장 vs 주택청약종합저축, 뭐가 다를까 (2026년 기준)"
 date: 2026-07-17
 draft: true

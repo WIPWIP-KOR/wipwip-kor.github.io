@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-17-newborn-special-loan-vs-didimdol-loan.png"
 title: "신생아특례대출 vs 일반 디딤돌대출, 뭐가 다를까 (2026년 기준)"
 date: 2026-07-17
 draft: true

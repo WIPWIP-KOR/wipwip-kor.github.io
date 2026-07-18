@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-18-youth-job-leap-incentive.png"
 title: "청년일자리도약장려금 신청 방법 (2026년 비수도권 최대 720만 원)"
 date: 2026-07-18
 draft: true

@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-17-small-business-stability-voucher.png"
 title: "소상공인 경영안정바우처 신청 방법 (25만 원, 12월 18일까지)"
 date: 2026-07-17
 draft: true

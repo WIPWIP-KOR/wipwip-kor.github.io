@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-19-senior-job-program-application.png"
 title: "노인일자리 및 사회활동지원사업 신청 방법 (2026년 월 최대 76만 원)"
 date: 2026-07-19
 draft: true

@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-17-youth-dream-account-vs-subscription-savings.png"
 title: "청년주택드림청약통장 vs 주택청약종합저축, 뭐가 다를까 (2026년 기준)"
 date: 2026-07-17
-draft: true
+draft: false
 categories: ["재테크"]
 tags: ["청년주택드림청약통장", "주택청약종합저축 비교", "청약통장 이자율 비교", "청년주택드림청약통장 조건"]
 description: "청년주택드림청약통장은 만 19~34세 무주택 청년 전용으로 연 4.5% 이자에 이자소득 비과세와 2%대 연계대출까지 주지만, 주택청약종합저축은 나이 제한 없이 누구나 가입할 수 있습니다. 두 통장의 이자율·가입조건·혜택 차이를 정리했습니다."

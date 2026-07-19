@@ -1,5 +1,4 @@
 ---
-thumbnail: "/images/posts/2026-07-19-earned-income-vs-child-tax-credit.png"
 title: "근로장려금 vs 자녀장려금, 뭐가 다를까 (2026년 기한후신청 진행 중)"
 date: 2026-07-19
 draft: false

@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-18-ipo-subscription-equal-vs-proportional-allocation.png"
 title: "공모주 청약 균등배정 vs 비례배정, 뭐가 다를까 (2026년 기준)"
 date: 2026-07-18
-draft: true
+draft: false
 categories: ["재테크"]
 tags: ["공모주 청약", "균등배정 비례배정 차이", "공모주 청약 방법", "공모주 증거금"]
 description: "공모주 청약 물량의 절반은 청약 인원수로 똑같이 나누는 균등배정, 나머지 절반은 넣은 증거금에 비례해 나누는 비례배정으로 운영됩니다. 소액으로도 받을 수 있는 균등배정과 증거금을 많이 넣을수록 유리한 비례배정의 차이를 정리했습니다."

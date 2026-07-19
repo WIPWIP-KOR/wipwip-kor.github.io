@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-16-youth-future-savings-vs-hope-savings.png"
 title: "청년미래적금 vs 청년도약계좌, 뭐가 다를까 (2026년 신규 출시)"
 date: 2026-07-16
-draft: true
+draft: false
 categories: ["재테크"]
 tags: ["청년미래적금", "청년도약계좌 비교", "청년미래적금 가입조건", "청년미래적금 청년도약계좌 차이"]
 description: "2026년 6월 새로 출시된 청년미래적금은 3년 만기·월 50만 원 한도로 정부 기여금 최대 12%를 주는 반면, 기존 청년도약계좌는 5년 만기·월 70만 원 한도로 만기 수령액이 더 큽니다. 두 상품의 차이와 갈아타기 조건을 정리했습니다."

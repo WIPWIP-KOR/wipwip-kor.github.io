@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-16-stress-dsr-metro-vs-nonmetro.png"
 title: "스트레스 DSR, 수도권과 지방이 다르게 적용됩니다 (2026년 하반기 기준)"
 date: 2026-07-16
-draft: true
+draft: false
 categories: ["재테크"]
 tags: ["스트레스 DSR", "스트레스 DSR 수도권 지방 차이", "스트레스 DSR 3단계", "주택담보대출 한도"]
 description: "2026년 7월 1일부터 12월 31일까지 수도권·규제지역 주택담보대출은 스트레스 DSR 3단계(스트레스 금리 3.0%)가, 지방 주택담보대출은 2단계(스트레스 금리 1.5%)가 그대로 적용됩니다. 같은 소득이라도 지역에 따라 대출 한도가 크게 달라지는 이유를 정리했습니다."

@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-20-busan-newlywed-jeonse-interest-support-change.png"
 title: "부산 신혼부부 전세자금 대출이자 지원, 이렇게 달라졌습니다 (2026년 7월 수시접수 전환)"
 date: 2026-07-20
 draft: true

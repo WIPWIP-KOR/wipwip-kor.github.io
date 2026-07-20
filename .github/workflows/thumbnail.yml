@@ -32,18 +32,6 @@ jobs:
           sudo apt-get install -y fonts-nanum
           pip install pillow google-genai
 
-      - name: List available Gemini models (debug)
-        if: steps.find.outputs.files != ''
-        env:
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-        run: |
-          python3 -c "
-          from google import genai
-          client = genai.Client(api_key='${GOOGLE_API_KEY}')
-          for m in client.models.list():
-              print(m.name, '|', getattr(m, 'supported_actions', None))
-          "
-
       - name: Generate thumbnails
         if: steps.find.outputs.files != ''
         env:

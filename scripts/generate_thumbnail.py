@@ -18,7 +18,7 @@ from google import genai
 from google.genai import types
 from PIL import Image, ImageDraw, ImageFont
 
-IMAGE_MODEL = "gemini-2.0-flash-preview-image-generation"
+IMAGE_MODEL = "imagen-4.0-generate-001"
 IMAGES_DIR = "static/images/posts"
 CANVAS_SIZE = (1200, 630)
 FONT_CANDIDATES = [
@@ -72,15 +72,14 @@ def build_prompt(title, description, tags):
 
 def generate_image(prompt, api_key):
     client = genai.Client(api_key=api_key)
-    response = client.models.generate_content(
+    result = client.models.generate_images(
         model=IMAGE_MODEL,
-        contents=prompt,
-        config=types.GenerateContentConfig(response_modalities=["TEXT", "IMAGE"]),
+        prompt=prompt,
+        config=types.GenerateImagesConfig(number_of_images=1),
     )
-    for part in response.candidates[0].content.parts:
-        if part.inline_data is not None:
-            return part.inline_data.data
-    raise RuntimeError("Gemini API returned no image data")
+    if not result.generated_images:
+        raise RuntimeError("Gemini API returned no images")
+    return result.generated_images[0].image.image_bytes
 
 
 def find_font():

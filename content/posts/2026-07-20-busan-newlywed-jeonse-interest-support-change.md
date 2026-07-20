@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-20-busan-newlywed-jeonse-interest-support-change.png"
 title: "부산 신혼부부 전세자금 대출이자 지원, 이렇게 달라졌습니다 (2026년 7월 수시접수 전환)"
 date: 2026-07-20
-draft: true
+draft: false
 categories: ["재테크"]
 tags: ["부산 신혼부부 전세자금 대출이자 지원", "신혼부부 전세대출 수시접수", "부산은행 신혼부부 대출", "신혼부부 대출이자 지원 조건"]
 description: "부산시 신혼부부 전세자금 대출이자 지원사업이 분기별 모집·추첨 방식에서 7월부터 수시접수·신청순으로 바뀌었습니다. 달라진 신청 방식과 대출 한도, 이자 지원 조건을 정리했습니다."

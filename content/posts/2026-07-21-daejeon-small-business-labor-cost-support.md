@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-21-daejeon-small-business-labor-cost-support.png"
 title: "대전 소상공인 인건비 지원사업 신청 방법 (신규 고용 시 1인당 150만 원)"
 date: 2026-07-21
-draft: true
+draft: false
 categories: ["정책"]
 tags: ["대전 소상공인 인건비 지원사업", "대전 소상공인 인건비 지원사업 신청방법", "대전비즈", "소상공인 신규고용 지원금"]
 description: "대전시에 사업장을 둔 소상공인이 신규 근로자를 채용하면 1인당 월 50만 원씩 3개월, 총 150만 원의 인건비를 지원받을 수 있습니다. 신청 대상, 고용 요건, 대전비즈를 통한 신청 방법을 정리했습니다."

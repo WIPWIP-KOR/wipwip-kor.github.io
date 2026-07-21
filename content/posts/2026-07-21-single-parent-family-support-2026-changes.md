@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-21-single-parent-family-support-2026-changes.png"
 title: "한부모가족 지원금, 2026년 이렇게 달라졌습니다 (아동양육비 월 33만 원 인상)"
 date: 2026-07-21
 draft: true

@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-22-summer-hotel-sale-festa-application.png"
 title: "대한민국 숙박세일 페스타 신청 방법 (7월 31일 마감, 최대 7만 원 할인)"
 date: 2026-07-22
 draft: true

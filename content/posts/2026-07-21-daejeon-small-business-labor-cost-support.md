@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-21-daejeon-small-business-labor-cost-support.png"
 title: "대전 소상공인 인건비 지원사업 신청 방법 (신규 고용 시 1인당 150만 원)"
 date: 2026-07-21
 draft: true

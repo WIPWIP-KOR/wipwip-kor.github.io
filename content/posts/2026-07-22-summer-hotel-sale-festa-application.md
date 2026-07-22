@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-22-summer-hotel-sale-festa-application.png"
 title: "대한민국 숙박세일 페스타 신청 방법 (7월 31일 마감, 최대 7만 원 할인)"
 date: 2026-07-22
-draft: true
+draft: false
 categories: ["정책"]
 tags: ["대한민국 숙박세일페스타", "숙박세일페스타 신청방법", "여름맞이 숙박할인쿠폰", "인구감소지역 숙박할인"]
 description: "문화체육관광부와 한국관광공사가 진행하는 2026 여름맞이 숙박세일 페스타가 7월 31일 마감됩니다. 비수도권 인구감소지역 숙박 예약 시 1박 최대 3만 원, 연박 최대 7만 원 할인받는 방법을 정리했습니다."

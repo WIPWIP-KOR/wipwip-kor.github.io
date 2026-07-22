@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-23-sokcho-livelihood-recovery-grant-application.png"
 title: "속초시 민생지원금 신청 방법 (1인당 20만 원, 7월 25일은 요일제 없이 신청 가능)"
 date: 2026-07-23
 draft: true

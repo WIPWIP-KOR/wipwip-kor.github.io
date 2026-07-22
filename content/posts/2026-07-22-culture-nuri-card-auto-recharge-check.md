@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-22-culture-nuri-card-auto-recharge-check.png"
 title: "문화누리카드 자동재충전 대상 확인 방법 (2026년 15만 원, 미신청자는 재신청 필요)"
 date: 2026-07-22
 draft: true

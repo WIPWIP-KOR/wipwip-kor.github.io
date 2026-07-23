@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-23-sokcho-livelihood-recovery-grant-application.png"
 title: "속초시 민생지원금 신청 방법 (1인당 20만 원, 7월 25일은 요일제 없이 신청 가능)"
 date: 2026-07-23
-draft: true
+draft: false
 categories: ["정책"]
 tags: ["속초시 민생지원금", "속초시 민생지원금 신청방법", "속초 민생회복지원금", "속초 CHAK 앱"]
 description: "속초시가 나이·소득·재산과 무관하게 전 시민에게 1인당 20만 원을 지급하는 민생회복지원금 신청을 받고 있습니다. 7월 20~31일 요일제 기간과 7월 25일 특별신청일, CHAK 앱을 통한 신청 방법을 정리했습니다."

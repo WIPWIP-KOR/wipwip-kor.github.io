@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-22-culture-nuri-card-auto-recharge-check.png"
 title: "문화누리카드 자동재충전 대상 확인 방법 (2026년 15만 원, 미신청자는 재신청 필요)"
 date: 2026-07-22
-draft: true
+draft: false
 categories: ["정책"]
 tags: ["문화누리카드 자동재충전", "문화누리카드 2026 신청방법", "문화누리카드 대상 확인", "문화누리카드 미신청자"]
 description: "2025년 문화누리카드 발급자 중 사용 이력이 있고 자격을 유지 중이라면 별도 신청 없이 2026년 지원금이 자동 충전됩니다. 자동재충전 제외 대상과, 제외됐을 경우 재신청하는 방법을 정리했습니다."

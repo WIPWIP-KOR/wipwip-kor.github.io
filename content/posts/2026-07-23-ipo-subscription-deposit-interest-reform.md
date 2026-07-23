@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-23-ipo-subscription-deposit-interest-reform.png"
 title: "공모주 청약증거금, 이자 받을 수 있게 달라집니다 (금융위 제도 개선 추진)"
 date: 2026-07-23
 draft: true

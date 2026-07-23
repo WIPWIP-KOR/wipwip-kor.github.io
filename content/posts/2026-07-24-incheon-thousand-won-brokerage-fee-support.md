@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-24-incheon-thousand-won-brokerage-fee-support.png"
 title: "인천 천원 복비 신청 방법 (전월세 중개보수 최대 30만 원 지원)"
 date: 2026-07-24
-draft: true
+draft: false
 categories: ["정책"]
 tags: ["인천 천원 복비", "인천 천원 복비 신청방법", "주택 중개보수 지원", "인천 청년 전월세 지원"]
 description: "인천에서 보증금 1억 원 이하 주택을 2년 이상 임대차 계약하면, 부동산 중개보수를 자부담 천 원만 내고 최대 30만 원까지 지원받는 천원 복비 사업을 정리했습니다. 신청 대상과 방법을 알아봅니다."

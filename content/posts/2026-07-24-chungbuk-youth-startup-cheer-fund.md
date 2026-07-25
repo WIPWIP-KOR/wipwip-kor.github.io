@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-24-chungbuk-youth-startup-cheer-fund.png"
 title: "충북 청년 소상공인 창업응원금 신청 방법 (30만 원, 분기별 선착순)"
 date: 2026-07-24
-draft: true
+draft: false
 categories: ["정책"]
 tags: ["충북 청년 소상공인 창업응원금", "청년 소상공인 창업응원금 신청방법", "충북소상공인지원센터", "충청북도 청년 창업 지원금"]
 description: "충청북도가 도내에서 창업한 만 39세 이하 청년 소상공인에게 30만 원을 선착순으로 지급하는 창업응원금 사업을 정리했습니다. 신청 대상, 신청 방법, 유의사항을 알아봅니다."

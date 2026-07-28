@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Find posts without a thumbnail
         id: find
@@ -48,5 +50,26 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add static/images/posts content/posts
-          git diff --cached --quiet || git commit -m "Add generated thumbnail(s)"
-          git push origin HEAD:"${GITHUB_REF#refs/heads/}"
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+            exit 0
+          fi
+          git commit -m "Add generated thumbnail(s)"
+
+          branch="${GITHUB_REF#refs/heads/}"
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:"$branch"; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt), rebasing onto latest $branch and retrying..."
+            git fetch origin "$branch"
+            if ! git rebase "origin/$branch"; then
+              git rebase --abort
+              echo "Rebase failed, aborting" >&2
+              exit 1
+            fi
+            sleep $((attempt * 5))
+          done
+          echo "Failed to push generated thumbnails after retries" >&2
+          exit 1

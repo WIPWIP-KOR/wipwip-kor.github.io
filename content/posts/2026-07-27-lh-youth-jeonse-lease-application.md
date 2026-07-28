@@ -1,5 +1,4 @@
 ---
-thumbnail: "/images/posts/2026-07-27-lh-youth-jeonse-lease-application.png"
 title: "LH 청년전세임대 1순위 신청 방법 (보증금 80% 지원, 연중 수시모집)"
 date: 2026-07-27
 draft: true

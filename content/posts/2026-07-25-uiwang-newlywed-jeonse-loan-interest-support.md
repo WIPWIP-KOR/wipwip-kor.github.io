@@ -1,5 +1,4 @@
 ---
-thumbnail: "/images/posts/2026-07-25-uiwang-newlywed-jeonse-loan-interest-support.png"
 title: "의왕시 신혼부부 주택임차보증금 대출이자 지원 신청 방법 (7월 27일부터, 연 최대 130만 원)"
 date: 2026-07-25
 draft: true

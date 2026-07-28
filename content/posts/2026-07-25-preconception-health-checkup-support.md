@@ -1,5 +1,4 @@
 ---
-thumbnail: "/images/posts/2026-07-25-preconception-health-checkup-support.png"
 title: "임신 사전건강관리 지원사업 신청 방법 (미혼도 가능, 가임력 검사 최대 13만 원)"
 date: 2026-07-25
 draft: false

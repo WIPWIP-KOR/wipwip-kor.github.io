@@ -1,5 +1,4 @@
 ---
-thumbnail: "/images/posts/2026-07-24-property-tax-july-payment-period.png"
 title: "2026년 재산세 7월 납부기간, 분할납부 대상 확인 방법 (20만 원·250만 원 기준)"
 date: 2026-07-24
 draft: false

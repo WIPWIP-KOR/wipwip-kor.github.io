@@ -1,5 +1,4 @@
 ---
-thumbnail: "/images/posts/2026-07-26-disability-activity-support-service-2026-changes.png"
 title: "장애인 활동지원서비스, 2026년 이렇게 달라졌습니다 (돌봄전문수당 5만 원 → 15만 원)"
 date: 2026-07-26
 draft: true

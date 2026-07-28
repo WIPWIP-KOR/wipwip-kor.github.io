@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-25-seoul-restart-project-eligibility-expansion.png"
 title: "서울형 다시서기 프로젝트, 2026년 하반기 이렇게 달라졌습니다 (지원대상 확대)"
 date: 2026-07-25
 draft: true

@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-24-chungbuk-youth-startup-cheer-fund.png"
 title: "충북 청년 소상공인 창업응원금 신청 방법 (30만 원, 분기별 선착순)"
 date: 2026-07-24
 draft: false

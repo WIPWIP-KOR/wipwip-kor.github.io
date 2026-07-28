@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-27-wanju-youth-newlywed-jeonse-loan-interest-support.png"
 title: "완주군 청년·신혼부부·다자녀가구 전세자금 대출이자 지원 신청 방법 (연 최대 150만 원)"
 date: 2026-07-27
 draft: true

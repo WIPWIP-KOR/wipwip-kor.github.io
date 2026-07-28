@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-28-daejeon-newlywed-marriage-incentive.png"
 title: "대전 청년부부 결혼장려금 신청 방법 (소득·재산 요건 없이 부부 최대 500만 원)"
 date: 2026-07-28
 draft: true

@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-27-childcare-service-2026-changes.png"
 title: "아이돌봄서비스, 2026년 이렇게 달라졌습니다 (소득기준 중위소득 250%로 확대)"
 date: 2026-07-27
 draft: true

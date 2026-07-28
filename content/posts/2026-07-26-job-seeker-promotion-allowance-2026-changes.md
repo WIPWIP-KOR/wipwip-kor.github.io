@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-26-job-seeker-promotion-allowance-2026-changes.png"
 title: "구직촉진수당, 2026년 이렇게 달라졌습니다 (월 50만 원 → 60만 원 인상)"
 date: 2026-07-26
 draft: true

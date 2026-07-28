@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-26-kepco-energy-cashback-application.png"
 title: "한전 에너지캐시백 신청 방법 (1% 절감 기준 완화, 여름철 저녁 추가 캐시백)"
 date: 2026-07-26
 draft: true

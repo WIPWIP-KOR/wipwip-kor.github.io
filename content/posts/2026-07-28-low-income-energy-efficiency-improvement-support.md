@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-28-low-income-energy-efficiency-improvement-support.png"
 title: "저소득층 에너지효율개선사업 신청 방법 (단열·창호·보일러 전액 무상 지원)"
 date: 2026-07-28
 draft: true

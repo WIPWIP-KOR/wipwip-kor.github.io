@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-28-basic-pension-2026-changes.png"
 title: "기초연금 선정기준액, 2026년 이렇게 달라졌습니다 (단독가구 월 247만 원 기준)"
 date: 2026-07-28
 draft: false

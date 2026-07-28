@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-28-parental-benefit-application.png"
 title: "부모급여 신청 방법 (2026년 만 0세 월 100만 원·만 1세 월 50만 원)"
 date: 2026-07-28
 draft: false

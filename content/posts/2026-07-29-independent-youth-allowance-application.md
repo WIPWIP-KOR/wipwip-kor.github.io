@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-29-independent-youth-allowance-application.png"
 title: "자립준비청년 자립수당 신청 방법 (월 50만 원, 자립정착금 1천만 원 이상)"
 date: 2026-07-29
 draft: false

@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-29-menstrual-product-voucher-2026-changes.png"
 title: "여성청소년 생리용품 바우처, 2026년 이렇게 달라졌습니다 (연 16만 8천 원 전액 즉시 지급)"
 date: 2026-07-29
 draft: false

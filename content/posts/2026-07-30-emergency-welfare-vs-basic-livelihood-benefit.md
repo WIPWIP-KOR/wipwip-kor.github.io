@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-30-emergency-welfare-vs-basic-livelihood-benefit.png"
 title: "긴급복지지원 생계지원금 vs 기초생활수급자 생계급여, 뭐가 다를까"
 date: 2026-07-30
 draft: false

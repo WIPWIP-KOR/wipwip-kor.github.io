@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-29-disability-pension-application.png"
 title: "장애인연금 신청 방법 (2026년 월 최대 43만 9,700원)"
 date: 2026-07-29
 draft: false

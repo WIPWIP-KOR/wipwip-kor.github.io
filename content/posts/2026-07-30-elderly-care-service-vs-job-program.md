@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-30-elderly-care-service-vs-job-program.png"
 title: "노인맞춤돌봄서비스 vs 노인일자리 및 사회활동지원사업, 뭐가 다를까"
 date: 2026-07-30
 draft: false

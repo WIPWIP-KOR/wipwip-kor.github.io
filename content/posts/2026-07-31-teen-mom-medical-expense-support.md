@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-31-teen-mom-medical-expense-support.png"
 title: "청소년산모 임신출산 의료비지원 신청 방법 (소득 무관, 임신 1회당 120만 원)"
 date: 2026-07-31
 draft: false

@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-31-farmland-pension-vs-reverse-mortgage.png"
 title: "농지연금 vs 주택연금, 뭐가 다를까 (2026년 기준)"
 date: 2026-07-31
 draft: false

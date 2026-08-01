@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-07-31-early-reemployment-allowance-application.png"
 title: "조기재취업수당 신청 방법 (남은 구직급여의 절반, 재취업 12개월 후 신청)"
 date: 2026-07-31
 draft: false

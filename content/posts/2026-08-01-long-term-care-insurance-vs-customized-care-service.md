@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-01-long-term-care-insurance-vs-customized-care-service.png"
 title: "노인장기요양보험 vs 노인맞춤돌봄서비스, 뭐가 다를까"
 date: 2026-08-01
 draft: false

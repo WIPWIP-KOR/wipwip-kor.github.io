@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-01-disability-child-allowance-application.png"
 title: "장애아동수당 신청 방법 (중증 월 22만 원·경증 월 11만 원)"
 date: 2026-08-01
 draft: false

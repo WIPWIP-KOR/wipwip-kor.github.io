@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-02-dongdaemun-youth-certification-support-application.png"
 title: "동대문구 청년 취업 자격취득 활동 지원사업 신청 방법 (최대 20만 원, 8월 1일~11월 30일)"
 date: 2026-08-02
 draft: false

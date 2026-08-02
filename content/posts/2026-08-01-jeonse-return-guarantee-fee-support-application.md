@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-01-jeonse-return-guarantee-fee-support-application.png"
 title: "전세보증금 반환보증료 지원 신청 방법 (대상 전 연령 확대, 최대 40만 원 환급)"
 date: 2026-08-01
 draft: false

@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-01-high-oil-price-relief-fund-usage-deadline.png"
 title: "고유가 피해지원금 사용기한 확인 방법 (8월 31일 마감, 미사용 잔액 소멸)"
 date: 2026-08-01
 draft: false

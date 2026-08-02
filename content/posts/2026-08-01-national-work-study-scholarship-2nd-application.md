@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-01-national-work-study-scholarship-2nd-application.png"
 title: "국가근로장학사업 2차 신청 방법 (8월 12일~9월 9일, 시급 최대 1만 2,790원)"
 date: 2026-08-01
 draft: false

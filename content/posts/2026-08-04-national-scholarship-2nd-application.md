@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-04-national-scholarship-2nd-application.png"
 title: "국가장학금 2학기 2차 신청 방법 (8월 12일~9월 9일, 최대 등록금 전액)"
 date: 2026-08-04
 draft: false

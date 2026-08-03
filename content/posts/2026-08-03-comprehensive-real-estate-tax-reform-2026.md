@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-03-comprehensive-real-estate-tax-reform-2026.png"
 title: "1세대 1주택 종합부동산세 개편안, 이렇게 달라집니다 (2026년 세법개정안)"
 date: 2026-08-03
 draft: false

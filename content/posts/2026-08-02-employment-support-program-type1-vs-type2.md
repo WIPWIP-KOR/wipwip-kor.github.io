@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-02-employment-support-program-type1-vs-type2.png"
 title: "국민취업지원제도 1유형 vs 2유형, 뭐가 다를까 (2026년 기준)"
 date: 2026-08-02
 draft: false

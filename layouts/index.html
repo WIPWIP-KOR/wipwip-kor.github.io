@@ -1,4 +1,15 @@
 {{ define "main" }}
+<section class="home-hero">
+  <h1>{{ .Site.Params.description }}</h1>
+  <p>정부·지자체 지원금부터 세금·법률·재테크까지, 신청 방법과 조건을 정리해서 전달합니다.</p>
+  {{ with .Site.Taxonomies.categories }}
+  <div class="home-topics">
+    {{ range $name, $items := . }}
+    <a href="{{ (urlize (printf "/categories/%s/" $name)) | relURL }}">{{ $name }}</a>
+    {{ end }}
+  </div>
+  {{ end }}
+</section>
 <section class="post-list">
   {{ range (where .Site.RegularPages "Type" "posts") }}
   {{ $page := . }}

@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-05-youth-drivers-license-subsidy-application.png"
 title: "청년 운전면허 취득 지원금 신청 방법 (지자체별 최대 70만 원, 사후 환급)"
 date: 2026-08-05
 draft: false

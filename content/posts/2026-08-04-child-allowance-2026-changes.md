@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-04-child-allowance-2026-changes.png"
 title: "아동수당 지급대상·금액, 2026년 이렇게 달라졌습니다 (9세 미만 확대, 지역별 최대 12만 원)"
 date: 2026-08-04
 draft: false

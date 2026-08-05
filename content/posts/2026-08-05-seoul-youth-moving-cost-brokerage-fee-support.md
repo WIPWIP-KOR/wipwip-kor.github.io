@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-05-seoul-youth-moving-cost-brokerage-fee-support.png"
 title: "서울시 청년 부동산 중개보수·이사비 지원 신청 방법 (하반기 8월 모집, 최대 40만 원)"
 date: 2026-08-05
 draft: false

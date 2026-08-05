@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-05-productive-finance-isa-vs-general-isa.png"
 title: "생산적금융 ISA vs 일반 ISA, 뭐가 다를까 (2026년 세법개정안)"
 date: 2026-08-05
 draft: false

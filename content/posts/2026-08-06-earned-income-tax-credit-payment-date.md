@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-06-earned-income-tax-credit-payment-date.png"
 title: "근로장려금 지급일 8월 27일, 지급액 미리 조회하는 방법 (재산 1억 7천만 원이 갈림길)"
 date: 2026-08-06
 draft: false

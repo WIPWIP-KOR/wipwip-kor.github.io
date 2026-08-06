@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-06-sme-worker-lunch-support.png"
 title: "직장인 든든한 점심밥 신청 방법 (점심값 20% 지원, 개인 신청은 안 됩니다)"
 date: 2026-08-06
 draft: false

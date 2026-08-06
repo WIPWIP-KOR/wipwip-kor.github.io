@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-08-06-financially-vulnerable-livelihood-loan-application.png"
 title: "금융취약계층 생계자금 대출 신청 방법 (최대 500만 원, 연 4.5% 고정금리)"
 date: 2026-08-06
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["금융취약계층 생계자금 대출", "서민금융진흥원 생계자금 대출", "금융취약계층 생계자금 대출 신청방법", "소액생계비대출 차이"]
 description: "서민금융진흥원이 신설한 금융취약계층 생계자금 대출로 연 4.5% 고정금리에 최대 500만 원까지 빌릴 수 있습니다. 신청 대상, 금액, 방법과 기존 소액생계비대출과의 차이를 정리했습니다."

@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-28-parental-benefit-application.png"
 title: "부모급여 신청 방법 (2026년 만 0세 월 100만 원·만 1세 월 50만 원)"
 date: 2026-07-28
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["부모급여 신청방법", "부모급여 2026", "부모급여 소급지급", "부모급여 어린이집 차액"]
 description: "만 0세는 월 100만 원, 만 1세는 월 50만 원을 받는 부모급여, 출생일로부터 60일 이내 신청해야 소급 지급받을 수 있습니다. 신청 대상, 금액, 방법, 기한을 정리했습니다."

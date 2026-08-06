@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-15-childcare-10am-commute-incentive.png"
 title: "육아기 10시 출근제 신청 방법 (2026년 7월 근속요건 폐지)"
 date: 2026-07-15
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["육아기 10시 출근제", "워라밸장려금", "육아기 10시 출근제 신청방법", "일가정양립 지원금"]
 description: "만 12세 이하 자녀를 둔 근로자가 출근을 1시간 늦추면 사업주가 근로자 1인당 월 30만 원을 최대 1년 지원받는 육아기 10시 출근제. 2026년 7월부터 6개월 근속요건이 폐지되고 신청 서류도 간소화됐습니다."

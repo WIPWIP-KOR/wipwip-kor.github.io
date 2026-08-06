@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-08-02-dongdaemun-youth-certification-support-application.png"
 title: "동대문구 청년 취업 자격취득 활동 지원사업 신청 방법 (최대 20만 원, 8월 1일~11월 30일)"
 date: 2026-08-02
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["동대문구 청년 취업 자격취득 활동 지원사업", "청년 자격증 응시료 지원", "동대문구 청년 지원금", "동대문구사랑상품권 지원"]
 description: "동대문구 거주 미취업 청년이라면 자격증 시험 응시료와 교육비를 최대 20만 원까지 지원받을 수 있습니다. 2026년 하반기 신청이 8월 1일부터 11월 30일까지 진행됩니다. 신청 대상, 금액, 방법을 정리했습니다."

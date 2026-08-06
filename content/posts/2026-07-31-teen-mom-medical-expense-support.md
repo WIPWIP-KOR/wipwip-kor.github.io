@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-31-teen-mom-medical-expense-support.png"
 title: "청소년산모 임신출산 의료비지원 신청 방법 (소득 무관, 임신 1회당 120만 원)"
 date: 2026-07-31
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["청소년산모 임신출산 의료비지원", "청소년산모 의료비지원 신청방법", "국민행복카드 청소년산모", "임신출산 진료비 지원 중복"]
 description: "만 19세 이하 산모라면 소득이나 재산과 관계없이 임신 1회당 120만 원까지 의료비를 지원받을 수 있습니다. 신청 대상, 금액, 방법, 사용 기한을 정리했습니다."

@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-08-01-jeonse-return-guarantee-fee-support-application.png"
 title: "전세보증금 반환보증료 지원 신청 방법 (대상 전 연령 확대, 최대 40만 원 환급)"
 date: 2026-08-01
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["전세보증금 반환보증료 지원", "전세보증금 반환보증료 지원 신청방법", "전세보증금 반환보증 보증료 환급", "무주택 임차인 지원금"]
 description: "전세보증금 반환보증에 가입하면서 낸 보증료를 최대 40만 원까지 돌려받을 수 있는 지원사업의 대상이 청년에서 전 연령층으로 확대됐습니다. 신청 대상, 금액, 방법을 정리했습니다."

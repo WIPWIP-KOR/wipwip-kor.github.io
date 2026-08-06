@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-14-youth-monthly-rent-support.png"
 title: "청년월세지원 신청 방법 (2026년 상시 신청, 최대 480만 원)"
 date: 2026-07-14
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["청년월세지원", "청년월세지원 신청방법", "무주택 청년 지원금", "청년 주거급여"]
 description: "만 19~34세 무주택 청년이 소득·재산 기준을 충족하면 월 최대 20만 원씩 24개월, 총 480만 원의 월세를 지원받을 수 있습니다. 2026년부터 한시사업에서 상시 신청 제도로 바뀌어 1년 내내 신청할 수 있습니다."

@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-29-disability-pension-application.png"
 title: "장애인연금 신청 방법 (2026년 월 최대 43만 9,700원)"
 date: 2026-07-29
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["장애인연금 신청방법", "장애인연금 2026", "장애인연금 선정기준액", "장애인연금 부가급여"]
 description: "만 18세 이상 중증장애인이라면 2026년 기준 월 최대 43만 9,700원을 받을 수 있는 장애인연금을 신청할 수 있습니다. 신청 대상, 금액, 방법, 기한을 정리했습니다."

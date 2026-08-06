@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-20-gyeonggi-youth-capability-support.png"
 title: "경기청년 역량강화 기회지원 신청 방법 (2026년 자격증 응시료 최대 30만 원)"
 date: 2026-07-20
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["경기청년 역량강화 기회지원", "자격증 응시료 지원", "잡아바 어플라이", "경기도 청년 정책"]
 description: "경기도에 거주하는 미취업 청년이라면 어학·자격시험 응시료를 1인당 최대 30만 원까지 실비로 지원받을 수 있습니다. 지원 대상 자격증 1,004종, 신청 방법과 시군별 연령 기준, 마감 전 알아야 할 점을 정리했습니다."

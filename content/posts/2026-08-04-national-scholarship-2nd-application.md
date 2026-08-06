@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-08-04-national-scholarship-2nd-application.png"
 title: "국가장학금 2학기 2차 신청 방법 (8월 12일~9월 9일, 최대 등록금 전액)"
 date: 2026-08-04
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["국가장학금 2차 신청", "국가장학금 신청방법", "국가장학금 구간별 지원금액", "국가장학금 성적기준"]
 description: "2026학년도 2학기 국가장학금 2차 신청이 8월 12일부터 9월 9일까지 진행됩니다. 1차를 놓쳤거나 학자금 지원구간이 아직 확정되지 않은 학생을 위한 신청 대상, 구간별 지원금액, 신청 방법을 정리했습니다."

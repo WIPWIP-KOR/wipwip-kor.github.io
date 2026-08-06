@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-06-financially-vulnerable-livelihood-loan-application.png"
 title: "금융취약계층 생계자금 대출 신청 방법 (최대 500만 원, 연 4.5% 고정금리)"
 date: 2026-08-06
 draft: false

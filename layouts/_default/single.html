@@ -30,5 +30,28 @@
     </span>
   </footer>
   {{ end }}
+  {{ $current := . }}
+  {{ $currentCats := .Params.categories | default slice }}
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ $candidates := slice }}
+  {{ range $posts }}
+    {{ if ne .RelPermalink $current.RelPermalink }}
+      {{ $cats := .Params.categories | default slice }}
+      {{ if gt (len (intersect $currentCats $cats)) 0 }}
+        {{ $candidates = $candidates | append . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $related := first 4 (sort $candidates "Date" "desc") }}
+  {{ with $related }}
+  <section class="related-posts">
+    <h2>관련 글</h2>
+    <ul>
+      {{ range . }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
 </article>
 {{ end }}

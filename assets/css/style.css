@@ -251,6 +251,41 @@ h1, h2, h3 {
   border-top: 1px solid var(--border);
 }
 
+.related-posts {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.related-posts h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.8rem;
+}
+
+.related-posts ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.related-posts li {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+}
+
+.related-posts a {
+  color: var(--fg);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.related-posts a:hover {
+  color: var(--accent-strong);
+}
+
 .post-card h2 {
   margin: 0.4rem 0 0.5rem;
   font-size: 1.2rem;

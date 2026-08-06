@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-08-01-disability-child-allowance-application.png"
 title: "장애아동수당 신청 방법 (중증 월 22만 원·경증 월 11만 원)"
 date: 2026-08-01
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["장애아동수당 신청방법", "장애아동수당 지급액", "장애아동수당 대상", "장애인연금 중복 제외"]
 description: "18세 미만 등록 장애아동 중 기초생활수급자·차상위계층이라면 장애 정도에 따라 월 11만~22만 원의 장애아동수당을 받을 수 있습니다. 신청 대상, 금액, 방법, 유의사항을 정리했습니다."

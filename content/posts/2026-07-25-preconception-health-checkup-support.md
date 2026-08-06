@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-25-preconception-health-checkup-support.png"
 title: "임신 사전건강관리 지원사업 신청 방법 (미혼도 가능, 가임력 검사 최대 13만 원)"
 date: 2026-07-25
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["임신 사전건강관리 지원사업", "가임력 검사 지원", "임신 사전건강관리 신청방법", "e보건소 신청"]
 description: "결혼 여부와 관계없이 만 20~49세 남녀라면 난소기능검사, 부인과 초음파, 정액검사 비용을 지원받을 수 있는 임신 사전건강관리 지원사업을 정리했습니다. 대상, 금액, 신청 방법을 알아봅니다."

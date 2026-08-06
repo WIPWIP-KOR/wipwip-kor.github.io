@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-08-05-seoul-youth-moving-cost-brokerage-fee-support.png"
 title: "서울시 청년 부동산 중개보수·이사비 지원 신청 방법 (하반기 8월 모집, 최대 40만 원)"
 date: 2026-08-05
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["서울시 청년 이사비 지원", "청년 부동산 중개보수 지원 신청방법", "서울 청년 이사비 하반기 모집", "청년몽땅정보통 이사비"]
 description: "서울 거주 무주택 청년이라면 이사할 때 든 부동산 중개보수와 이사비를 최대 40만 원까지 지원받을 수 있습니다. 2026년 하반기 모집이 8월 중 진행됩니다. 신청 대상, 금액, 방법을 정리했습니다."

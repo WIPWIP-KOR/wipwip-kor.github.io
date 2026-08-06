@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-29-independent-youth-allowance-application.png"
 title: "자립준비청년 자립수당 신청 방법 (월 50만 원, 자립정착금 1천만 원 이상)"
 date: 2026-07-29
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["자립준비청년 자립수당", "자립수당 신청방법", "자립정착금", "보호종료아동 지원"]
 description: "아동복지시설이나 위탁가정에서 보호받다 만 18세에 보호가 종료된 자립준비청년이라면 매월 50만 원의 자립수당과 지역별 1천만 원 이상의 자립정착금을 받을 수 있습니다. 신청 대상, 금액, 방법, 기한을 정리했습니다."

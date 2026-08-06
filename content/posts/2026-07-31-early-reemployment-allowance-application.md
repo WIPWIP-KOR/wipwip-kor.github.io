@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-31-early-reemployment-allowance-application.png"
 title: "조기재취업수당 신청 방법 (남은 구직급여의 절반, 재취업 12개월 후 신청)"
 date: 2026-07-31
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["조기재취업수당 신청방법", "조기재취업수당 지급조건", "조기재취업수당 지급제외", "구직급여 조기재취업"]
 description: "실업급여(구직급여)를 받던 중 소정급여일수의 절반 이상을 남기고 재취업했다면, 12개월 이상 근속 후 남은 급여의 절반을 조기재취업수당으로 받을 수 있습니다. 신청 대상, 금액, 방법, 시기를 정리했습니다."

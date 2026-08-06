@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-08-01-high-oil-price-relief-fund-usage-deadline.png"
 title: "고유가 피해지원금 사용기한 확인 방법 (8월 31일 마감, 미사용 잔액 소멸)"
 date: 2026-08-01
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["고유가 피해지원금 사용기한", "고유가 피해지원금 잔액조회", "고유가 피해지원금 사용처", "고유가 피해지원금 소멸"]
 description: "고유가 피해지원금을 받았다면 2026년 8월 31일까지 반드시 사용해야 합니다. 기한이 지나면 환불이나 이월 없이 잔액이 자동 소멸됩니다. 사용기한, 사용처, 잔액 조회 방법을 정리했습니다."

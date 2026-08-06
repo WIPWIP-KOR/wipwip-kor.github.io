@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-08-05-youth-drivers-license-subsidy-application.png"
 title: "청년 운전면허 취득 지원금 신청 방법 (지자체별 최대 70만 원, 사후 환급)"
 date: 2026-08-05
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["청년 운전면허 지원금", "운전면허 취득비용 지원 신청방법", "청년 운전면허 지원금 지자체별", "운전면허 지원금 영수증 조건"]
 description: "운전면허를 취득한 청년이라면 거주 지자체에 따라 최소 5만 원에서 최대 70만 원까지 취득 비용을 돌려받을 수 있습니다. 신청 대상, 금액, 사후 환급 방법과 주의사항을 정리했습니다."

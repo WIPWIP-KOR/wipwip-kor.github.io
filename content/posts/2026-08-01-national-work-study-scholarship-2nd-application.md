@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-08-01-national-work-study-scholarship-2nd-application.png"
 title: "국가근로장학사업 2차 신청 방법 (8월 12일~9월 9일, 시급 최대 1만 2,790원)"
 date: 2026-08-01
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["국가근로장학사업 신청방법", "국가근로장학금 2차 신청", "국가근로장학사업 시급", "한국장학재단 근로장학생"]
 description: "2026학년도 2학기 국가근로장학사업 2차 신청이 8월 12일부터 9월 9일까지 진행됩니다. 신청 대상, 시급, 근로시간, 신청 방법을 정리했습니다."

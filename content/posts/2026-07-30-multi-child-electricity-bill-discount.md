@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-30-multi-child-electricity-bill-discount.png"
 title: "다자녀가구 전기요금 할인 신청 방법 (소득 무관 30%, 월 최대 1만 6천 원)"
 date: 2026-07-30
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["다자녀가구 전기요금 할인", "전기요금 할인 신청방법", "한전 전기요금 감면", "다자녀 전기세 할인"]
 description: "자녀 3명 이상인 가구라면 소득과 관계없이 전기요금을 30%, 월 최대 1만 6천 원까지 할인받을 수 있습니다. 신청하지 않으면 자동으로 적용되지 않으니 신청 대상, 방법, 주의사항을 정리했습니다."

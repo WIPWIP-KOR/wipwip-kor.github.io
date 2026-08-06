@@ -11,6 +11,11 @@ timeZone = "Asia/Seoul"
   author = "WIPWIP"
   dateFormat = "2006-01-02"
   googleSiteVerification = "yKpNCq_z0Ao2NcpB2k756Vtk9jqlVzz3W3HjACHlsdw"
+  # naverSiteVerification: 네이버 서치어드바이저(searchadvisor.naver.com)에서 사이트 등록 시
+  # 발급받는 인증 코드를 여기 채우면 head.html이 메타태그를 내보낸다.
+  # naverSiteVerification = ""
+  # bingSiteVerification: Bing 웹마스터 도구(bing.com/webmasters) 인증 코드.
+  # bingSiteVerification = ""
   # googleAdsenseId: AdSense 승인 후 발급받는 "ca-pub-XXXXXXXXXXXXXXXX" 값을
   # 여기 채우면 head.html이 자동으로 인증 메타태그와 광고 스크립트를 내보낸다.
   googleAdsenseId = "ca-pub-5209561911330389"

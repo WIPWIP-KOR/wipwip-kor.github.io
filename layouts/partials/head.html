@@ -41,6 +41,12 @@
 {{ with .Site.Params.googleSiteVerification }}
 <meta name="google-site-verification" content="{{ . }}">
 {{ end }}
+{{ with .Site.Params.naverSiteVerification }}
+<meta name="naver-site-verification" content="{{ . }}">
+{{ end }}
+{{ with .Site.Params.bingSiteVerification }}
+<meta name="msvalidate.01" content="{{ . }}">
+{{ end }}
 {{ with .Site.Params.googleAdsenseId }}
 <meta name="google-adsense-account" content="{{ . }}">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous"></script>

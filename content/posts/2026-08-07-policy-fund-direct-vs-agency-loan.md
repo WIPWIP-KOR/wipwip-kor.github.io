@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-08-07-policy-fund-direct-vs-agency-loan.png"
 title: "소상공인 정책자금 직접대출 vs 대리대출, 뭐가 다를까 (2026년 기준)"
 date: 2026-08-07
 draft: false

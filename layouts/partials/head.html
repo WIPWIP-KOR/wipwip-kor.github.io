@@ -3,6 +3,9 @@
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
 <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <link rel="canonical" href="{{ .Permalink }}">
+{{ if and (eq .Kind "term") (lt (len .Pages) 2) }}
+<meta name="robots" content="noindex, follow">
+{{ end }}
 {{ $isPost := and .IsPage (eq .Section "posts") }}
 <meta property="og:site_name" content="{{ .Site.Title }}">
 <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">

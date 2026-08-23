@@ -1,0 +1,15 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  {{ range .Data.Pages }}
+    {{- /* 글이 2편 미만인 분류 페이지는 사실상 빈 아카이브라 제외한다.
+           이 블로그의 태그는 글마다 고유한 롱테일 문구라 대부분 1편짜리다. */ -}}
+    {{- $thin := and (eq .Kind "term") (lt (len .Pages) 2) -}}
+    {{- if and .Permalink (not $thin) -}}
+  <url>
+    <loc>{{ .Permalink }}</loc>{{ if not .Lastmod.IsZero }}
+    <lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>{{ end }}
+  </url>
+    {{- end -}}
+  {{ end }}
+</urlset>

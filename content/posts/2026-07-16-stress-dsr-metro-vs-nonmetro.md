@@ -2,6 +2,7 @@
 thumbnail: "/images/posts/2026-07-16-stress-dsr-metro-vs-nonmetro.png"
 title: "스트레스 DSR, 수도권과 지방이 다르게 적용됩니다 (2026년 하반기 기준)"
 date: 2026-07-16
+lastmod: 2026-09-07
 draft: false
 categories: ["재테크"]
 tags: ["스트레스 DSR", "스트레스 DSR 수도권 지방 차이", "스트레스 DSR 3단계", "주택담보대출 한도"]

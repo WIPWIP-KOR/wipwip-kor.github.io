@@ -197,6 +197,31 @@
             '인 가구 기준 중위소득 ' + won(r.median) + ' 기준입니다.</p>';
     html += '</details>';
 
+    /* 중위소득 연동 제도의 문턱 — 기초생활 네 급여에서 탈락해도 여기서 걸리는 구간이 있다.
+       제도별 산식·재산 기준이 달라 "문턱 비교용"이라는 단서를 반드시 함께 보여준다. */
+    if (W.median_ratio_programs && W.median_ratio_programs.length) {
+      var share = r.recognized / r.median * 100;
+      html += '<div class="calc-other"><p><strong>소득인정액이 ' + input.householdSize +
+              '인 가구 기준 중위소득의 ' + share.toFixed(1) + '%입니다</strong></p>';
+      html += '<table class="calc-table"><thead><tr>' +
+              '<th>제도</th><th>문턱</th><th>기준액</th><th>판정</th>' +
+              '</tr></thead><tbody>';
+      W.median_ratio_programs.forEach(function (prog) {
+        var line = Math.round(r.median * prog.ratio);
+        var ok = r.recognized <= line;
+        html += '<tr class="' + (ok ? 'is-eligible' : 'is-over') + '">';
+        html += '<td><a href="' + prog.url + '">' + prog.name + '</a></td>';
+        html += '<td>중위 ' + Math.round(prog.ratio * 100) + '%</td>';
+        html += '<td>' + won(line) + '</td>';
+        html += '<td>' + (ok ? '<strong>이하</strong>' : '초과') + '</td>';
+        html += '</tr>';
+      });
+      html += '</tbody></table>';
+      html += '<p class="calc-dim">소득 문턱만 모아 비교한 표입니다. 제도마다 소득인정액 ' +
+              '산식과 재산 기준, 연령·가구 요건이 따로 있어 "이하"로 나와도 자격이 ' +
+              '확정되는 것은 아닙니다. 각 제도 글에서 나머지 요건을 확인하세요.</p></div>';
+    }
+
     /* 부양의무자 — 자녀 소득이 걱정인 경우가 가장 많다 */
     html += '<div class="calc-supporter"><p><strong>자녀 소득이 영향을 주나요?</strong></p><ul>';
     r.results.forEach(function (x) {

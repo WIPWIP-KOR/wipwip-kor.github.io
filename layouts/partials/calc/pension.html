@@ -1,0 +1,114 @@
+{{ $w := .welfare }}
+{{ $p := index $w.basic_pension (printf "%v" .year) }}
+<section class="calc" aria-labelledby="pension-calc-title">
+  <h2 id="pension-calc-title" class="calc-title">기초연금 소득인정액·예상 지급액 계산</h2>
+  <p class="calc-intro">
+    금액은 모두 <strong>만원 단위</strong>로 넣습니다. 월급 200만 원이면 <code>200</code>,
+    아파트 4억 원이면 <code>40000</code>입니다.
+    <strong>자녀 소득·재산은 넣지 않습니다</strong> — 기초연금은 부양의무자 기준이 없습니다.
+    입력값은 이 브라우저 안에서만 계산되며 어디에도 전송되지 않습니다.
+  </p>
+
+  <form id="pension-form" class="calc-form" novalidate>
+    <fieldset>
+      <legend>가구 정보</legend>
+      <div class="calc-row">
+        <label for="household">가구 유형</label>
+        <div class="calc-input">
+          <select id="household" name="household">
+            {{ range $p.가구유형_순서 }}
+            <option value="{{ . }}">{{ . }}</option>
+            {{ end }}
+          </select>
+        </div>
+        <p class="calc-hint">배우자가 있으면 둘 다 받든 한 명만 받든 선정기준액은 부부가구 기준({{ div $p.선정기준액.부부가구 10000 }}만 원)이 적용됩니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="region">거주 지역</label>
+        <div class="calc-input">
+          <select id="region" name="region">
+            {{ range $p.기본재산액_순서 }}
+            <option value="{{ . }}">{{ . }} (기본재산액 {{ div (index $p.기본재산액 .) 10000 }}만 원)</option>
+            {{ end }}
+          </select>
+        </div>
+        <p class="calc-hint">특별시·광역시의 구는 대도시, 도의 시는 중소도시, 군은 농어촌입니다.</p>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>소득 (월)</legend>
+      <div class="calc-row">
+        <label for="earnedIncome">근로소득</label>
+        <div class="calc-input">
+          <input type="number" id="earnedIncome" name="earnedIncome" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">{{ div $p.소득평가액_공제 10000 }}만 원을 뺀 뒤 남은 금액의 {{ mul $p.소득평가액_공제율 100 }}%만 반영됩니다. 두 번 깎아주므로 월급이 높아도 생각보다 적게 잡힙니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="nationalPension">국민연금 수령액</label>
+        <div class="calc-input">
+          <input type="number" id="nationalPension" name="nationalPension" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">공적이전소득이라 공제 없이 전액 반영됩니다. {{ div (mul $p.기준연금액 $p.연계감액_판정배수) 10000 | int }}만 원을 넘으면 연계감액 안내가 함께 표시됩니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="otherIncome">그 외 소득</label>
+        <div class="calc-input">
+          <input type="number" id="otherIncome" name="otherIncome" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">사업소득, 임대소득, 이자·배당, 무료임차소득 등. 공제가 없습니다.</p>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>재산</legend>
+      <div class="calc-row">
+        <label for="general">일반재산</label>
+        <div class="calc-input">
+          <input type="number" id="general" name="general" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">살고 있는 집, 토지, 전월세보증금, 일반 차량. 기초생활보장과 달리 주거용·일반 구분 없이 한 덩어리입니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="financial">금융재산</label>
+        <div class="calc-input">
+          <input type="number" id="financial" name="financial" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">예금·적금·주식·보험. 기본재산액과 <strong>별도로</strong> {{ div $p.금융재산_공제 10000 }}만 원을 더 빼줍니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="debt">부채</label>
+        <div class="calc-input">
+          <input type="number" id="debt" name="debt" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">주택담보대출, 임대보증금 등 증빙되는 채무.</p>
+      </div>
+      <div class="calc-row">
+        <label for="luxury">고급자동차·회원권</label>
+        <div class="calc-input">
+          <input type="number" id="luxury" name="luxury" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint calc-hint-warn">배기량 3,000cc 또는 차량가액 4,000만 원 이상인 차량과 골프·콘도 회원권만 여기에 넣습니다. 공제 없이 가액이 그대로 월 소득으로 잡혀 결과를 크게 바꿉니다. 그 밖의 차량은 위 일반재산에 넣으세요.</p>
+      </div>
+    </fieldset>
+
+    <div class="calc-actions">
+      <button type="submit" class="calc-submit">계산하기</button>
+      <button type="reset" class="calc-reset">초기화</button>
+    </div>
+  </form>
+
+  <div id="pension-result" class="calc-result" hidden aria-live="polite"></div>
+
+  <noscript>
+    <p class="calc-note">계산기는 자바스크립트로 동작합니다. 아래 설명을 보고 직접 계산해 보세요.</p>
+  </noscript>
+</section>

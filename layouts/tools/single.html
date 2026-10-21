@@ -47,10 +47,13 @@
       earned_income_deduction_rate: {{ $w.earned_income_deduction_rate }},
       basic_property_deduction: {{ $w.basic_property_deduction | jsonify | safeJS }},
       conversion_rate: {{ $w.conversion_rate | jsonify | safeJS }},
-      supporter_criteria: {{ $w.supporter_criteria | jsonify | safeJS }}
+      supporter_criteria: {{ $w.supporter_criteria | jsonify | safeJS }},
+      median_ratio_programs: {{ $w.median_ratio_programs | jsonify | safeJS }},
+      basic_pension: {{ (index $w.basic_pension (printf "%v" $year)) | jsonify | safeJS }}
     };
   </script>
-  {{ with resources.Get "js/income-calc.js" }}
+  {{/* 계산기별 스크립트는 front matter의 calculator 값으로 고른다 */}}
+  {{ with resources.Get (printf "js/%s-calc.js" .Params.calculator) }}
   {{ $js := . | minify | fingerprint }}
   <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
   {{ end }}

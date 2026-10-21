@@ -630,6 +630,14 @@ h1, h2, h3 {
 .calc-steps li { margin: .2rem 0; line-height: 1.6; }
 .calc-dim { color: var(--muted); font-size: .86rem; }
 
+.calc-other {
+  margin: 0 0 1rem; padding: .85rem .9rem .6rem;
+  border: 1px solid var(--border); border-radius: 8px; font-size: .9rem;
+}
+.calc-other > p:first-child { margin: 0 0 .7rem; }
+.calc-other .calc-table { font-size: .88rem; }
+.calc-other .calc-dim { margin: .2rem 0 .4rem; }
+
 .calc-supporter {
   margin: 0 0 1rem; padding: .8rem .9rem;
   background: var(--bg); border: 1px solid var(--border);

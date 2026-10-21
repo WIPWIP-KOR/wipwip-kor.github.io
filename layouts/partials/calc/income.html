@@ -1,0 +1,108 @@
+{{ $w := .welfare }}
+{{ $year := .year }}
+<section class="calc" aria-labelledby="calc-title">
+  <h2 id="calc-title" class="calc-title">소득인정액 계산</h2>
+  <p class="calc-intro">
+    금액은 모두 <strong>만원 단위</strong>로 넣습니다. 월 소득 250만 원이면 <code>250</code>,
+    전세보증금 1억 2천만 원이면 <code>12000</code>입니다.
+    입력값은 이 브라우저 안에서만 계산되며 어디에도 전송되지 않습니다.
+  </p>
+
+  <form id="calc-form" class="calc-form" novalidate>
+    <fieldset>
+      <legend>가구 정보</legend>
+      <div class="calc-row">
+        <label for="householdSize">가구원 수</label>
+        <div class="calc-input">
+          <input type="number" id="householdSize" name="householdSize" min="1" max="12" step="1" value="2" inputmode="numeric">
+          <span class="calc-unit">명</span>
+        </div>
+      </div>
+      <div class="calc-row">
+        <label for="region">거주 지역</label>
+        <div class="calc-input">
+          <select id="region" name="region">
+            {{ range $w.region_order }}
+            <option value="{{ . }}">{{ . }} (기본재산액 {{ div (index $w.basic_property_deduction .) 10000 }}만 원)</option>
+            {{ end }}
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>소득 (월)</legend>
+      <div class="calc-row">
+        <label for="earnedIncome">근로·사업소득</label>
+        <div class="calc-input">
+          <input type="number" id="earnedIncome" name="earnedIncome" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">30% 공제가 자동 적용됩니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="otherIncome">그 외 소득</label>
+        <div class="calc-input">
+          <input type="number" id="otherIncome" name="otherIncome" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">기초연금·국민연금 등 공적 이전소득이 여기 들어갑니다. 공제가 없습니다.</p>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>재산</legend>
+      <div class="calc-row">
+        <label for="housing">주거용 재산</label>
+        <div class="calc-input">
+          <input type="number" id="housing" name="housing" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">전세보증금, 거주 중인 집. 환산율이 가장 낮습니다({{ mul $w.conversion_rate.주거용 100 }}%).</p>
+      </div>
+      <div class="calc-row">
+        <label for="general">일반 재산</label>
+        <div class="calc-input">
+          <input type="number" id="general" name="general" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">거주하지 않는 부동산, 토지 등.</p>
+      </div>
+      <div class="calc-row">
+        <label for="financial">금융 재산</label>
+        <div class="calc-input">
+          <input type="number" id="financial" name="financial" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">예금, 적금, 주식.</p>
+      </div>
+      <div class="calc-row">
+        <label for="car">자동차</label>
+        <div class="calc-input">
+          <input type="number" id="car" name="car" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint calc-hint-warn">환산율 100%. 차량 가액이 그대로 월소득으로 잡혀 결과를 크게 바꿉니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="debt">부채</label>
+        <div class="calc-input">
+          <input type="number" id="debt" name="debt" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">전세자금대출, 주택담보대출 등. 주거용 재산에서 차감합니다.</p>
+      </div>
+    </fieldset>
+
+    <div class="calc-actions">
+      <button type="submit" class="calc-submit">계산하기</button>
+      <button type="reset" class="calc-reset">초기화</button>
+    </div>
+  </form>
+
+  <div id="calc-result" class="calc-result" hidden aria-live="polite"></div>
+
+  <noscript>
+    <p class="calc-note">계산기는 자바스크립트로 동작합니다. 아래 설명을 보고 직접 계산해 보세요.</p>
+  </noscript>
+</section>

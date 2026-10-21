@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="list-header">
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<div class="list-intro">{{ . }}</div>{{ end }}
+</div>
+<ul class="tool-list">
+  {{ range .Pages }}
+  <li class="tool-card">
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    {{ with .Params.key_points }}
+    <ul class="tool-card-points">
+      {{ range first 3 . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    {{ end }}
+    <span class="tool-card-meta">{{ .Lastmod.Format "2006-01-02" }} 기준 확인</span>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}

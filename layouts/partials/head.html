@@ -50,9 +50,15 @@
 {{ with .Site.Params.bingSiteVerification }}
 <meta name="msvalidate.01" content="{{ . }}">
 {{ end }}
+{{/* 소유권 확인용 메타태그는 전 페이지에 둔다 */}}
 {{ with .Site.Params.googleAdsenseId }}
 <meta name="google-adsense-account" content="{{ . }}">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous"></script>
+{{ end }}
+{{/* 광고 스크립트는 본문이 있는 페이지에만 넣는다. 목록·분류 아카이브에 광고가
+     걸리면 "게시자 콘텐츠가 없는 화면의 광고"로 정책 위반이 된다. */}}
+{{ $hasBody := or (eq .Kind "page") (and (eq .Kind "section") .Content) }}
+{{ if and .Site.Params.googleAdsenseId $hasBody }}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ .Site.Params.googleAdsenseId }}" crossorigin="anonymous"></script>
 {{ end }}
 {{ with resources.Get "css/style.css" }}
 {{ $style := . | fingerprint }}

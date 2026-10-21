@@ -1,5 +1,6 @@
 {{ define "main" }}
 {{ $w := .Site.Data.welfare }}
+{{ $fin := .Site.Data.finance }}
 {{ $year := .Params.year | default $w.current_year }}
 <article class="post tool">
   <header class="post-header">
@@ -17,7 +18,7 @@
   {{ end }}
 
   {{ with .Params.calculator }}
-  {{ partial (printf "calc/%s.html" .) (dict "ctx" $ "welfare" $w "year" $year) }}
+  {{ partial (printf "calc/%s.html" .) (dict "ctx" $ "welfare" $w "finance" $fin "year" $year) }}
   {{ end }}
 
   <div class="post-content">
@@ -49,7 +50,9 @@
       conversion_rate: {{ $w.conversion_rate | jsonify | safeJS }},
       supporter_criteria: {{ $w.supporter_criteria | jsonify | safeJS }},
       median_ratio_programs: {{ $w.median_ratio_programs | jsonify | safeJS }},
-      basic_pension: {{ (index $w.basic_pension (printf "%v" $year)) | jsonify | safeJS }}
+      basic_pension: {{ (index $w.basic_pension (printf "%v" $year)) | jsonify | safeJS }},
+      long_term_care: {{ (index $w.long_term_care (printf "%v" $year)) | jsonify | safeJS }},
+      finance: {{ $fin | jsonify | safeJS }}
     };
   </script>
   {{/* 계산기별 스크립트는 front matter의 calculator 값으로 고른다 */}}

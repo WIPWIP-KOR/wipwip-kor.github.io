@@ -1,0 +1,74 @@
+{{ $w := .welfare }}
+{{ $p := index $w.long_term_care (printf "%v" .year) }}
+<section class="calc" aria-labelledby="ltc-calc-title">
+  <h2 id="ltc-calc-title" class="calc-title">장기요양 본인부담금 계산</h2>
+  <p class="calc-intro">
+    등급과 이용 형태를 고르면 월 본인부담금을 계산합니다.
+    <strong>경감은 자동으로 붙지 않습니다</strong> — 해당되면 공단에 따로 신청해야 적용됩니다.
+    입력값은 이 브라우저 안에서만 계산되며 어디에도 전송되지 않습니다.
+  </p>
+
+  <form id="ltc-form" class="calc-form" novalidate>
+    <fieldset>
+      <legend>이용 조건</legend>
+      <div class="calc-row">
+        <label for="grade">장기요양 등급</label>
+        <div class="calc-input">
+          <select id="grade" name="grade">
+            {{ range $p.등급_순서 }}
+            <option value="{{ . }}">{{ . }} (재가 월 한도 {{ div (index $p.재가_월한도액 .) 10000 }}만 원대)</option>
+            {{ end }}
+          </select>
+        </div>
+      </div>
+      <div class="calc-row">
+        <label for="kind">이용 형태</label>
+        <div class="calc-input">
+          <select id="kind" name="kind">
+            <option value="재가">재가급여 (집에서 방문 서비스)</option>
+            <option value="시설">시설급여 (요양시설 입소)</option>
+          </select>
+        </div>
+        <p class="calc-hint">시설급여는 원칙적으로 1~2등급입니다. 3~5등급은 등급판정위원회가 인정한 경우에만 이용할 수 있고, 인지지원등급은 시설 이용이 되지 않습니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="reduction">본인부담 경감</label>
+        <div class="calc-input">
+          <select id="reduction" name="reduction">
+            {{ range $p.경감_순서 }}
+            <option value="{{ . }}">{{ . }}</option>
+            {{ end }}
+          </select>
+        </div>
+        <p class="calc-hint calc-hint-warn">건강보험료 순위 25% 이하는 60% 경감, 25% 초과~50% 이하는 40% 경감입니다. 직장가입자는 재산 기준도 함께 봅니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="usage">한도 대비 이용률</label>
+        <div class="calc-input">
+          <input type="number" id="usage" name="usage" min="0" max="150" step="5" value="100" inputmode="numeric">
+          <span class="calc-unit">%</span>
+        </div>
+        <p class="calc-hint">재가급여만 해당합니다. 100%를 넘기면 초과분은 본인부담률과 무관하게 전액 부담입니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="noncovered">비급여 (월)</label>
+        <div class="calc-input">
+          <input type="number" id="noncovered" name="noncovered" min="0" step="1" placeholder="0" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">시설 식재료비, 상급침실료, 이미용비 등. 본인부담률과 무관하게 전액 부담이라 따로 더합니다.</p>
+      </div>
+    </fieldset>
+
+    <div class="calc-actions">
+      <button type="submit" class="calc-submit">계산하기</button>
+      <button type="reset" class="calc-reset">초기화</button>
+    </div>
+  </form>
+
+  <div id="ltc-result" class="calc-result" hidden aria-live="polite"></div>
+
+  <noscript>
+    <p class="calc-note">계산기는 자바스크립트로 동작합니다. 아래 설명을 보고 직접 계산해 보세요.</p>
+  </noscript>
+</section>

@@ -7,6 +7,10 @@
 <meta name="robots" content="noindex, follow">
 {{ end }}
 {{ $isPost := and .IsPage (eq .Section "posts") }}
+{{/* 계산기 페이지도 본문과 FAQ가 있는 문서다. 2026-10-21까지 아래 구조화 데이터가
+     posts에만 걸려 있어 계산기 두 페이지가 JSON-LD 없이 나가고 있었다. */}}
+{{ $isTool := and .IsPage (eq .Section "tools") }}
+{{ $isDoc := or $isPost $isTool }}
 <meta property="og:site_name" content="{{ .Site.Title }}">
 <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
 <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
@@ -22,13 +26,17 @@
 {{ end }}
 <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
 <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-{{ if $isPost }}
+{{ if $isDoc }}
 <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
 <meta property="article:modified_time" content="{{ (.Lastmod | default .Date).Format "2006-01-02T15:04:05-07:00" }}">
 {{ $org := dict "@type" "Organization" "name" .Site.Title "url" .Site.BaseURL }}
 {{ $article := dict "@context" "https://schema.org" "@type" "Article" "headline" .Title "description" .Description "inLanguage" "ko-KR" "mainEntityOfPage" .Permalink "datePublished" (.Date.Format "2006-01-02") "dateModified" ((.Lastmod | default .Date).Format "2006-01-02") "author" $org "publisher" $org }}
 {{ with .Params.thumbnail }}{{ $article = merge $article (dict "image" (. | absURL)) }}{{ end }}
 <script type="application/ld+json">{{ $article | jsonify | safeJS }}</script>
+{{ if $isTool }}
+{{ $app := dict "@context" "https://schema.org" "@type" "WebApplication" "name" .Title "description" .Description "url" .Permalink "inLanguage" "ko-KR" "applicationCategory" "FinanceApplication" "operatingSystem" "All" "browserRequirements" "JavaScript" "isAccessibleForFree" true "offers" (dict "@type" "Offer" "price" "0" "priceCurrency" "KRW") "publisher" $org }}
+<script type="application/ld+json">{{ $app | jsonify | safeJS }}</script>
+{{ end }}
 {{ $faqEntities := slice }}
 {{ range findRE `(?s)<p><strong>Q\d*\..*?</strong>.*?</p>` .Content }}
   {{ $q := trim (replaceRE `(?s).*?<strong>Q\d*\.\s*(.*?)</strong>.*` "$1" . | plainify) " \n\t\r" }}

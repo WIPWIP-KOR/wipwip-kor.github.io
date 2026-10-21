@@ -1,42 +1,105 @@
 {{ define "main" }}
+{{ $h := .Site.Data.home }}
 <section class="home-hero">
-  <h1>{{ .Site.Params.description }}</h1>
-  <p>정부·지자체 지원금부터 세금·법률·재테크까지, 신청 방법과 조건을 정리해서 전달합니다.</p>
-  {{ with .Site.Taxonomies.categories }}
+  <h1>{{ $h.hero.title }}</h1>
+  <p>{{ $h.hero.lead }}</p>
+</section>
+
+{{/* 계산기를 첫 화면에 둔다. 이 사이트에서 공식 사이트에 없는 것을 더하는 부분이고,
+     글 목록을 먼저 보여주면 그 차별점이 스크롤 아래로 묻힌다. */}}
+{{ with $h.tools }}
+<section class="home-section">
+  <div class="home-section-head">
+    <h2>계산기</h2>
+    <a class="home-more" href="{{ "/tools/" | relURL }}">전체 보기</a>
+  </div>
+  <ul class="tool-list">
+    {{ range . }}
+    {{ $question := .question }}
+    {{ with site.GetPage .page }}
+    <li class="tool-card">
+      {{/* 카드에서는 독자가 실제로 던지는 질문을 먼저 보여준다. 긴 제목만으로는
+           무엇을 눌러야 하는지 한눈에 읽히지 않는다. */}}
+      {{ with $question }}<p class="tool-card-question">{{ . }}</p>{{ end }}
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      {{ with .Params.key_points }}
+      <ul class="tool-card-points">
+        {{ range first 2 . }}<li>{{ . }}</li>{{ end }}
+      </ul>
+      {{ end }}
+      <span class="tool-card-meta">{{ .Lastmod.Format "2006-01-02" }} 기준 확인</span>
+    </li>
+    {{ end }}
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+
+{{/* 주제 묶음 — 제도 하나만 보고 끝나지 않도록 다음에 볼 글을 함께 건다 */}}
+{{ range $h.clusters }}
+<section class="home-section home-cluster">
+  <h2>{{ .title }}</h2>
+  {{ with .intro }}<p class="home-cluster-intro">{{ . }}</p>{{ end }}
+  <ul class="home-links">
+    {{ range .items }}
+    {{ $hook := .hook }}
+    {{ with site.GetPage .page }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{ with $hook }}<span class="home-hook">{{ . }}</span>{{ end }}
+    </li>
+    {{ end }}
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+
+{{/* 비교형 글 — 태그 페이지에서 가져오므로 글이 늘면 자동으로 따라온다 */}}
+{{ with site.GetPage "/tags/제도 비교" }}
+{{ $term := . }}
+{{ $comparePosts := where .Pages "Type" "posts" }}
+<section class="home-section">
+  <div class="home-section-head">
+    <h2>제도 비교 — 둘 중 어느 쪽인지</h2>
+    <a class="home-more" href="{{ $term.RelPermalink }}">{{ len $comparePosts }}편 전체 보기</a>
+  </div>
+  <p class="home-cluster-intro">"OO vs OO"는 공식 사이트가 다루지 않는 질문입니다. 제도를 하나씩만 설명하기 때문입니다.</p>
+  <ul class="home-links">
+    {{ range first 6 $comparePosts }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+
+{{/* 최근 글 — 썸네일 카드는 /posts/에만 두고 여기서는 압축 목록으로 건다 */}}
+{{ $posts := where .Site.RegularPages "Type" "posts" }}
+<section class="home-section">
+  <div class="home-section-head">
+    <h2>최근 글</h2>
+    <a class="home-more" href="{{ "/posts/" | relURL }}">글 {{ len $posts }}편 전체 보기</a>
+  </div>
+  <ul class="home-links">
+    {{ range first 6 $posts }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <span class="home-hook">{{ .Date.Format "2006-01-02" }}{{ with .Params.categories }} · {{ delimit . ", " }}{{ end }}</span>
+    </li>
+    {{ else }}
+    <li>아직 작성된 글이 없습니다.</li>
+    {{ end }}
+  </ul>
+</section>
+
+{{/* 카테고리는 아래쪽 보조 동선으로 내린다 */}}
+{{ with .Site.Taxonomies.categories }}
+<section class="home-section">
+  <h2>카테고리</h2>
   <div class="home-topics">
     {{ range $name, $items := . }}
-    <a href="{{ (urlize (printf "/categories/%s/" $name)) | relURL }}">{{ $name }}</a>
+    <a href="{{ (urlize (printf "/categories/%s/" $name)) | relURL }}">{{ $name }} <span class="home-topic-count">{{ len $items }}</span></a>
     {{ end }}
   </div>
-  {{ end }}
 </section>
-<section class="post-list">
-  {{ range (where .Site.RegularPages "Type" "posts") }}
-  {{ $page := . }}
-  <article class="post-card">
-    {{ with .Params.thumbnail }}
-    <a class="post-thumbnail" href="{{ $page.Permalink }}"><img src="{{ . | relURL }}" alt="{{ $page.Title }}" loading="lazy"></a>
-    {{ end }}
-    <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
-    {{ with .Params.categories }}
-    <span class="post-categories">
-      {{ range . }}<a class="post-category" href="{{ (urlize (printf "/categories/%s/" .)) | relURL }}">{{ . }}</a>{{ end }}
-    </span>
-    {{ end }}
-    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-    {{ if .Description }}
-    <p class="post-summary">{{ .Description }}</p>
-    {{ else }}
-    <p class="post-summary">{{ .Summary }}</p>
-    {{ end }}
-    {{ with .Params.tags }}
-    <span class="post-tags">
-      {{ range . }}<a class="post-tag" href="{{ (urlize (printf "/tags/%s/" .)) | relURL }}">#{{ . }}</a>{{ end }}
-    </span>
-    {{ end }}
-  </article>
-  {{ else }}
-  <p>아직 작성된 글이 없습니다.</p>
-  {{ end }}
-</section>
+{{ end }}
 {{ end }}

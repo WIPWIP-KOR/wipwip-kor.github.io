@@ -175,6 +175,75 @@ h1, h2, h3 {
   filter: brightness(0.97);
 }
 
+/* 홈 섹션 — 계산기 → 주제 묶음 → 비교형 → 최근 글 → 카테고리 순서 */
+.home-section {
+  margin: 0 0 2.5rem;
+}
+.home-section > h2 {
+  margin: 0 0 .75rem;
+  font-size: 1.25rem;
+}
+.home-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .75rem;
+  margin: 0 0 .75rem;
+}
+.home-section-head h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+.home-more {
+  flex: 0 0 auto;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--accent-strong);
+  white-space: nowrap;
+}
+.home-cluster-intro {
+  margin: 0 0 1rem;
+  color: var(--fg-soft);
+  font-size: .94rem;
+  line-height: 1.7;
+}
+
+.home-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+.home-links li + li {
+  border-top: 1px solid var(--border);
+}
+.home-links li {
+  padding: .8rem 1rem;
+}
+.home-links a {
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1.5;
+}
+.home-links a:hover {
+  text-decoration: underline;
+}
+.home-hook {
+  display: block;
+  margin-top: .25rem;
+  font-size: .86rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.home-topic-count {
+  font-weight: 600;
+  opacity: .65;
+}
+
 /* ---------- Content ---------- */
 
 .content {
@@ -286,7 +355,8 @@ h1, h2, h3 {
   color: var(--accent-strong);
 }
 
-.post-card h2 {
+.post-card h2,
+.post-card h3 {
   margin: 0.4rem 0 0.5rem;
   font-size: 1.2rem;
   line-height: 1.4;
@@ -507,6 +577,15 @@ h1, h2, h3 {
   margin-left: 1rem;
 }
 
+@media (max-width: 560px) {
+  /* 좁은 화면에서는 "전체 보기"를 옆에 두면 제목이 어색하게 접힌다 */
+  .home-section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .25rem;
+  }
+}
+
 @media (max-width: 480px) {
   .site-header .wrap {
     padding: 0.75rem 1.25rem;
@@ -668,8 +747,15 @@ h1, h2, h3 {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--radius); box-shadow: var(--shadow);
 }
-.tool-card h2 { margin: 0 0 .5rem; font-size: 1.1rem; }
-.tool-card h2 a { text-decoration: none; }
+.tool-card-question {
+  margin: 0 0 .35rem;
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--accent-strong); line-height: 1.45;
+}
+.tool-card h2, .tool-card h3 { margin: 0 0 .5rem; font-size: 1.1rem; }
+.tool-card-question + h3 { font-size: .95rem; font-weight: 500; color: var(--fg-soft); }
+.tool-card-question + h3 a { color: inherit; }
+.tool-card h2 a, .tool-card h3 a { text-decoration: none; }
 .tool-card-points { margin: 0 0 .6rem; padding-left: 1.1rem; font-size: .88rem; color: var(--fg-soft); }
 .tool-card-points li { margin: .15rem 0; }
 .tool-card-meta { font-size: .8rem; color: var(--muted); }

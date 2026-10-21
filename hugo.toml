@@ -7,7 +7,7 @@ enableRobotsTXT = true
 timeZone = "Asia/Seoul"
 
 [params]
-  description = "세금·법률·재테크 등 실생활에 필요한 정보를 정리하는 블로그"
+  description = "복지 제도의 자격 판정을 직접 계산해 보는 곳. 소득인정액·기초연금 계산기와 제도 비교 글을 제공합니다."
   author = "WIPWIP"
   dateFormat = "2006-01-02"
   googleSiteVerification = "yKpNCq_z0Ao2NcpB2k756Vtk9jqlVzz3W3HjACHlsdw"

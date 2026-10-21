@@ -1,0 +1,44 @@
+# 홈 화면 구성 — layouts/index.html이 읽는다
+#
+# 글 목록을 날짜순으로 쏟아내는 대신, 이 사이트가 실제로 잘하는 것(계산기와 제도 비교)을
+# 먼저 보여주기 위해 둔 파일이다. 편집 순서가 중요한 묶음은 여기에 명시한다
+# (날짜순으로 두면 기초연금이 기초생활 뒤로 밀려 자녀 독자의 동선과 어긋난다).
+
+hero:
+  title: "내가 대상인지, 계산해서 확인합니다"
+  lead: "복지 제도는 월급이 아니라 소득인정액으로 판정합니다. 공식 모의계산이 결과만 알려주는 자리에서, 이 사이트는 계산 과정과 감액 구조까지 펼쳐 보여줍니다."
+
+# 첫 화면 계산기 카드. 순서는 이 배열대로.
+tools:
+  - page: "tools/basic-pension-calculator.md"
+    question: "부모님이 기초연금 얼마 받나?"
+  - page: "tools/income-recognition-calculator.md"
+    question: "기초생활보장 네 급여 중 어디까지 되나?"
+
+# 주제 묶음. 태그로 자동 수집하지 않고 읽는 순서를 지정한다.
+clusters:
+  - title: "부모님 복지 — 자녀가 대신 알아볼 때"
+    intro: "가장 많이 막히는 질문은 \"내가 돈을 버는데 부모님이 받을 수 있나\"입니다. 답은 제도마다 다르고, 반직관적입니다."
+    items:
+      - page: "posts/2026-07-28-basic-pension-2026-changes.md"
+        hook: "자녀 소득·재산을 아예 보지 않는다"
+      - page: "posts/2026-07-14-basic-livelihood-security-benefits.md"
+        hook: "네 급여 중 의료급여만 자녀 소득을 본다"
+      - page: "posts/2026-08-01-long-term-care-insurance-vs-customized-care-service.md"
+        hook: "등급판정이 필요한 쪽과 필요 없는 쪽"
+      - page: "posts/2026-07-30-elderly-care-service-vs-job-program.md"
+        hook: "공익활동형은 기초연금 수급자만 신청할 수 있다"
+      - page: "posts/2026-07-31-farmland-pension-vs-reverse-mortgage.md"
+        hook: "부모님 농지와 집, 어느 쪽을 연금으로 돌릴지"
+
+  - title: "갑자기 소득이 끊겼을 때"
+    intro: "문턱이 낮고 빠른 제도부터 봅니다. 기준선이 제도마다 크게 벌어져 있어, 한 곳에서 탈락해도 다른 곳은 열려 있는 구간이 넓습니다."
+    items:
+      - page: "posts/2026-07-30-emergency-welfare-vs-basic-livelihood-benefit.md"
+        hook: "중위소득 75% vs 32%, 선지원 후조사"
+      - page: "posts/2026-08-02-employment-support-program-type1-vs-type2.md"
+        hook: "청년은 중위소득 120%까지 1유형이 된다"
+      - page: "posts/2026-07-14-energy-voucher-cooling-subsidy.md"
+        hook: "네 급여 중 하나라도 받으면 소득 요건 충족"
+      - page: "posts/2026-07-21-single-parent-family-support-2026-changes.md"
+        hook: "소득 기준이 65%로 넓어졌다"

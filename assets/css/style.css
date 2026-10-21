@@ -550,6 +550,9 @@ h1, h2, h3 {
 .calc-form fieldset {
   margin: 0 0 1.1rem; padding: .9rem 1rem 1rem;
   border: 1px solid var(--border); border-radius: 10px;
+  /* fieldset은 기본 min-inline-size가 min-content라서 좁은 화면에서 줄어들지 않는다.
+     안에 든 select의 가장 긴 옵션 텍스트만큼 넓어져 가로 스크롤이 생기므로 풀어 준다. */
+  min-inline-size: 0;
 }
 .calc-form legend {
   padding: 0 .4rem; font-size: .85rem; font-weight: 600;
@@ -563,7 +566,7 @@ h1, h2, h3 {
 }
 .calc-input { display: flex; align-items: center; gap: .5rem; }
 .calc-input input, .calc-input select {
-  flex: 1 1 auto; min-width: 0; padding: .55rem .7rem;
+  flex: 1 1 auto; min-width: 0; max-width: 100%; padding: .55rem .7rem;
   font-size: 1rem; font-family: inherit;
   color: var(--fg); background: var(--bg);
   border: 1px solid var(--border); border-radius: 8px;
@@ -638,6 +641,16 @@ h1, h2, h3 {
 
 .calc-disclaimer {
   margin: 0; font-size: .85rem; line-height: 1.7; color: var(--muted);
+}
+
+@media (max-width: 480px) {
+  .calc { padding: 1rem .9rem 1.2rem; }
+  .calc-form fieldset { padding: .8rem .7rem .9rem; }
+  .calc-headline { padding: .9rem 1rem; }
+  .calc-headline-value { font-size: 1.45rem; }
+  .calc-table { font-size: .86rem; }
+  .calc-table th, .calc-table td { padding: .55rem .3rem; }
+  .calc-actions .calc-submit, .calc-actions .calc-reset { flex: 1 1 0; padding: .65rem .5rem; }
 }
 
 /* 계산기 목록 */

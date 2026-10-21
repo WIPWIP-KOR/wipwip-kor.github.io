@@ -14,6 +14,12 @@ tools:
     question: "부모님이 기초연금 얼마 받나?"
   - page: "tools/income-recognition-calculator.md"
     question: "기초생활보장 네 급여 중 어디까지 되나?"
+  - page: "tools/long-term-care-calculator.md"
+    question: "요양원 보내면 한 달에 얼마 드나?"
+  - page: "tools/loan-limit-calculator.md"
+    question: "내 소득으로 얼마까지 빌릴 수 있나?"
+  - page: "tools/dividend-tax-calculator.md"
+    question: "배당, 종합과세와 분리과세 중 뭐가 유리한가?"
 
 # 주제 묶음. 태그로 자동 수집하지 않고 읽는 순서를 지정한다.
 clusters:

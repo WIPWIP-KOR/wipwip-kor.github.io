@@ -1,0 +1,45 @@
+{{ $d := .finance.dividend_tax }}
+<section class="calc" aria-labelledby="div-calc-title">
+  <h2 id="div-calc-title" class="calc-title">배당소득 과세방식 비교</h2>
+  <p class="calc-intro">
+    연간 배당소득과 본인의 한계세율을 고르면 <strong>종합과세와 분리과세 중 어느 쪽이 유리한지</strong>
+    금액으로 비교합니다. 지방소득세 10%를 포함한 금액입니다.
+    입력값은 이 브라우저 안에서만 계산되며 어디에도 전송되지 않습니다.
+  </p>
+
+  <form id="div-form" class="calc-form" novalidate>
+    <fieldset>
+      <legend>입력</legend>
+      <div class="calc-row">
+        <label for="dividend">연간 배당소득</label>
+        <div class="calc-input">
+          <input type="number" id="dividend" name="dividend" min="0" step="100" value="5000" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">이자소득이 있다면 합산해서 넣습니다. 둘을 합쳐 {{ div $d.종합과세_기준 10000 }}만 원을 넘으면 종합과세 대상이 됩니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="marginal">내 한계세율 (종합소득 과세표준 기준)</label>
+        <div class="calc-input">
+          <select id="marginal" name="marginal">
+            {{ range $d.종합과세_한계세율_순서 }}
+            <option value="{{ . }}"{{ if eq . "35% (~1.5억)" }} selected{{ end }}>{{ . }}</option>
+            {{ end }}
+          </select>
+        </div>
+        <p class="calc-hint">배당 외 소득(근로·사업 등)의 과세표준이 들어가는 구간입니다. 모르겠다면 연말정산 원천징수영수증의 과세표준을 보면 됩니다.</p>
+      </div>
+    </fieldset>
+
+    <div class="calc-actions">
+      <button type="submit" class="calc-submit">계산하기</button>
+      <button type="reset" class="calc-reset">초기화</button>
+    </div>
+  </form>
+
+  <div id="div-result" class="calc-result" hidden aria-live="polite"></div>
+
+  <noscript>
+    <p class="calc-note">계산기는 자바스크립트로 동작합니다. 아래 설명을 보고 직접 계산해 보세요.</p>
+  </noscript>
+</section>

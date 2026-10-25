@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-07-23-first-home-acquisition-tax-relief-2026-changes.png"
 title: "생애최초 주택 취득세 감면, 2026년 이렇게 달라졌습니다 (인구감소지역 300만 원)"
 date: 2026-07-23
-lastmod: 2026-09-21
+lastmod: 2026-10-26
 draft: false
 categories: ["재테크"]
 tags: ["절세·세금신고", "주거·전월세", "2026년 제도 변경"]

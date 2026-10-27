@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-08-01-long-term-care-insurance-vs-customized-care-service.png"
-title: "노인장기요양보험 vs 노인맞춤돌봄서비스, 뭐가 다를까"
+title: "장기요양 등급을 받으면 노인맞춤돌봄서비스는 못 받습니다"
 date: 2026-08-01
-lastmod: 2026-10-21
+lastmod: 2026-10-27
 draft: false
 categories: ["정책"]
 tags: ["부모님 복지", "제도 비교"]

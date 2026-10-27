@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-07-30-elderly-care-service-vs-job-program.png"
-title: "노인맞춤돌봄서비스 vs 노인일자리 및 사회활동지원사업, 뭐가 다를까"
+title: "노인맞춤돌봄서비스와 노인일자리는 함께 받을 수 있습니다"
 date: 2026-07-30
-lastmod: 2026-10-21
+lastmod: 2026-10-27
 draft: false
 categories: ["정책"]
 tags: ["부모님 복지", "제도 비교"]

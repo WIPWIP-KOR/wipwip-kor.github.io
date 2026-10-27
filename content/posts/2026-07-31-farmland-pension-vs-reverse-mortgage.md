@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-07-31-farmland-pension-vs-reverse-mortgage.png"
-title: "농지연금 vs 주택연금, 뭐가 다를까 (2026년 기준)"
+title: "농지연금은 경작을 계속하면서 받습니다 — 주택연금과 다른 점"
 date: 2026-07-31
-lastmod: 2026-10-21
+lastmod: 2026-10-27
 draft: false
 categories: ["재테크"]
 tags: ["부모님 복지", "대출·금리", "제도 비교"]

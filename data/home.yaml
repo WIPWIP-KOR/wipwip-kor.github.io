@@ -49,7 +49,7 @@ clusters:
     intro: "문턱이 낮고 빠른 제도부터 봅니다. 기준선이 제도마다 크게 벌어져 있어, 한 곳에서 탈락해도 다른 곳은 열려 있는 구간이 넓습니다."
     items:
       - page: "posts/2026-07-30-emergency-welfare-vs-basic-livelihood-benefit.md"
-        hook: "중위소득 75% vs 32%, 선지원 후조사"
+        hook: "최대 6개월 vs 계속 지급, 선지원 후조사"
       - page: "posts/2026-08-02-employment-support-program-type1-vs-type2.md"
         hook: "청년은 중위소득 120%까지 1유형이 된다"
       - page: "posts/2026-07-14-energy-voucher-cooling-subsidy.md"

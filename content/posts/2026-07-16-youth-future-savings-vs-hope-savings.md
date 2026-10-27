@@ -1,6 +1,6 @@
 ---
 thumbnail: "/images/posts/2026-07-16-youth-future-savings-vs-hope-savings.png"
-title: "청년미래적금 vs 청년도약계좌, 뭐가 다를까 (2026년 신규 출시)"
+title: "청년도약계좌는 신규 가입이 끝났습니다 (청년미래적금 우대형 요건)"
 date: 2026-07-16
 lastmod: 2026-10-27
 draft: false

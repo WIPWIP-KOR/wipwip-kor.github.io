@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-08-07-policy-fund-direct-vs-agency-loan.png"
-title: "소상공인 정책자금 직접대출 vs 대리대출, 뭐가 다를까 (2026년 기준)"
+title: "소상공인 정책자금 직접대출과 대리대출은 금리가 같습니다"
 date: 2026-08-07
-lastmod: 2026-10-26
+lastmod: 2026-10-27
 draft: false
 categories: ["재테크"]
 tags: ["소상공인·자영업", "대출·금리", "제도 비교"]

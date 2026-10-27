@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-07-17-youth-dream-account-vs-subscription-savings.png"
-title: "청년주택드림청약통장 vs 주택청약종합저축, 뭐가 다를까 (2026년 기준)"
+title: "청년주택드림청약통장 연 4.5%, 연계대출은 아무 분양에나 안 됩니다"
 date: 2026-07-17
-lastmod: 2026-10-21
+lastmod: 2026-10-27
 draft: false
 categories: ["재테크"]
 tags: ["청년 지원금", "주거·전월세", "제도 비교"]

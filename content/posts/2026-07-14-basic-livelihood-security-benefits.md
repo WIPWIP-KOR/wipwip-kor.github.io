@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-07-14-basic-livelihood-security-benefits.png"
-title: "기초생활수급자 조건, 내 소득인정액 계산해서 확인하는 법 (2026년 기준)"
+title: "기초생활수급자 조건, 자녀 소득이 걸림돌인 건 사실상 의료급여뿐"
 date: 2026-07-14
-lastmod: 2026-10-19
+lastmod: 2026-10-27
 draft: false
 categories: ["정책"]
 tags: ["소득인정액", "부모님 복지"]

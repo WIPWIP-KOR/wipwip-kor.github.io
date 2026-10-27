@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-07-28-basic-pension-2026-changes.png"
-title: "기초연금 수급자격, 소득인정액 계산해서 확인하는 법 (2026년 기준)"
+title: "기초연금 수급자격, 월급 200만 원에 4억 아파트여도 받습니다"
 date: 2026-07-28
-lastmod: 2026-10-19
+lastmod: 2026-10-27
 draft: false
 categories: ["정책"]
 tags: ["부모님 복지", "소득인정액", "2026년 제도 변경"]

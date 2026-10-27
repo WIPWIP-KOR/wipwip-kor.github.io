@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-08-04-multi-home-capital-gains-tax-surcharge-changes.png"
-title: "다주택자 양도소득세 중과, 이렇게 달라집니다 (2026년 세법개정안)"
+title: "다주택자 양도세, 2027~2028년 중과 완화 뒤 2029년 복원 (개편안)"
 date: 2026-08-04
-lastmod: 2026-10-21
+lastmod: 2026-10-27
 draft: false
 categories: ["세금"]
 tags: ["절세·세금신고", "2026년 제도 변경"]

@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-08-05-productive-finance-isa-vs-general-isa.png"
-title: "생산적금융 ISA vs 일반 ISA, 뭐가 다를까 (2026년 세법개정안)"
+title: "생산적금융 ISA는 전액 비과세, 대신 국내 투자로만 묶입니다"
 date: 2026-08-05
-lastmod: 2026-10-21
+lastmod: 2026-10-27
 draft: false
 categories: ["재테크"]
 tags: ["투자·공모주", "절세·세금신고", "제도 비교", "2026년 제도 변경"]

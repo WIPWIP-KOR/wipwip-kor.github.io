@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-07-30-emergency-welfare-vs-basic-livelihood-benefit.png"
-title: "긴급복지지원 생계지원금 vs 기초생활수급자 생계급여, 뭐가 다를까"
+title: "긴급복지 생계지원금과 생계급여, 문턱은 중위소득 75%와 32%"
 date: 2026-07-30
-lastmod: 2026-10-21
+lastmod: 2026-10-27
 draft: false
 categories: ["정책"]
 tags: ["소득인정액", "생활비 지원", "부모님 복지", "제도 비교"]

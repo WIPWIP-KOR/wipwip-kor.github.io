@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-07-18-ipo-subscription-equal-vs-proportional-allocation.png"
-title: "공모주 청약 균등배정 vs 비례배정, 뭐가 다를까 (2026년 기준)"
+title: "공모주 균등배정은 증거금을 더 넣어도 배정이 늘지 않습니다"
 date: 2026-07-18
-lastmod: 2026-10-21
+lastmod: 2026-10-27
 draft: false
 categories: ["재테크"]
 tags: ["투자·공모주", "제도 비교"]

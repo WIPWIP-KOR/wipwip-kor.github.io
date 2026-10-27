@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-08-02-employment-support-program-type1-vs-type2.png"
-title: "국민취업지원제도 1유형 vs 2유형, 뭐가 다를까 (2026년 기준)"
+title: "국민취업지원제도 1유형은 월 60만 원, 2유형은 얼마인가"
 date: 2026-08-02
-lastmod: 2026-10-21
+lastmod: 2026-10-27
 draft: false
 categories: ["정책"]
 tags: ["취업·구직", "소득인정액", "제도 비교"]

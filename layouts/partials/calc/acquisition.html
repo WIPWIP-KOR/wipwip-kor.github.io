@@ -1,0 +1,58 @@
+{{ $a := .finance.acquisition_tax }}
+<section class="calc" aria-labelledby="acq-calc-title">
+  <h2 id="acq-calc-title" class="calc-title">주택 취득세 계산</h2>
+  <p class="calc-intro">
+    취득가액과 전용면적을 넣으면 <strong>취득세·지방교육세·농어촌특별세를 각각 계산하고 생애최초 감면을 적용</strong>합니다.
+    "100% 감면"이 실제로 얼마를 깎아주는지 금액으로 확인할 수 있습니다.
+    입력값은 이 브라우저 안에서만 계산되며 어디에도 전송되지 않습니다.
+  </p>
+
+  <form id="acq-form" class="calc-form" novalidate>
+    <fieldset>
+      <legend>주택 정보</legend>
+      <div class="calc-row">
+        <label for="price">취득가액 (실거래가)</label>
+        <div class="calc-input">
+          <input type="number" id="price" name="price" min="0" step="1000" value="40000" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">6억 원까지는 1%, 9억 원부터는 3%이고 그 사이는 가액에 따라 이어집니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="area">전용면적</label>
+        <div class="calc-input">
+          <input type="number" id="area" name="area" min="0" step="1" value="84" inputmode="decimal">
+          <span class="calc-unit">㎡</span>
+        </div>
+        <p class="calc-hint">{{ $a.농특세_면제_전용면적 }}㎡(국민주택규모)를 넘으면 농어촌특별세 {{ mul $a.농특세율 100 }}%가 추가됩니다. 그 이하는 비과세입니다.</p>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>감면</legend>
+      <div class="calc-row">
+        <label for="relief">감면 유형</label>
+        <div class="calc-input">
+          <select id="relief" name="relief">
+            <option value="none">감면 없음</option>
+            <option value="first" selected>생애최초 (일반지역)</option>
+            <option value="first_decline">생애최초 (인구감소지역)</option>
+            <option value="birth">출산·양육 목적</option>
+          </select>
+        </div>
+        <p class="calc-hint">생애최초는 본인과 <strong>배우자 모두</strong> 주택을 소유한 적이 없고 실거래가 {{ div $a.생애최초_감면.주택가격_상한 100000000 }}억 원 이하여야 합니다. 소득 요건은 폐지됐습니다.</p>
+      </div>
+    </fieldset>
+
+    <div class="calc-actions">
+      <button type="submit" class="calc-submit">계산하기</button>
+      <button type="reset" class="calc-reset">초기화</button>
+    </div>
+  </form>
+
+  <div id="acq-result" class="calc-result" hidden aria-live="polite"></div>
+
+  <noscript>
+    <p class="calc-note">계산기는 자바스크립트로 동작합니다. 아래 설명을 보고 직접 계산해 보세요.</p>
+  </noscript>
+</section>

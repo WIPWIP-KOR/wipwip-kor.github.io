@@ -1,0 +1,62 @@
+{{ $r := .finance.retirement_tax }}
+<section class="calc" aria-labelledby="ret-calc-title">
+  <h2 id="ret-calc-title" class="calc-title">퇴직금·퇴직소득세 계산</h2>
+  <p class="calc-intro">
+    입사일·퇴사일과 월 평균급여를 넣으면 <strong>퇴직금과 퇴직소득세를 단계별로 펼쳐서</strong> 보여줍니다.
+    근속연수공제 → 환산급여 → 환산급여공제 → 과세표준 → 연분연승까지 중간 숫자를 전부 확인할 수 있습니다.
+    입력값은 이 브라우저 안에서만 계산되며 어디에도 전송되지 않습니다.
+  </p>
+
+  <form id="ret-form" class="calc-form" novalidate>
+    <fieldset>
+      <legend>재직 기간</legend>
+      <div class="calc-row">
+        <label for="joined">입사일</label>
+        <div class="calc-input">
+          <input type="date" id="joined" name="joined" value="2016-03-02">
+        </div>
+      </div>
+      <div class="calc-row">
+        <label for="left">퇴사일</label>
+        <div class="calc-input">
+          <input type="date" id="left" name="left" value="2026-10-31">
+        </div>
+        <p class="calc-hint">근속연수는 <strong>1년 미만의 기간이 있으면 1년으로 올려</strong> 셉니다 (소득세법 제48조). 10년 1개월이면 11년입니다.</p>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>급여와 수령 방식</legend>
+      <div class="calc-row">
+        <label for="salary">퇴직 전 3개월 평균 월 급여 (세전)</label>
+        <div class="calc-input">
+          <input type="number" id="salary" name="salary" min="0" step="10" value="500" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">상여금·연차수당 등이 포함된 임금총액 기준입니다. 평균임금이 통상임금보다 적으면 통상임금으로 계산하므로 실제 퇴직금이 더 많을 수 있습니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="method">수령 방식</label>
+        <div class="calc-input">
+          <select id="method" name="method">
+            {{ range $r.수령방식_순서 }}
+            <option value="{{ . }}">{{ . }}</option>
+            {{ end }}
+          </select>
+        </div>
+        <p class="calc-hint">IRP로 옮겨 연금으로 받으면 퇴직소득세가 감면됩니다. 일시금으로 받으면 전액 부과됩니다.</p>
+      </div>
+    </fieldset>
+
+    <div class="calc-actions">
+      <button type="submit" class="calc-submit">계산하기</button>
+      <button type="reset" class="calc-reset">초기화</button>
+    </div>
+  </form>
+
+  <div id="ret-result" class="calc-result" hidden aria-live="polite"></div>
+
+  <noscript>
+    <p class="calc-note">계산기는 자바스크립트로 동작합니다. 아래 설명을 보고 직접 계산해 보세요.</p>
+  </noscript>
+</section>

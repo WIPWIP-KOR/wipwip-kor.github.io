@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-07-17-newborn-special-loan-vs-didimdol-loan.png"
-title: "신생아특례대출 vs 일반 디딤돌대출, 뭐가 다를까 (2026년 기준)"
+title: "신생아특례대출과 디딤돌대출, 30년 금리차를 계산했습니다"
 date: 2026-07-17
-lastmod: 2026-10-21
+lastmod: 2026-10-27
 draft: false
 categories: ["재테크"]
 tags: ["주거·전월세", "대출·금리", "양육·돌봄", "제도 비교"]

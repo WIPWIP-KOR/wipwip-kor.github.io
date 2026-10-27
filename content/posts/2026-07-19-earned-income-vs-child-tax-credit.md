@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-07-19-earned-income-vs-child-tax-credit.png"
-title: "근로장려금 vs 자녀장려금, 뭐가 다를까 (소득·재산 기준 비교)"
+title: "근로장려금과 자녀장려금은 중복 수령됩니다 (합산 최대 금액)"
 date: 2026-07-19
-lastmod: 2026-10-21
+lastmod: 2026-10-27
 draft: false
 categories: ["세금"]
 tags: ["절세·세금신고", "제도 비교"]

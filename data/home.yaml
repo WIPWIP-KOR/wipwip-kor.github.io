@@ -26,6 +26,8 @@ tools:
     question: "생애최초 취득세 감면, 실제로 얼마나 깎이나?"
   - page: "tools/retirement-tax-calculator.md"
     question: "퇴직금에서 세금 떼면 얼마가 남나?"
+  - page: "tools/youth-savings-calculator.md"
+    question: "청년미래적금, 3년 뒤에 얼마가 되나?"
 
 # 주제 묶음. 태그로 자동 수집하지 않고 읽는 순서를 지정한다.
 clusters:

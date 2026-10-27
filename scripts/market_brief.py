@@ -12,23 +12,28 @@
   종목(해외)   api.stock.naver.com/stock/<티커>.O|.N/basic
   환율         api.stock.naver.com/marketindex/exchange/FX_USDKRW
   일봉         api.stock.naver.com/chart/{domestic|foreign}/{index|item}/<코드>
+  수급(지수)   m.stock.naver.com/api/index/<KOSPI|KOSDAQ>/trend?bizdate=YYYYMMDD
+  수급(종목)   m.stock.naver.com/api/stock/<6자리>/trend?pageSize=60&page=1
 
 관심 종목은 watchlist.yaml에서 읽는다. 없으면 지수와 환율만 낸다.
 
 사용법:
   python3 scripts/market_brief.py              # 터미널 출력
   python3 scripts/market_brief.py --json       # JSON (다른 도구에 넘길 때)
+  python3 scripts/market_brief.py --no-flow    # 수급 생략 (호출이 20여 번 줄어 빠르다)
 """
 
 import json
 import os
 import sys
+from concurrent.futures import ThreadPoolExecutor
 import urllib.request
 import urllib.error
 from datetime import datetime, timezone, timedelta
 
 API = "https://api.stock.naver.com"
 POLL = "https://polling.finance.naver.com/api/realtime/domestic"
+MOBILE = "https://m.stock.naver.com/api"
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
       "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36")
 KST = timezone(timedelta(hours=9))
@@ -162,6 +167,88 @@ def us_stock(code, label=None):
     }
 
 
+# ---------------------------------------------------------------- 수급 (투자자별 순매수)
+
+def trading_dates(limit=22):
+    """코스피 일봉에서 실제 거래일만 뽑는다. 지수 수급은 날짜를 하나씩 찍어야 해서 필요하다."""
+    return [c["localDate"] for c in candles("kr_index", "KOSPI")][-limit:]
+
+
+def index_flow(code, label, dates):
+    """지수 투자자별 순매수. 금액 단위는 억원이고, 하루치씩만 주므로 날짜별로 모은다.
+
+    bizdate를 안 붙이면 '오늘'을 주는데 장이 안 열린 날은 전부 0이 돌아온다.
+    그래서 0/0/0은 데이터가 아니라 '해당 없음'으로 보고 버린다.
+    """
+    def one(d):
+        x = fetch(f"{MOBILE}/index/{code}/trend?bizdate={d}")
+        if "__error__" in x:
+            return None
+        f, o, i = (num(x.get("foreignValue")), num(x.get("institutionalValue")),
+                   num(x.get("personalValue")))
+        if None in (f, o, i) or (f == 0 and o == 0 and i == 0):
+            return None
+        return {"date": d, "foreign": f, "organ": o, "individual": i}
+
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        rows = [r for r in ex.map(one, dates) if r]
+    rows.sort(key=lambda r: r["date"])
+    if not rows:
+        return {"name": label, "error": "수급 응답 없음"}
+    return {"name": label, "unit": "억원", "rows": rows,
+            "sums": {n: _sum_flow(rows[-n:]) for n in (1, 5, 20) if len(rows) >= n}}
+
+
+def stock_flow(code, label=None):
+    """종목 투자자별 순매수. 네이버는 수량만 주므로 그날 종가를 곱해 금액을 추정한다.
+
+    수량 합이 0이 되지 않는 건 기타법인(자사주 매입 등)이 빠져 있기 때문이다.
+    추정 금액이므로 거래소 공시값과 소수점까지 맞지는 않는다.
+    """
+    d = fetch(f"{MOBILE}/stock/{code}/trend?pageSize=60&page=1")
+    if isinstance(d, dict) or not d:
+        return {"name": label or code, "error": "수급 응답 없음"}
+    rows = []
+    for r in reversed(d):
+        close = num(r.get("closePrice"))
+        if close is None:
+            continue
+        def amt(key):
+            q = num(r.get(key))
+            return (q * close / 1e8) if q is not None else 0.0   # 억원
+        rows.append({"date": r.get("bizdate"),
+                     "foreign": amt("foreignerPureBuyQuant"),
+                     "organ": amt("organPureBuyQuant"),
+                     "individual": amt("individualPureBuyQuant"),
+                     "hold_ratio": r.get("foreignerHoldRatio")})
+    if not rows:
+        return {"name": label or code, "error": "수급 응답 없음"}
+    return {"name": label or code, "code": code, "unit": "억원", "estimated": True,
+            "hold_ratio": rows[-1]["hold_ratio"],
+            "hold_ratio_60d_ago": rows[0]["hold_ratio"],
+            "rows": rows,
+            "sums": {n: _sum_flow(rows[-n:]) for n in (1, 5, 20, 60) if len(rows) >= n}}
+
+
+def _sum_flow(rows):
+    return {"from": rows[0]["date"], "to": rows[-1]["date"],
+            "foreign": sum(r["foreign"] for r in rows),
+            "organ": sum(r["organ"] for r in rows),
+            "individual": sum(r["individual"] for r in rows)}
+
+
+def flow_line(item):
+    if item.get("error"):
+        return f"  {item['name'][:14]:<14}  오류: {item['error'][:40]}"
+    out = [f"  {item['name']}" + (f"  (외국인 보유 {item['hold_ratio']}"
+           f" ← 60일 전 {item['hold_ratio_60d_ago']})" if item.get("hold_ratio") else "")]
+    for n, s in sorted(item["sums"].items()):
+        out.append(f"    {n:>2}일 {s['from'][4:]}~{s['to'][4:]}   "
+                   f"외국인 {s['foreign']:>+10,.0f}   기관 {s['organ']:>+10,.0f}   "
+                   f"개인 {s['individual']:>+10,.0f}")
+    return "\n".join(out)
+
+
 def fx():
     x = fetch(f"{API}/marketindex/exchange/FX_USDKRW")
     info = x.get("exchangeInfo", x) if isinstance(x, dict) else {}
@@ -231,6 +318,7 @@ def line(item, width=14):
 
 def main():
     as_json = "--json" in sys.argv
+    no_flow = "--no-flow" in sys.argv
     now = datetime.now(KST)
     wl = load_watchlist()
 
@@ -242,6 +330,14 @@ def main():
         "kr_stocks": [kr_stock(c, n) for c, n in wl["kr"]],
         "us_stocks": [us_stock(c, n) for c, n in wl["us"]],
     }
+
+    if not no_flow:
+        dates = trading_dates()
+        data["flows"] = {
+            "indices": [index_flow(c, n, dates) for c, n in INDICES_KR],
+            # 수급은 한국 시장만 공개돼 있다. 미국 종목은 네이버가 투자자별로 주지 않는다.
+            "stocks": [stock_flow(c, n) for c, n in wl["kr"]],
+        }
 
     if as_json:
         print(json.dumps(data, ensure_ascii=False, indent=1))
@@ -272,6 +368,15 @@ def main():
             print(line(x))
     if not data["kr_stocks"] and not data["us_stocks"]:
         print(f"\n  * 관심 종목이 없습니다. {WATCHLIST} 에 추가하세요.")
+
+    flows = data.get("flows")
+    if flows:
+        print("\n[ 수급 · 투자자별 순매수 누적 (억원) ]")
+        for x in flows["indices"]:
+            print(flow_line(x))
+        for x in flows["stocks"]:
+            print(flow_line(x))
+        print("  * 종목 수급은 네이버가 수량만 주므로 그날 종가를 곱한 추정 금액이다.")
 
     print("\n" + "-" * 78)
     print("  20일선   현재가가 20일 이동평균 대비 몇 % 위/아래인지 (추세)")

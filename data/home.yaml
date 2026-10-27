@@ -20,6 +20,10 @@ tools:
     question: "내 소득으로 얼마까지 빌릴 수 있나?"
   - page: "tools/dividend-tax-calculator.md"
     question: "배당, 종합과세와 분리과세 중 뭐가 유리한가?"
+  - page: "tools/unemployment-benefit-calculator.md"
+    question: "실업급여, 얼마를 몇 달이나 받나?"
+  - page: "tools/acquisition-tax-calculator.md"
+    question: "생애최초 취득세 감면, 실제로 얼마나 깎이나?"
 
 # 주제 묶음. 태그로 자동 수집하지 않고 읽는 순서를 지정한다.
 clusters:

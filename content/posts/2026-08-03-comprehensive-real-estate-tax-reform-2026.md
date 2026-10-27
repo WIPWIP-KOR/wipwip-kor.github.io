@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-08-03-comprehensive-real-estate-tax-reform-2026.png"
-title: "1세대 1주택 종합부동산세 개편안, 이렇게 달라집니다 (2026년 세법개정안)"
+title: "1세대 1주택 종부세, 시가 20억 원 이하는 대상에서 제외 (개편안)"
 date: 2026-08-03
-lastmod: 2026-10-21
+lastmod: 2026-10-27
 draft: false
 categories: ["세금"]
 tags: ["절세·세금신고", "2026년 제도 변경"]

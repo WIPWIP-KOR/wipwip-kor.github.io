@@ -1,8 +1,8 @@
 ---
 thumbnail: "/images/posts/2026-07-21-single-parent-family-support-2026-changes.png"
-title: "한부모가족 지원금, 2026년 이렇게 달라졌습니다 (소득 기준 65%로 확대)"
+title: "한부모가족 지원금 소득 기준, 중위소득 65%면 2인 가구 얼마인가"
 date: 2026-07-21
-lastmod: 2026-10-21
+lastmod: 2026-10-27
 draft: false
 categories: ["정책"]
 tags: ["양육·돌봄", "소득인정액", "2026년 제도 변경"]

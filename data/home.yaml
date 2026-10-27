@@ -24,6 +24,8 @@ tools:
     question: "실업급여, 얼마를 몇 달이나 받나?"
   - page: "tools/acquisition-tax-calculator.md"
     question: "생애최초 취득세 감면, 실제로 얼마나 깎이나?"
+  - page: "tools/retirement-tax-calculator.md"
+    question: "퇴직금에서 세금 떼면 얼마가 남나?"
 
 # 주제 묶음. 태그로 자동 수집하지 않고 읽는 순서를 지정한다.
 clusters:

@@ -393,6 +393,7 @@ python3 -I -c "print(len(open('파일',encoding='utf-8').read()))"
 | `/tools/dividend-tax-calculator/` | 배당소득 종합과세 vs 분리과세 + 한계세율 구간별 유불리 | `finance.yaml` |
 | `/tools/unemployment-benefit-calculator/` | 실업급여 1일 수령액(상·하한 판정) + 소정급여일수 + 총 수령액 | `welfare.yaml` |
 | `/tools/acquisition-tax-calculator/` | 주택 취득세·지방교육세·농특세 + 생애최초 감면의 실제 감면율 | `finance.yaml` |
+| `/tools/retirement-tax-calculator/` | 퇴직금 + 퇴직소득세 6단계(연분연승) 전개 + IRP 연금 수령 감면 비교 | `finance.yaml` |
 
 **수치는 `data/welfare.yaml`과 `data/finance.yaml` 두 곳에만 둔다.** 계산기 JS와 프런트매터·본문이 같은 값을
 쓰므로, 기준이 바뀌면 글을 돌아다니며 고치는 게 아니라 이 파일을 고친다. 주간 점검
@@ -415,6 +416,9 @@ Routine이 관리할 대상도 이 파일이다.
 - **`jsonify`는 YAML 맵의 키를 가나다순으로 내놓는다.** 선언 순서에 기대면 안 된다. 순서가
   의미 있는 값은 `region_order`, `가구유형_순서`처럼 **별도 순서 배열**을 두고 그걸 돌린다
   (이걸 안 해서 생계급여가 교육급여 자리에 표시되는 버그가 실제로 났다).
+- **본문 마크다운 표는 5열까지만 쓴다.** 6열이면 390px에서 가로로 넘친다(실제로 46px 넘쳤다).
+  Hugo 0.123.7에는 표 렌더 훅(`render-table.html`)이 없어 스크롤 래퍼를 자동으로 씌울 수 없다
+  (0.134.0부터 지원). 중간 계산 열은 본문 설명으로 빼고 표는 결론 열만 남긴다.
 - `fieldset`은 기본 `min-inline-size`가 `min-content`라 좁은 화면에서 줄어들지 않는다.
   `min-inline-size: 0`을 반드시 넣는다 (390px에서 가로 스크롤이 생긴 원인).
 - 계산 결과에 **"이 계산기가 못 하는 것"과 "경계선이면 신청하라"**를 반드시 붙인다.

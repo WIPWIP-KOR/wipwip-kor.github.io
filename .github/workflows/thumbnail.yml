@@ -22,7 +22,10 @@ jobs:
       - name: Find posts without a thumbnail
         id: find
         run: |
-          files=$(grep -L '^thumbnail:' content/posts/*.md || true)
+          # 섹션 인덱스(_index.md)는 글이 아니므로 제외한다. 2026-10-27에
+          # content/posts/_index.md 가 추가되자 여기에 썸네일 701KB가 붙었다.
+          files=$(grep -L '^thumbnail:' content/posts/*.md 2>/dev/null \
+                    | grep -v '/_index\.md$' || true)
           echo "files<<EOF" >> "$GITHUB_OUTPUT"
           echo "$files" >> "$GITHUB_OUTPUT"
           echo "EOF" >> "$GITHUB_OUTPUT"

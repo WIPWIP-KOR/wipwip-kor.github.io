@@ -52,6 +52,7 @@
       median_ratio_programs: {{ $w.median_ratio_programs | jsonify | safeJS }},
       basic_pension: {{ (index $w.basic_pension (printf "%v" $year)) | jsonify | safeJS }},
       long_term_care: {{ (index $w.long_term_care (printf "%v" $year)) | jsonify | safeJS }},
+      unemployment_benefit: {{ (index $w.unemployment_benefit (printf "%v" $year)) | jsonify | safeJS }},
       finance: {{ $fin | jsonify | safeJS }}
     };
   </script>

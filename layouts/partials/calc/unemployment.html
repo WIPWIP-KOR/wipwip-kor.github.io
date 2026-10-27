@@ -1,0 +1,69 @@
+{{ $u := .welfare.unemployment_benefit }}
+{{ $y := index $u (printf "%v" .year) }}
+<section class="calc" aria-labelledby="ub-calc-title">
+  <h2 id="ub-calc-title" class="calc-title">실업급여(구직급여) 계산</h2>
+  <p class="calc-intro">
+    이직 전 급여와 고용보험 가입기간을 넣으면 <strong>1일 수령액과 받을 수 있는 날짜 수, 총 예상 수령액</strong>을
+    계산합니다. 상한·하한에 걸리는지도 함께 보여줍니다.
+    입력값은 이 브라우저 안에서만 계산되며 어디에도 전송되지 않습니다.
+  </p>
+
+  <form id="ub-form" class="calc-form" novalidate>
+    <fieldset>
+      <legend>이직 전 급여</legend>
+      <div class="calc-row">
+        <label for="monthly">이직 전 3개월 평균 월 급여 (세전)</label>
+        <div class="calc-input">
+          <input type="number" id="monthly" name="monthly" min="0" step="10" value="350" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">상여금·연차수당 등이 포함된 임금총액 기준입니다. 실제 평균임금은 3개월 임금총액을 그 기간 총일수(89~92일)로 나누는데, 이 계산기는 월 급여 ÷ 30으로 근사합니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="hours">1일 소정근로시간</label>
+        <div class="calc-input">
+          <input type="number" id="hours" name="hours" min="1" max="8" step="1" value="{{ $y.하한_기준_소정근로시간 }}" inputmode="numeric">
+          <span class="calc-unit">시간</span>
+        </div>
+        <p class="calc-hint">하한액이 이 시간에 비례합니다. 8시간 미만 단축근로였다면 하한도 그만큼 낮아집니다.</p>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>받을 수 있는 날짜 수를 정하는 조건</legend>
+      <div class="calc-row">
+        <label for="age">이직 당시 연령</label>
+        <div class="calc-input">
+          <select id="age" name="age">
+            {{ range $y.연령구분_순서 }}
+            <option value="{{ . }}">{{ . }}</option>
+            {{ end }}
+          </select>
+        </div>
+        <p class="calc-hint">장애인고용촉진법상 장애인은 연령과 무관하게 "50세 이상" 표를 적용합니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="insured">고용보험 가입기간 (피보험기간)</label>
+        <div class="calc-input">
+          <select id="insured" name="insured">
+            {{ range $y.가입기간_순서 }}
+            <option value="{{ . }}"{{ if eq . "3년 이상 5년 미만" }} selected{{ end }}>{{ . }}</option>
+            {{ end }}
+          </select>
+        </div>
+        <p class="calc-hint">한 직장이 아니라 <strong>합산</strong> 기간입니다. 이전 직장에서 실업급여를 받은 적이 있으면 그 이후 기간만 셉니다.</p>
+      </div>
+    </fieldset>
+
+    <div class="calc-actions">
+      <button type="submit" class="calc-submit">계산하기</button>
+      <button type="reset" class="calc-reset">초기화</button>
+    </div>
+  </form>
+
+  <div id="ub-result" class="calc-result" hidden aria-live="polite"></div>
+
+  <noscript>
+    <p class="calc-note">계산기는 자바스크립트로 동작합니다. 아래 설명을 보고 직접 계산해 보세요.</p>
+  </noscript>
+</section>

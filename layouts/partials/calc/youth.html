@@ -1,0 +1,53 @@
+{{ $y := .finance.youth_savings }}
+<section class="calc" aria-labelledby="ys-calc-title">
+  <h2 id="ys-calc-title" class="calc-title">청년미래적금 만기 수령액 계산</h2>
+  <p class="calc-intro">
+    월 납입액과 금리를 넣으면 <strong>원금·이자·정부기여금을 나눠서</strong> 보여줍니다.
+    적금 이자가 왜 "금리 × 원금 × 3년"의 절반밖에 안 되는지도 함께 확인할 수 있습니다.
+    입력값은 이 브라우저 안에서만 계산되며 어디에도 전송되지 않습니다.
+  </p>
+
+  <form id="ys-form" class="calc-form" novalidate>
+    <fieldset>
+      <legend>납입 조건</legend>
+      <div class="calc-row">
+        <label for="monthly">월 납입액</label>
+        <div class="calc-input">
+          <input type="number" id="monthly" name="monthly" min="0" max="{{ div $y.월_납입한도 10000 }}" step="1" value="{{ div $y.월_납입한도 10000 }}" inputmode="numeric">
+          <span class="calc-unit">만원</span>
+        </div>
+        <p class="calc-hint">월 납입한도는 {{ div $y.월_납입한도 10000 }}만 원입니다. 만기는 {{ $y.만기_개월 }}개월({{ div $y.만기_개월 12 }}년)로 고정입니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="rate">연 금리 (우대금리 포함)</label>
+        <div class="calc-input">
+          <input type="number" id="rate" name="rate" min="0" max="20" step="0.1" value="{{ $y.기본금리_예시 }}" inputmode="decimal">
+          <span class="calc-unit">%</span>
+        </div>
+        <p class="calc-hint">은행별로 다릅니다. 기본금리에 급여이체·카드실적 같은 우대조건을 더한 값을 넣습니다. 이자소득세는 면제입니다.</p>
+      </div>
+      <div class="calc-row">
+        <label for="kind">정부기여금 유형</label>
+        <div class="calc-input">
+          <select id="kind" name="kind">
+            {{ range $y.유형_순서 }}
+            <option value="{{ . }}"{{ if eq . "일반형 (납입액의 6%)" }} selected{{ end }}>{{ . }}</option>
+            {{ end }}
+          </select>
+        </div>
+        <p class="calc-hint">우대형은 중소기업 재직자·신규 취업자·소상공인 요건을 충족해야 합니다. 소득 기준이 아닙니다.</p>
+      </div>
+    </fieldset>
+
+    <div class="calc-actions">
+      <button type="submit" class="calc-submit">계산하기</button>
+      <button type="reset" class="calc-reset">초기화</button>
+    </div>
+  </form>
+
+  <div id="ys-result" class="calc-result" hidden aria-live="polite"></div>
+
+  <noscript>
+    <p class="calc-note">계산기는 자바스크립트로 동작합니다. 아래 설명을 보고 직접 계산해 보세요.</p>
+  </noscript>
+</section>

@@ -29,6 +29,7 @@ Search Console → **URL 검사**에 아래 주소를 하나씩 넣고 **색인 
 
 ## 2일차 — 글 (검색 수요 상위)
 
+- [ ] `https://wipwip-kor.github.io/posts/2026-10-28-mortgage-interest-deduction-non-deferred/`  (내부 링크 12회, 신규 — 구글이 아직 본 적 없는 URL이라 요청 효과가 가장 큰 쪽이다)
 - [ ] `https://wipwip-kor.github.io/posts/2026-07-30-emergency-welfare-vs-basic-livelihood-benefit/`  (내부 링크 13회)
 - [ ] `https://wipwip-kor.github.io/posts/2026-07-14-basic-livelihood-security-benefits/`  (내부 링크 12회)
 - [ ] `https://wipwip-kor.github.io/posts/2026-07-28-basic-pension-2026-changes/`  (내부 링크 9회)

@@ -1,7 +1,7 @@
 ---
 title: "대출 한도 계산기 — 스트레스 DSR 반영 한도와 총이자"
 date: 2026-10-21
-lastmod: 2026-10-21
+lastmod: 2026-10-28
 draft: false
 calculator: loan
 categories: ["재테크"]
@@ -16,6 +16,7 @@ related:
   - "posts/2026-07-16-stress-dsr-metro-vs-nonmetro.md"
   - "posts/2026-07-17-newborn-special-loan-vs-didimdol-loan.md"
   - "posts/2026-08-07-policy-fund-direct-vs-agency-loan.md"
+  - "posts/2026-10-28-mortgage-interest-deduction-non-deferred.md"
 ---
 
 ## 스트레스 금리는 이자를 올리지 않는다

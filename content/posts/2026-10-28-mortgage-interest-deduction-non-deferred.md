@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-10-28-mortgage-interest-deduction-non-deferred.png"
 title: "장기주택저당차입금 비거치식 조건, 30년 원리금균등은 9년차에야 충족됩니다"
 date: 2026-10-28
 draft: false

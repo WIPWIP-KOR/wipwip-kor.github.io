@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-08-06-earned-income-tax-credit-payment-date.png"
 title: "근로장려금 신청자격 확인하는 법 (기한후신청 진행 중)"
 date: 2026-08-06
-lastmod: 2026-10-19
+lastmod: 2026-11-02
 draft: false
 categories: ["세금"]
 tags: ["절세·세금신고"]

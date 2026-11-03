@@ -1,5 +1,5 @@
 ---
-title: "개인정보처리방침"
+title: "개인정보처리방침 — 수집 항목과 광고 쿠키"
 date: 2026-07-14
 draft: false
 description: "WIPWIP 블로그의 개인정보처리방침과 쿠키·광고 서비스 이용 안내입니다."

@@ -759,3 +759,155 @@ h1, h2, h3 {
 .tool-card-points { margin: 0 0 .6rem; padding-left: 1.1rem; font-size: .88rem; color: var(--fg-soft); }
 .tool-card-points li { margin: .15rem 0; }
 .tool-card-meta { font-size: .8rem; color: var(--muted); }
+
+/* ── 글 바이라인 (작성자·발행일·확인일·읽는 시간) ───────────────────── */
+.post-byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.post-author {
+  font-weight: 700;
+  color: var(--fg-soft);
+  text-decoration: none;
+}
+
+.post-author:hover {
+  color: var(--accent);
+}
+
+.post-updated {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── 목차 ──────────────────────────────────────────────────────────── */
+.post-toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.75rem;
+}
+
+.post-toc-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.post-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-toc li {
+  margin: 0.3em 0;
+  line-height: 1.45;
+}
+
+.post-toc a {
+  color: var(--fg-soft);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.post-toc a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* ── 이전 / 다음 글 ────────────────────────────────────────────────── */
+.post-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.post-nav-item {
+  display: block;
+  min-inline-size: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  text-decoration: none;
+}
+
+.post-nav-item:hover {
+  border-color: var(--accent);
+}
+
+.post-nav-next {
+  text-align: right;
+}
+
+.post-nav-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.post-nav-title {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1.4;
+}
+
+/* ── 오류 제보 (댓글 대체) ─────────────────────────────────────────── */
+.post-feedback {
+  margin-top: 2.5rem;
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-border);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.3rem;
+}
+
+.post-feedback h2 {
+  font-size: 1.02rem;
+  margin: 0 0 0.6rem;
+}
+
+.post-feedback p {
+  margin: 0 0 0.7rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--fg-soft);
+}
+
+.post-feedback-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  margin-bottom: 0 !important;
+}
+
+.post-feedback-cta {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.post-feedback-cta:hover {
+  background: var(--accent-strong);
+}

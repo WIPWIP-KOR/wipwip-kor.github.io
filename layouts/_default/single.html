@@ -2,12 +2,21 @@
 <article class="post">
   <header class="post-header">
     <h1>{{ .Title }}</h1>
-    <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
-    {{ with .Params.categories }}
-    <span class="post-categories">
-      {{ range . }}<a class="post-category" href="{{ (urlize (printf "/categories/%s/" .)) | relURL }}">{{ . }}</a>{{ end }}
-    </span>
-    {{ end }}
+    {{/* 누가 썼고 언제 확인한 글인지 보이게 한다. 주간 점검으로 lastmod를 갱신하는데
+         독자에게는 그 사실이 전혀 보이지 않았다. */}}
+    <div class="post-byline">
+      <a class="post-author" href="{{ "/about/" | relURL }}">{{ .Site.Params.authorName | default .Site.Params.author }}</a>
+      <span class="post-date">{{ .Date.Format "2006-01-02" }} 발행</span>
+      {{ $d := .Date.Format "2006-01-02" }}
+      {{ $m := .Lastmod.Format "2006-01-02" }}
+      {{ if ne $d $m }}<span class="post-updated">{{ $m }} 확인</span>{{ end }}
+      {{ with .ReadingTime }}<span class="post-readtime">약 {{ . }}분</span>{{ end }}
+      {{ with $.Params.categories }}
+      <span class="post-categories">
+        {{ range . }}<a class="post-category" href="{{ (urlize (printf "/categories/%s/" .)) | relURL }}">{{ . }}</a>{{ end }}
+      </span>
+      {{ end }}
+    </div>
   </header>
   {{ with .Params.thumbnail }}
   <img class="post-thumbnail-full" src="{{ . | relURL }}" alt="{{ $.Title }}">
@@ -20,6 +29,15 @@
     </ul>
   </div>
   {{ end }}
+  {{/* 본문 6,000자에 h2가 9~10개인 글이 있는데 목차가 없었다. 짧은 글에는 군더더기라
+       h2가 4개 이상일 때만 넣는다. */}}
+  {{ $h2 := len (findRE "(?m)^## " .RawContent) }}
+  {{ if ge $h2 4 }}
+  <nav class="post-toc" aria-label="목차">
+    <span class="post-toc-label">이 글의 순서</span>
+    {{ .TableOfContents }}
+  </nav>
+  {{ end }}
   <div class="post-content">
     {{ .Content }}
   </div>
@@ -30,28 +48,56 @@
     </span>
   </footer>
   {{ end }}
-  {{ $current := . }}
-  {{ $currentCats := .Params.categories | default slice }}
-  {{ $posts := where .Site.RegularPages "Section" "posts" }}
-  {{ $candidates := slice }}
-  {{ range $posts }}
-    {{ if ne .RelPermalink $current.RelPermalink }}
-      {{ $cats := .Params.categories | default slice }}
-      {{ if gt (len (intersect $currentCats $cats)) 0 }}
-        {{ $candidates = $candidates | append . }}
+  {{/* 관련 글·앞뒤 글·오류 제보는 글에만 붙인다. 이 게이트가 없을 때 소개와
+       개인정보처리방침 페이지에도 "이전 글 → 전세사기피해자…"가 붙고 제보 블록까지
+       들어갔다. 두 페이지는 Section이 비어 있어 posts 목록과 날짜 비교가 성립해 버린다. */}}
+  {{ if eq .Section "posts" }}
+    {{ $current := . }}
+    {{ $currentCats := .Params.categories | default slice }}
+    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    {{ $candidates := slice }}
+    {{ range $posts }}
+      {{ if ne .RelPermalink $current.RelPermalink }}
+        {{ $cats := .Params.categories | default slice }}
+        {{ if gt (len (intersect $currentCats $cats)) 0 }}
+          {{ $candidates = $candidates | append . }}
+        {{ end }}
       {{ end }}
     {{ end }}
-  {{ end }}
-  {{ $related := first 4 (sort $candidates "Date" "desc") }}
-  {{ with $related }}
-  <section class="related-posts">
-    <h2>관련 글</h2>
-    <ul>
-      {{ range . }}
-      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-      {{ end }}
-    </ul>
-  </section>
+    {{ $related := first 4 (sort $candidates "Date" "desc") }}
+    {{ with $related }}
+    <section class="related-posts">
+      <h2>관련 글</h2>
+      <ul>
+        {{ range . }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+
+    {{/* 날짜로 앞뒤 글을 찾는다. Hugo의 .PrevInSection/.NextInSection은 기본 정렬 기준이라
+         "이전/다음"이 날짜와 반대로 붙을 수 있어 직접 비교한다. 같은 날짜 글은 건너뛴다. */}}
+    {{ $older := first 1 (sort (where $posts "Date" "lt" .Date) "Date" "desc") }}
+    {{ $newer := first 1 (sort (where $posts "Date" "gt" .Date) "Date" "asc") }}
+    {{ if or $older $newer }}
+    <nav class="post-nav" aria-label="다른 글">
+      {{ with $older }}{{ range . }}
+      <a class="post-nav-item" href="{{ .RelPermalink }}">
+        <span class="post-nav-label">이전 글</span>
+        <span class="post-nav-title">{{ .Title }}</span>
+      </a>
+      {{ end }}{{ end }}
+      {{ with $newer }}{{ range . }}
+      <a class="post-nav-item post-nav-next" href="{{ .RelPermalink }}">
+        <span class="post-nav-label">다음 글</span>
+        <span class="post-nav-title">{{ .Title }}</span>
+      </a>
+      {{ end }}{{ end }}
+    </nav>
+    {{ end }}
+
+    {{ partial "feedback.html" . }}
   {{ end }}
 </article>
 {{ end }}

@@ -1,0 +1,19 @@
+{{/* 사이트 내 검색. 색인은 /search-index.json (layouts/index.searchindex.json)이고,
+     첫 입력 때 한 번만 받아온다. 36개 페이지 규모라 외부 서비스나 라이브러리 없이
+     부분일치 점수만으로 충분하다 — 한국어는 형태소 분석 없이도 부분일치가 잘 맞고,
+     Fuse.js 같은 퍼지 매칭은 오히려 한글에서 엉뚱한 결과를 낸다. */}}
+<form class="site-search" role="search" data-index="{{ "search-index.json" | relURL }}" onsubmit="return false">
+  <label class="site-search-label" for="site-search-input">글과 계산기 검색</label>
+  <input
+    id="site-search-input"
+    class="site-search-input"
+    type="search"
+    autocomplete="off"
+    placeholder="예: 기초연금, 소득인정액, 취득세">
+  <p class="site-search-status" role="status" aria-live="polite"></p>
+  <ul class="site-search-results" hidden></ul>
+</form>
+{{ with resources.Get "js/search.js" }}
+{{ $js := . | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{ end }}

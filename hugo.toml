@@ -51,6 +51,19 @@ hasCJKLanguage = true
     url = "/about/"
     weight = 5
 
+# 사이트 내 검색용 색인. 홈에 추가 출력으로 /search-index.json 을 만든다.
+# 외부 검색 서비스(Pagefind 등)를 쓰면 CI에 바이너리를 하나 더 들여야 하고,
+# 36개 페이지 규모에서는 Hugo가 만든 JSON 하나로 충분하다.
+[outputs]
+  home = ["HTML", "RSS", "searchindex"]
+
+[outputFormats]
+  [outputFormats.searchindex]
+    mediaType = "application/json"
+    baseName = "search-index"
+    isPlainText = true
+    notAlternative = true
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]

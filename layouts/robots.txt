@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# 검색 색인은 사람이 읽을 페이지가 아니다. "저가치 콘텐츠" 판정을 받는 중에
+# 63KB JSON이 URL 하나로 크롤링될 이유가 없다.
+Disallow: /search-index.json
+
 Sitemap: {{ "sitemap.xml" | absURL }}

@@ -5,10 +5,17 @@ paginate = 10
 enableEmoji = true
 enableRobotsTXT = true
 timeZone = "Asia/Seoul"
+# 한국어는 공백으로 단어를 나누지 않아 .WordCount/.ReadingTime이 과소 계상된다.
+# 이 값을 켜면 Hugo가 CJK 문자를 세어 읽는 시간이 실제와 맞는다.
+hasCJKLanguage = true
 
 [params]
   description = "복지 제도의 자격 판정을 직접 계산해 보는 곳. 소득인정액·기초연금 계산기와 제도 비교 글을 제공합니다."
   author = "WIPWIP"
+  # 글 바이라인에 쓰는 필명. 소개 페이지와 같은 이름을 써야 한다.
+  authorName = "윕윕"
+  # 오류 제보용 구글 폼. 이메일은 수집을 피해 소개 페이지에만 둔다.
+  contactForm = "https://docs.google.com/forms/d/e/1FAIpQLSehYe-R71u9JF03V3t47vpYsSKu7BTxE_h3Yqe-C2fq3bgkWw/viewform"
   dateFormat = "2006-01-02"
   googleSiteVerification = "yKpNCq_z0Ao2NcpB2k756Vtk9jqlVzz3W3HjACHlsdw"
   # naverSiteVerification: 네이버 서치어드바이저(searchadvisor.naver.com)에서 사이트 등록 시
@@ -48,3 +55,7 @@ timeZone = "Asia/Seoul"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+  # 본문은 h2만 쓰므로 목차도 h2까지만 모은다.
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 2

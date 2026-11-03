@@ -1,5 +1,5 @@
 ---
-title: "소개"
+title: "운영자 소개 — 수치를 어떻게 확인하는가"
 date: 2026-07-14
 lastmod: 2026-08-07
 draft: false

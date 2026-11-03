@@ -1,6 +1,32 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+{{/* 2026-11-03 — title이 전부 무의미했다. 홈은 `WIPWIP` 여섯 자, `/tools/`는 `계산기 ·
+     WIPWIP`, `/posts/`는 `글 · WIPWIP`였다. 10/27 진단에서 "중복 title 0종"만 확인하고
+     넘어갔는데, 중복이 없어도 아무 검색어와 매칭되지 않는 제목이었다. 구글이 색인하지
+     않은 페이지가 정확히 이것들이다. description과 같은 방식으로 Kind별로 만든다. */}}
+{{ $pageTitle := .Title }}
+{{ if .IsHome }}
+  {{ $pageTitle = "소득인정액·기초연금 계산기 — 복지 자격 판정" }}
+{{ else if eq .Kind "term" }}
+  {{ if eq .Data.Plural "categories" }}
+    {{ $pageTitle = printf "%s 글 %d편 — 제도별 신청 방법과 비교" .Title (len .Pages) }}
+  {{ else }}
+    {{ $pageTitle = printf "%s 글 %d편 — 자격 기준과 계산 예시" .Title (len .Pages) }}
+  {{ end }}
+{{ else if eq .Kind "taxonomy" }}
+  {{ if eq .Data.Plural "categories" }}
+    {{ $pageTitle = printf "카테고리 %d개 — 복지·세금 제도 글 모아보기" (len .Pages) }}
+  {{ else }}
+    {{ $pageTitle = printf "복지·세금 주제 %d개 — 관심 묶음별 글 모아보기" (len .Pages) }}
+  {{ end }}
+{{ else if eq .Kind "section" }}
+  {{ if eq .Section "tools" }}
+    {{ $pageTitle = printf "복지·세금 계산기 %d종 — 소득인정액·기초연금·대출한도" (len .Pages) }}
+  {{ else }}
+    {{ $pageTitle = printf "복지·세금 제도 글 %d편 — 신청 방법과 제도 비교" (len .Pages) }}
+  {{ end }}
+{{ end }}
+<title>{{ $pageTitle }} · {{ .Site.Title }}</title>
 {{/* 목록·분류 페이지는 프런트매터에 description이 없어 전부 사이트 기본값으로 폴백했다.
      20개 페이지가 같은 설명을 쓰고 있었으므로 Kind별로 고유 설명을 만든다. */}}
 {{ $desc := .Description }}
@@ -29,7 +55,7 @@
 {{ $isTool := and .IsPage (eq .Section "tools") }}
 {{ $isDoc := or $isPost $isTool }}
 <meta property="og:site_name" content="{{ .Site.Title }}">
-<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:title" content="{{ $pageTitle }}">
 <meta property="og:description" content="{{ $desc }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:type" content="{{ if $isPost }}article{{ else }}website{{ end }}">
@@ -41,7 +67,7 @@
 {{ else }}
 <meta name="twitter:card" content="summary">
 {{ end }}
-<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta name="twitter:title" content="{{ $pageTitle }}">
 <meta name="twitter:description" content="{{ $desc }}">
 {{ if $isDoc }}
 <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">

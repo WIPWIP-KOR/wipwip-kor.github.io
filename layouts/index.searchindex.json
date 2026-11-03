@@ -1,0 +1,23 @@
+{{- /* 사이트 내 검색 색인. 글(posts)과 계산기(tools)를 함께 담는다.
+       본문 전체는 넣지 않는다 — 36개 페이지의 본문을 다 담으면 수백 KB가 되고,
+       제목·설명·태그·핵심요약·소제목만으로도 이 규모에서는 재현율이 충분하다. */ -}}
+{{- $items := slice -}}
+{{- range (where .Site.RegularPages "Section" "in" (slice "posts" "tools")) -}}
+  {{- $heads := slice -}}
+  {{- range findRE `(?m)^##\s+.+$` .RawContent -}}
+    {{- $heads = $heads | append (replaceRE `^##\s+` "" .) -}}
+  {{- end -}}
+  {{- $kp := .Params.key_points | default slice -}}
+  {{- $tags := .Params.tags | default slice -}}
+  {{- $cats := .Params.categories | default slice -}}
+  {{- $blob := delimit (slice .Title (.Description | default "") (delimit $tags " ") (delimit $cats " ") (delimit $kp " ") (delimit $heads " ")) " " -}}
+  {{- $items = $items | append (dict
+      "t" .Title
+      "u" .RelPermalink
+      "d" (.Description | default "")
+      "k" (cond (eq .Section "tools") "계산기" "글")
+      "g" $tags
+      "x" (lower $blob)
+  ) -}}
+{{- end -}}
+{{- $items | jsonify -}}

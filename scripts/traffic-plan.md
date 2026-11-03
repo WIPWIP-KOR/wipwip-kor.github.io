@@ -24,16 +24,21 @@
 
 ### 1. 네이버 서치어드바이저 등록 — 우선순위 1
 
-1. <https://searchadvisor.naver.com> 로그인 → **웹마스터 도구** → 사이트 추가
-2. `https://wipwip-kor.github.io/` 입력
-3. 소유확인 방법에서 **HTML 태그**를 고르면 `<meta name="naver-site-verification" content="...">`
-   값이 나온다. **그 content 값을 Claude에게 알려주면 `hugo.toml`에 넣고 배포한다.**
-   (파일 업로드 방식도 되지만 메타태그가 Hugo와 잘 맞는다)
-4. 배포 후 서치어드바이저에서 **소유확인** 버튼을 누른다
-5. 확인되면 **요청 → 사이트맵 제출**에 `https://wipwip-kor.github.io/sitemap.xml`
-6. **요청 → RSS 제출**에 `https://wipwip-kor.github.io/index.xml`
-7. **요청 → 웹 페이지 수집**에 URL을 하나씩 넣는다 (`index-request-plan.md`의 목록을 쓴다.
-   계산기 먼저, 분류 아카이브는 제외)
+- [x] <https://searchadvisor.naver.com> → **웹마스터 도구** → 사이트 추가
+- [x] `https://wipwip-kor.github.io/` 입력
+- [x] 소유확인 방법 **HTML 태그** 선택, 코드 발급
+- [x] **2026-11-03 — 인증 코드를 `hugo.toml`의 `naverSiteVerification`에 넣고 배포했다.**
+      전 페이지(60/60)에 `<meta name="naver-site-verification">`이 나간다
+- [ ] 서치어드바이저에서 **소유확인** 버튼 누르기 ← **다음 할 일**
+- [ ] 확인되면 **요청 → 사이트맵 제출**에 `https://wipwip-kor.github.io/sitemap.xml`
+- [ ] **요청 → RSS 제출**에 `https://wipwip-kor.github.io/index.xml`
+- [ ] **요청 → 웹 페이지 수집**에 URL을 하나씩 넣는다 (`index-request-plan.md`의 목록을
+      쓴다. 계산기 먼저, 분류 아카이브는 제외)
+
+> 소유확인은 GitHub Pages 배포가 끝난 뒤에 눌러야 한다. 푸시하고 1~3분쯤 걸린다.
+> 홈에서 메타태그가 보이는지 먼저 확인하면 실패를 줄일 수 있다.
+>
+> 확인 뒤에도 **메타태그를 지우면 안 된다.** 네이버는 주기적으로 소유권을 재확인한다.
 
 라이브에서 확인한 것 (2026-11-03):
 

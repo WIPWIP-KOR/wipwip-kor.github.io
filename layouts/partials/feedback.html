@@ -1,0 +1,27 @@
+{{/* 댓글 대신 두는 오류 제보 블록. 글과 계산기에서 같이 쓴다.
+
+     로그인 없이 무료로 쓸 수 있는 댓글 서비스가 없었다 — Cusdis는 2026-07에 저장소가
+     아카이브됐고, giscus/utterances는 GitHub 계정을 요구해서 이 사이트 독자(부모님
+     복지를 알아보는 40~50대)에게는 사실상 쓸 수 없다. Disqus 무료는 자체 광고가 강제로
+     붙어서 애드센스와 겹친다. 자체 호스팅(Remark42·Isso)은 서버가 필요하다.
+
+     그리고 방문자가 없는 동안 댓글란은 "댓글 0"만 남는다. 대신 실제로 처리하는 경로를
+     둔다 — 주간 점검 Routine이 제보를 받아 소관 기관 자료로 재확인하고 lastmod를
+     갱신한다. 그 사실이 바이라인의 "확인" 날짜로 독자에게 보인다. */}}
+{{ $isTool := eq .Section "tools" }}
+<section class="post-feedback">
+  <h2>{{ if $isTool }}기준이 바뀌었으면 알려주세요{{ else }}틀린 내용이 있으면 알려주세요{{ end }}</h2>
+  {{ if $isTool }}
+  <p>이 계산기는 고시된 기준 금액을 그대로 씁니다. 선정기준액·한도액·세율이 새로 고시됐는데
+    여기 반영되지 않았다면 알려주시면 <strong>기준 자료로 확인해 고칩니다. 수치를 한 곳에서
+    관리하므로 고치면 관련 글도 함께 따라옵니다.</strong></p>
+  {{ else }}
+  <p>제도는 자주 바뀝니다. 이 글의 금액·기한·자격 요건이 지금과 다르다면 알려주시면
+    <strong>소관 기관 자료로 다시 확인해 고치고, 확인한 날짜를 글 위에 남깁니다.</strong>
+    매주 발행 글을 돌아가며 재검증하고 있지만 놓치는 것이 있습니다.</p>
+  {{ end }}
+  <p class="post-feedback-links">
+    {{ with .Site.Params.contactForm }}<a class="post-feedback-cta" href="{{ . }}" target="_blank" rel="noopener">오류 제보하기</a>{{ end }}
+    <a href="{{ "/about/" | relURL }}">운영자 소개와 확인 절차</a>
+  </p>
+</section>

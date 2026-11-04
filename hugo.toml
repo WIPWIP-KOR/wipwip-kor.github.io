@@ -25,6 +25,10 @@ hasCJKLanguage = true
   # bingSiteVerification: Bing 웹마스터 도구(bing.com/webmasters) 인증 코드.
   # Search Console 계정에서 가져오기(Import)가 되므로 코드 없이 등록될 수도 있다.
   # bingSiteVerification = ""
+  # googleAnalyticsId: GA4 측정 ID("G-XXXXXXXXXX"). 애널리틱스 > 관리 > 데이터 스트림에서
+  # 웹 스트림을 만들면 나온다. 비어 있으면 analytics.html이 아무것도 내보내지 않으므로
+  # ID를 받기 전에도 빌드가 깨지지 않는다. 운영 빌드에서만 켜진다(hugo.IsProduction).
+  # googleAnalyticsId = ""
   # googleAdsenseId: AdSense 승인 후 발급받는 "ca-pub-XXXXXXXXXXXXXXXX" 값을
   # 여기 채우면 head.html이 자동으로 인증 메타태그와 광고 스크립트를 내보낸다.
   googleAdsenseId = "ca-pub-5209561911330389"

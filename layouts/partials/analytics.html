@@ -1,0 +1,21 @@
+{{/* GA4. 측정 ID가 비어 있으면 아무것도 내보내지 않는다 — ID를 받기 전에도 빌드가 깨지지
+     않고, 로컬에서 테스트해도 실데이터에 섞이지 않게 운영 빌드에서만 켠다.
+
+     애드센스가 2024년에 CPC에서 CPM(노출 기반)으로 바뀌어서 "방문당 노출"이 수익이 됐다.
+     노출은 광고가 실제로 보여야 집계되므로 체류시간이 간접적으로 수익에 들어온다.
+     그런데 이 사이트에는 분석 도구가 아예 없어서 체류시간도 방문자 수도 모르는 상태였다.
+     (2026-11-04 확인 — layouts·설정·라이브 페이지 전부 0건) */}}
+{{ if and hugo.IsProduction .Site.Params.googleAnalyticsId }}
+{{ $id := .Site.Params.googleAnalyticsId }}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ $id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ $id }}');
+</script>
+{{ with resources.Get "js/analytics.js" }}
+{{ $js := . | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{ end }}
+{{ end }}

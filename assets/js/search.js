@@ -92,6 +92,7 @@
       list.hidden = true;
       list.innerHTML = '';
       status.textContent = '"' + q + '"에 해당하는 글이 없습니다. 다른 낱말로 찾아보세요.';
+      report(q, 0);
       return;
     }
 
@@ -111,6 +112,23 @@
     list.hidden = false;
     status.textContent =
       hits.length + '건' + (hits.length > shown.length ? ' 중 ' + shown.length + '건 표시' : '');
+    report(q, hits.length);
+  }
+
+  // 분석 쪽에 질의와 결과 건수를 넘긴다. GA 코드를 여기 두지 않는 이유는 검색이
+  // 분석 도구 없이도 동작해야 하기 때문이다 — analytics.js가 이 이벤트를 듣는다.
+  // 타자 중간 상태가 다 올라가지 않게, 입력이 멎은 뒤 한 번만 보낸다.
+  var reportTimer = null;
+  var lastReported = '';
+  function report(q, hits) {
+    clearTimeout(reportTimer);
+    reportTimer = setTimeout(function () {
+      if (!q || q === lastReported) return;
+      lastReported = q;
+      document.dispatchEvent(
+        new CustomEvent('wipwip:search', { detail: { q: q, hits: hits } })
+      );
+    }, 900);
   }
 
   var timer = null;

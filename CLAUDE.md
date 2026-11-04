@@ -736,6 +736,59 @@ Routine이 관리할 대상도 이 파일이다.
 - `robots.txt`에 `Disallow: /search-index.json`을 넣었다. 사람이 읽을 페이지가 아니고,
   저가치 판정을 받는 중에 JSON 하나가 URL로 크롤링될 이유가 없다
 
+### 방문 통계 — GA4 (2026-11-04)
+
+**2026-11-04까지 이 사이트에는 분석 도구가 하나도 없었다.** layouts·설정·라이브 페이지
+전수 확인에서 `gtag`·`googletagmanager`·`cloudflareinsights`·`analytics` 전부 0건.
+즉 두 달 동안 "유입이 없다"고 말해 온 것은 측정값이 아니라 **색인 수로 한 추정**이었다.
+
+넣은 이유는 애드센스가 2024년에 **CPC → CPM(노출 기반)**으로 바뀌었기 때문이다. 노출은
+광고가 실제로 보여야 집계되므로 **체류시간이 간접적으로 수익에 들어온다.** 다만
+**체류시간이 지급 기준인 것은 아니다** — 지급은 노출 기준이고 체류시간은 그 노출 수를
+늘리는 요인일 뿐이다. 2026년 공식 변경 공지는 확인하지 못했다.
+
+| 파일 | 역할 |
+| --- | --- |
+| `hugo.toml`의 `googleAnalyticsId` | GA4 측정 ID. **비어 있으면 아무것도 안 나간다** |
+| `layouts/partials/analytics.html` | gtag 스니펫. `baseof.html`의 `</body>` 직전 |
+| `assets/js/analytics.js` | 자체 이벤트 (minify 716B) |
+
+**두 겹으로 막아 뒀다** — `hugo.IsProduction`이면서 ID가 있을 때만 켜진다. 그래서
+`hugo server`(개발)에서는 안 나가고 로컬 테스트가 실데이터에 섞이지 않는다 (실측 확인).
+
+#### 자체 이벤트 (GA4 기본 집계 외)
+
+```
+calculator_run      { calculator: "<slug>" }     계산기 실행
+calculator_reset    { calculator: "<slug>" }
+search              { search_term, results }      사이트 내 검색
+search_no_results   { search_term }               ← 가장 값진 데이터
+feedback_click      { page }                      오류 제보 버튼
+```
+
+**`search_no_results`가 다음에 쓸 글을 알려준다** — 사람들이 찾는데 우리에게 없는 것이다.
+
+구현에서 주의할 것:
+
+- **계산기 9개의 JS를 건드리지 않았다.** 전부 `<form id="calc-form">`을 쓰므로 전역에서
+  `submit` 하나만 듣는다. 새 계산기를 추가해도 추적이 자동으로 붙는다
+- **검색은 `search.js`가 `wipwip:search` 커스텀 이벤트를 발행하고 `analytics.js`가 듣는다.**
+  GA 코드를 `search.js`에 넣지 않은 이유는 검색이 분석 도구 없이도 동작해야 하기 때문이다.
+  타자 중간 상태가 다 올라가지 않게 **입력이 멎고 900ms 뒤 한 번만** 보낸다
+- **입력한 계산기 숫자는 보내지 않는다.** 어느 계산기를 실행했는지만 보낸다.
+  개인정보처리방침에도 그렇게 명시했다
+
+#### 개인정보처리방침을 함께 고쳤다
+
+GA4 절을 새로 넣었다 — 쿠키 사용, IP 익명화, 자체 이벤트 목록, **입력 숫자 미수집 명시**,
+그리고 [애널리틱스 차단 부가기능](https://tools.google.com/dlpage/gaoptout) 안내.
+`lastmod`도 갱신했다. GA4를 쓰면 공지 의무가 생기므로 **ID를 넣기 전에 이 절이 먼저
+배포돼 있어야 한다** (지금은 그 순서로 돼 있다).
+
+> **함정 재발** — 이 절을 쓰다가 `**Google Analytics 4(GA4)**를`로 적어서 닫는 `**` 앞이
+> `)`가 됐다. `lint_content.py`가 잡았다. `**Google Analytics 4**(GA4)를`로 괄호를 강조
+> 밖으로 뺐다. **기억에 의존하지 말고 린터를 돌린다**는 규칙이 또 한 번 값을 했다.
+
 ### 홈 화면 구성 (`data/home.yaml` + `layouts/index.html`)
 
 2026-10-21 리뉴얼 3단계. 홈이 글 26편을 썸네일 카드로 날짜순 나열하던 것을 바꿨다.

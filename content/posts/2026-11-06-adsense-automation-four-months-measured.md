@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-11-06-adsense-automation-four-months-measured.png"
 title: "AI로 애드센스 블로그를 4개월 돌린 결과"
 date: 2026-11-06T10:00:00+09:00
 draft: false

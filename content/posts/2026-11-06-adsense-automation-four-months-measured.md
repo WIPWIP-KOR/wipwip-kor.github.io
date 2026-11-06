@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-11-06-adsense-automation-four-months-measured.png"
 title: "Claude로 애드센스 자동 블로그를 4개월 돌렸습니다 — 3회 거절, 홈까지 미색인, 측정 기록 전부"
 date: 2026-11-06
 draft: false

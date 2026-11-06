@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-07-28-basic-pension-2026-changes.png"
 title: "기초연금 수급자격, 월급 200만 원에 4억 아파트여도 받습니다"
 date: 2026-07-28
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["부모님 복지", "소득인정액", "2026년 제도 변경"]
 description: "기초연금은 월급이 아니라 소득인정액으로 판정합니다. 근로소득 116만 원 공제와 재산 환산 방식, 34만 9,700원을 다 못 받게 만드는 세 가지 감액까지 계산 예시와 함께 정리했습니다."

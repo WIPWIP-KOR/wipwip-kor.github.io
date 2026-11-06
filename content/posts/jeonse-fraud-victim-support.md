@@ -3,7 +3,7 @@ thumbnail: "/images/posts/jeonse-fraud-victim-support.png"
 title: "전세사기피해자 인정 요건과 불인정 시 이의신청 방법 (2026년 기준)"
 date: 2026-07-01
 lastmod: 2026-10-26
-draft: false
+draft: true
 categories: ["법률"]
 tags: ["주거·전월세"]
 description: "전세사기피해자 결정은 요건 4가지를 모두 충족해야 받습니다. 실제로 걸리는 지점, 결정 유형에 따라 지원이 갈리는 구조, 불인정됐을 때 30일 이내 이의신청하는 방법까지 정리했습니다."

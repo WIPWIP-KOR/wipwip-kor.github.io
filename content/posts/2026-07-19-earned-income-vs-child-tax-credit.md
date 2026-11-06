@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-07-19-earned-income-vs-child-tax-credit.png"
 title: "근로장려금과 자녀장려금은 중복 수령됩니다 (합산 최대 금액)"
 date: 2026-07-19
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["세금"]
 tags: ["절세·세금신고", "제도 비교"]
 description: "근로장려금은 근로소득 기준으로 단독가구 최대 165만 원, 자녀장려금은 18세 미만 부양자녀 1명당 최대 100만 원을 지급합니다. 두 제도의 소득기준 차이와, 소득이 되는데도 재산 때문에 절반만 받거나 아예 탈락하는 구간까지 정리했습니다."

@@ -2,7 +2,7 @@
 thumbnail: "/images/posts/2026-10-28-mortgage-interest-deduction-non-deferred.png"
 title: "장기주택저당차입금 비거치식 조건, 30년 원리금균등은 9년차에야 충족됩니다"
 date: 2026-10-28
-draft: false
+draft: true
 categories: ["세금"]
 tags: ["절세·세금신고", "대출·금리", "주거·전월세"]
 description: "주택담보대출 이자상환액 소득공제 한도를 2,000만 원까지 끌어올리는 '비거치식 분할상환'의 법적 기준은 거치기간이 아니라 연간 원금상환액입니다. 소득세법 시행령 제112조 제9항의 계산식을 그대로 전개해, 상환기간·금리별로 몇 년차부터 기준을 넘는지 계산했습니다."

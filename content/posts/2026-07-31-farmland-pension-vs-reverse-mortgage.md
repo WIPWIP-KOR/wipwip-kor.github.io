@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-07-31-farmland-pension-vs-reverse-mortgage.png"
 title: "농지연금은 경작을 계속하면서 받습니다 — 주택연금과 다른 점"
 date: 2026-07-31
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["재테크"]
 tags: ["부모님 복지", "대출·금리", "제도 비교"]
 description: "둘 다 자산을 담보로 매달 연금을 받는 제도지만, 농지연금은 농지를 계속 경작하며 받고 주택연금은 집에 계속 살면서 받습니다. 농지연금의 영농경력 5년·단독명의 요건 등 실제로 탈락하는 지점까지 정리했습니다."

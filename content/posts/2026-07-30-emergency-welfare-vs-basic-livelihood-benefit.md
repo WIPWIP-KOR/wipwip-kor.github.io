@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-07-30-emergency-welfare-vs-basic-livelihood-benef
 title: "긴급복지 생계지원금과 생계급여, 문턱은 중위소득 75%와 32%"
 date: 2026-07-30
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["소득인정액", "생활비 지원", "부모님 복지", "제도 비교"]
 description: "실직·휴폐업 등으로 갑자기 생계가 어려워졌다면 긴급복지지원과 기초생활수급자 생계급여 중 어느 쪽을 신청해야 할지 헷갈리기 쉽습니다. 소득기준, 지급 속도, 지원 기간이 어떻게 다른지 비교하고 신청 방법을 정리했습니다."

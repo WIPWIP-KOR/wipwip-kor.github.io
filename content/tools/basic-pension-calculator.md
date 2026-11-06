@@ -2,7 +2,7 @@
 title: "기초연금 계산기 — 부모님이 실제로 얼마 받는지 감액까지 계산"
 date: 2026-10-21
 lastmod: 2026-10-21
-draft: false
+draft: true
 calculator: pension
 categories: ["정책"]
 tags: ["소득인정액", "부모님 복지", "제도 비교"]

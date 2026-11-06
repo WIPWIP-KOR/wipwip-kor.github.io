@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-08-04-multi-home-capital-gains-tax-surcharge-chan
 title: "다주택자 양도세, 2027~2028년 중과 완화 뒤 2029년 복원 (개편안)"
 date: 2026-08-04
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["세금"]
 tags: ["절세·세금신고", "2026년 제도 변경"]
 description: "다주택자 양도소득세 중과세율이 2027년부터 한시적으로 낮아졌다가 2029년 다시 복원됩니다. 올해 5월 10일 이후 양도분에 소급 적용되는 환급 계획과, 완화 기간에도 장기보유특별공제는 적용되지 않는다는 조건까지 정리했습니다."

@@ -2,7 +2,7 @@
 title: "배당소득 분리과세 계산기 — 종합과세와 어느 쪽이 유리한가"
 date: 2026-10-21
 lastmod: 2026-10-21
-draft: false
+draft: true
 calculator: dividend
 categories: ["세금"]
 tags: ["투자·공모주", "절세·세금신고", "제도 비교"]

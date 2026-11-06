@@ -11,29 +11,30 @@
 {{ $hasContent := gt (add (len (where .Site.RegularPages "Type" "posts")) (len (where .Site.RegularPages "Type" "tools"))) 0 }}
 {{ if $hasContent }}
 {{ if .IsHome }}
-  {{ $pageTitle = "소득인정액·기초연금 계산기 — 복지 자격 판정" }}
+  {{ $pageTitle = "AI 실험 기록 — 직접 돌려 보고 측정합니다" }}
 {{ else if eq .Kind "term" }}
   {{ if eq .Data.Plural "categories" }}
-    {{ $pageTitle = printf "%s 글 %d편 — 제도별 신청 방법과 비교" .Title (len .Pages) }}
+    {{ $pageTitle = printf "%s 기록 %d편 — 실험 과정과 측정값" .Title (len .Pages) }}
   {{ else }}
-    {{ $pageTitle = printf "%s 글 %d편 — 자격 기준과 계산 예시" .Title (len .Pages) }}
+    {{ $pageTitle = printf "%s 기록 %d편 — 측정값과 실패 원인" .Title (len .Pages) }}
   {{ end }}
 {{ else if eq .Kind "taxonomy" }}
   {{ if eq .Data.Plural "categories" }}
-    {{ $pageTitle = printf "카테고리 %d개 — 복지·세금 제도 글 모아보기" (len .Pages) }}
+    {{ $pageTitle = printf "카테고리 %d개 — 실험 기록 모아보기" (len .Pages) }}
   {{ else }}
-    {{ $pageTitle = printf "복지·세금 주제 %d개 — 관심 묶음별 글 모아보기" (len .Pages) }}
+    {{ $pageTitle = printf "주제 %d개 — 기록을 묶음별로 모아보기" (len .Pages) }}
   {{ end }}
 {{ else if eq .Kind "section" }}
   {{ if eq .Section "tools" }}
-    {{ $pageTitle = printf "복지·세금 계산기 %d종 — 소득인정액·기초연금·대출한도" (len .Pages) }}
+    {{/* 계산기가 전부 비공개인 동안 "계산기 0종"이 되므로 페이지가 있을 때만 생성한다 */}}
+    {{ if .Pages }}{{ $pageTitle = printf "계산기 %d종 — 입력한 숫자로 과정까지 펼쳐 봅니다" (len .Pages) }}{{ end }}
   {{ else }}
-    {{ $pageTitle = printf "복지·세금 제도 글 %d편 — 신청 방법과 제도 비교" (len .Pages) }}
+    {{ $pageTitle = printf "실험 기록 %d편 — 무엇을 돌렸고 어떤 숫자가 나왔나" (len .Pages) }}
   {{ end }}
 {{ end }}
 {{ else if .IsHome }}
   {{/* 중단 상태의 홈은 사이트 제목만 남아 "WIPWIP · WIPWIP"이 되므로 따로 준다 */}}
-  {{ $pageTitle = "운영 중단 — 글과 계산기를 비공개로 돌렸습니다" }}
+  {{ $pageTitle = "기록 준비 중" }}
 {{ end }}
 {{ $retired := not $hasContent }}
 <title>{{ $pageTitle }} · {{ .Site.Title }}</title>

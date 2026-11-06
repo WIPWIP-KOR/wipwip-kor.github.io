@@ -5,7 +5,8 @@
 {{/* 2026-11-06 운영 중단. 색인이 0항목이면 검색창이 무엇을 넣어도 결과를 못 내므로
      발행된 글·계산기가 있을 때만 보여준다. 다시 발행하면 저절로 돌아온다. */}}
 {{ $pub := add (len (where .Site.RegularPages "Type" "posts")) (len (where .Site.RegularPages "Type" "tools")) }}
-{{ if and (and (eq .Kind "section") (eq .Section "posts")) (gt $pub 0) }}
+{{/* 기록 몇 편 규모에서는 검색창이 쓸 일이 없다. 5편부터 보여준다 */}}
+{{ if and (and (eq .Kind "section") (eq .Section "posts")) (ge $pub 5) }}
 {{ partial "search.html" . }}
 {{ end }}
 <section class="post-list">

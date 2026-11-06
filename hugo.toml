@@ -1,6 +1,6 @@
 baseURL = "https://wipwip-kor.github.io/"
 languageCode = "ko-kr"
-title = "WIPWIP"
+title = "WIPWIP 연구소"
 paginate = 10
 enableEmoji = true
 enableRobotsTXT = true
@@ -10,7 +10,7 @@ timeZone = "Asia/Seoul"
 hasCJKLanguage = true
 
 [params]
-  description = "복지 제도의 자격 판정을 직접 계산해 보는 곳. 소득인정액·기초연금 계산기와 제도 비교 글을 제공합니다."
+  description = "AI로 만든 것을 직접 돌려 보고 측정한 기록. 성공담이 아니라 수치와 실패 원인, 틀렸다고 판명된 가정까지 그대로 남깁니다."
   author = "WIPWIP"
   # 글 바이라인에 쓰는 필명. 소개 페이지와 같은 이름을 써야 한다.
   authorName = "윕윕"
@@ -31,7 +31,10 @@ hasCJKLanguage = true
   googleAnalyticsId = "G-RW5RD2TG34"
   # googleAdsenseId: AdSense 승인 후 발급받는 "ca-pub-XXXXXXXXXXXXXXXX" 값을
   # 여기 채우면 head.html이 자동으로 인증 메타태그와 광고 스크립트를 내보낸다.
-  googleAdsenseId = "ca-pub-5209561911330389"
+  # 2026-11-06 — 애드센스 수익화를 접었으므로 비워 둔다. 값이 비면 head.html이
+  # 광고 로더도, google-adsense-account 메타태그도 내보내지 않는다.
+  # 개인정보처리방침에 "광고를 게재하지 않습니다"로 적어 뒀으므로 둘을 함께 켜야 한다.
+  # googleAdsenseId = "ca-pub-5209561911330389"
 
 [menu]
   [[menu.main]]
@@ -39,13 +42,15 @@ hasCJKLanguage = true
     url = "/"
     weight = 1
   [[menu.main]]
-    name = "글"
+    name = "기록"
     url = "/posts/"
     weight = 2
-  [[menu.main]]
-    name = "계산기"
-    url = "/tools/"
-    weight = 3
+  # 2026-11-06 — 계산기 9개가 전부 비공개이므로 메뉴에서 뺐다. 빈 섹션으로 보내는
+  # 메뉴 항목을 남겨 둘 이유가 없다. 다시 발행하면 이 블록을 되살린다.
+  # [[menu.main]]
+  #   name = "계산기"
+  #   url = "/tools/"
+  #   weight = 3
   [[menu.main]]
     name = "카테고리"
     url = "/categories/"

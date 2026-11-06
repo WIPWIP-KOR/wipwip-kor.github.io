@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>상황대처능력 평가 — 우주인 선발 1화</title>
+<meta name="description" content="최종 후보 10인에 남았습니다. 30분 안에 시험실을 나가십시오. 전공에 따라 보이는 것이 달라지는 웹 방탈출.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="상황대처능력 평가 — 우주인 선발 1화">
+<meta property="og:description" content="최종 후보 10인에 남았습니다. 30분 안에 시험실을 나가십시오.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --bg:#0b0f14; --panel:#131a23; --panel2:#182230; --line:#24303f;
+    --fg:#e6edf5; --dim:#8b9bb0; --accent:#6ca3ff; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--fg); min-height:100vh;
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Malgun Gothic",sans-serif;
+    line-height:1.65; -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:16px}
+  h1,h2,h3{line-height:1.35;margin:0 0 .5em}
+  h1{font-size:1.6rem;letter-spacing:-.02em}
+  h2{font-size:1.15rem}
+  h3{font-size:1rem}
+  p{margin:0 0 .9em}
+  .dim{color:var(--dim)}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  button{font:inherit;cursor:pointer}
+  .btn{
+    background:var(--accent);color:#07111f;border:0;border-radius:8px;
+    padding:12px 18px;font-weight:700;
+  }
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .btn-ghost{background:transparent;color:var(--accent);border:1px solid var(--line);border-radius:8px;padding:9px 14px;font-weight:600}
+  .screen{display:none}
+  .screen.on{display:block}
+
+  /* ---- 타이틀 / 전공 선택 ---- */
+  .hero{padding:28px 0 10px}
+  .eyebrow{color:var(--accent);font-size:.8rem;letter-spacing:.14em;font-weight:700;margin-bottom:10px}
+  .roles{display:grid;gap:10px;margin:18px 0}
+  @media(min-width:620px){.roles{grid-template-columns:1fr 1fr}}
+  .role{
+    text-align:left;background:var(--panel);border:1px solid var(--line);
+    border-radius:10px;padding:14px;color:var(--fg);transition:border-color .15s,background .15s;
+  }
+  .role:hover,.role:focus-visible{border-color:var(--accent);background:var(--panel2)}
+  .role[aria-pressed="true"]{border-color:var(--accent);background:var(--panel2)}
+  .role b{display:block;font-size:1.02rem;margin-bottom:4px}
+  .role span{display:block;color:var(--dim);font-size:.86rem}
+
+  /* ---- 시험실 ---- */
+  .hud{
+    position:sticky;top:0;z-index:5;background:rgba(11,15,20,.94);
+    backdrop-filter:blur(6px);border-bottom:1px solid var(--line);
+    display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+    padding:10px 16px;margin:0 -16px 14px;
+  }
+  .hud .t{font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums}
+  .hud .t.over{color:var(--bad)}
+  .chip{font-size:.78rem;color:var(--dim);border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap}
+  .chip b{color:var(--fg);font-weight:600}
+  .spacer{flex:1}
+
+  .speaker{
+    background:var(--panel);border-left:3px solid var(--accent);
+    border-radius:0 8px 8px 0;padding:12px 14px;margin:0 0 16px;
+  }
+  .speaker .who{font-size:.74rem;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:5px}
+  .speaker p{margin:0 0 .5em}
+  .speaker p:last-child{margin:0}
+
+  .tasks{display:grid;gap:10px}
+  .task{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  }
+  .task.done{border-color:#2a6b45}
+  .task>summary{
+    list-style:none;cursor:pointer;padding:13px 14px;display:flex;align-items:center;gap:10px;
+  }
+  .task>summary::-webkit-details-marker{display:none}
+  .task .num{
+    flex:0 0 26px;height:26px;border-radius:6px;background:var(--panel2);
+    display:grid;place-items:center;font-size:.8rem;font-weight:700;color:var(--dim);
+  }
+  .task.done .num{background:#17422c;color:var(--ok)}
+  .task .ttl{flex:1;font-weight:600}
+  .task .st{font-size:.76rem;color:var(--dim)}
+  .task.done .st{color:var(--ok)}
+  .body{padding:0 14px 14px;border-top:1px solid var(--line);margin-top:2px;padding-top:13px}
+
+  .doc{
+    background:#0d131b;border:1px dashed var(--line);border-radius:8px;
+    padding:12px;margin:0 0 12px;font-size:.9rem;
+  }
+  .doc h4{margin:0 0 8px;font-size:.78rem;letter-spacing:.1em;color:var(--dim);font-weight:700}
+  table{border-collapse:collapse;width:100%;font-size:.86rem}
+  th,td{border:1px solid var(--line);padding:6px 8px;text-align:left}
+  th{color:var(--dim);font-weight:600;background:#101722}
+  .hl td{background:#17273d}
+
+  .perk{
+    background:#10251c;border:1px solid #27543c;border-radius:8px;
+    padding:10px 12px;margin:0 0 12px;font-size:.88rem;
+  }
+  .perk b{color:var(--ok)}
+
+  .answer{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:4px}
+  .answer input{
+    flex:1;min-width:140px;background:#0d131b;border:1px solid var(--line);color:var(--fg);
+    border-radius:8px;padding:11px 12px;font:inherit;font-family:ui-monospace,Menlo,Consolas,monospace;
+  }
+  .answer input:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .msg{font-size:.86rem;margin-top:9px;min-height:1.2em}
+  .msg.ok{color:var(--ok)} .msg.bad{color:var(--bad)}
+  .hintbox{margin-top:10px}
+  .hintline{font-size:.86rem;color:var(--warn);margin-top:7px}
+
+  /* ---- 통신 지연 ---- */
+  .delaybar{height:6px;background:var(--panel2);border-radius:999px;overflow:hidden;margin:10px 0}
+  .delaybar i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s linear}
+  .valves{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .valve{
+    background:var(--panel2);border:1px solid var(--line);color:var(--fg);
+    border-radius:8px;padding:10px 14px;font-weight:600;
+  }
+  .valve.shut{background:#17422c;border-color:#2a6b45;color:var(--ok)}
+
+  /* ---- 최종 / 결과 ---- */
+  .final{border-color:var(--accent)}
+  .final.locked{opacity:.55}
+  .result-stat{display:grid;gap:8px;margin:14px 0}
+  @media(min-width:520px){.result-stat{grid-template-columns:repeat(3,1fr)}}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}
+  .stat b{display:block;font-size:1.3rem;font-variant-numeric:tabular-nums}
+  .stat span{font-size:.78rem;color:var(--dim)}
+  .tease{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:0 8px 8px 0;padding:14px;margin:18px 0}
+  footer{margin:34px 0 20px;padding-top:16px;border-top:1px solid var(--line);font-size:.82rem;color:var(--dim)}
+  footer a{color:var(--accent)}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ 1. 타이틀 ============ -->
+<section id="s-title" class="screen on">
+  <div class="hero">
+    <div class="eyebrow">선발 · 1화</div>
+    <h1>상황대처능력 평가</h1>
+    <p class="dim">지원자 36,204명. 최종 후보 10명. 선발 인원 2명.</p>
+  </div>
+
+  <div class="speaker">
+    <div class="who">안내</div>
+    <p>귀하는 4차 선발 마지막 관문에 올라왔습니다. 이번 평가는 면접이 아닙니다.</p>
+    <p>시험실에 들어가면 문이 잠깁니다. <b>30분 안에 스스로 나오십시오.</b> 실내의 모든 자료는 열람 가능합니다.</p>
+  </div>
+
+  <h2>전공을 선택하십시오</h2>
+  <p class="dim" style="font-size:.9rem">같은 시험을 봅니다. 다만 <b>전공에 따라 바로 읽히는 자료가 다릅니다.</b> 유리한 과제가 둘, 맨땅에서 풀어야 하는 과제가 둘 있습니다.</p>
+
+  <div class="roles" id="roles"></div>
+
+  <button class="btn" id="start" disabled>시험실 입실</button>
+  <p class="dim" style="font-size:.84rem;margin-top:12px">시간이 지나도 강제 종료되지 않습니다. 기록만 남습니다.</p>
+</section>
+
+<!-- ============ 2. 시험실 ============ -->
+<section id="s-room" class="screen">
+  <div class="hud">
+    <span class="t" id="clock">30:00</span>
+    <span class="chip" id="chip-role">전공 —</span>
+    <span class="spacer"></span>
+    <span class="chip">힌트 <b id="chip-hint">0</b></span>
+    <span class="chip">과제 <b id="chip-prog">0</b>/6</span>
+  </div>
+
+  <div class="speaker">
+    <div class="who">시험관</div>
+    <p id="say">여섯 개의 과제가 있습니다. 순서는 상관없습니다. 전부 마치면 출입 코드가 열립니다.</p>
+  </div>
+
+  <div class="tasks" id="tasks"></div>
+</section>
+
+<!-- ============ 3. 결과 ============ -->
+<section id="s-end" class="screen">
+  <div class="hero">
+    <div class="eyebrow">평가 종료</div>
+    <h1 id="end-title">시험실을 나왔습니다</h1>
+  </div>
+  <div class="result-stat">
+    <div class="stat"><b id="r-time">—</b><span>소요 시간</span></div>
+    <div class="stat"><b id="r-hint">—</b><span>사용한 힌트</span></div>
+    <div class="stat"><b id="r-grade">—</b><span>평가</span></div>
+  </div>
+  <div class="speaker">
+    <div class="who">시험관</div>
+    <p id="end-say"></p>
+  </div>
+
+  <div class="tease">
+    <h3 style="margin-top:0">그런데</h3>
+    <p>퇴실 확인서를 받아 드는데, 귀하의 평가 기록 하단에 줄이 하나 더 있습니다.</p>
+    <p class="mono" style="font-size:.86rem;color:var(--warn)">항목 수정 이력: 1건 · 수정자 미기재 · 사유 미기재</p>
+    <p style="margin-bottom:0">무엇이 고쳐졌는지는 적혀 있지 않습니다.</p>
+  </div>
+
+  <p class="dim">2화 「궤도 급유」에서 이어집니다. 선택한 전공과 이번 기록은 저장되어 다음 화에 반영됩니다.</p>
+  <button class="btn-ghost" id="again">다른 전공으로 다시 하기</button>
+
+  <footer>
+    <p>실제 자료를 바탕으로 만든 허구입니다. 등장하는 기관·인물은 실존하지 않습니다.</p>
+    <p>선발 단계와 지원자 수는 한국 우주인 배출 사업(2006)을, 기압·궤도·추진제 수치는 공개 자료를 참고했습니다.</p>
+    <p><a href="/">WIPWIP 연구소</a> · 오류 제보는 <a href="/about/">소개 페이지</a>에</p>
+  </footer>
+</section>
+
+</div>
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------- 전공 ---------------- */
+  var ROLES = [
+    {id:"pilot", name:"조종사",    desc:"비행 경력 2,000시간. 자세와 속도를 몸으로 안다.",     good:["dock","delay"], weak:["pressure","fuel"]},
+    {id:"doctor", name:"의사",     desc:"항공우주의학 전공. 사람이 언제 버티지 못하는지 안다.", good:["pressure","delay"], weak:["orbit","fuel"]},
+    {id:"engineer", name:"기계공학", desc:"추진 계통 설계 경력. 도면과 배관이 먼저 보인다.",     good:["fuel","dock"],  weak:["orbit","pressure"]},
+    {id:"science", name:"천문·물리", desc:"궤도역학 연구자. 하늘의 시계를 읽는다.",             good:["orbit","ratio"], weak:["dock","fuel"]}
+  ];
+
+  /* ---------------- 과제 ---------------- */
+  /* 답은 전부 고정값. 서버도 AI도 쓰지 않는다. */
+  var TASKS = [
+    {
+      id:"ratio", n:1, title:"좌석 배정",
+      lead:"입실 전 확인 절차입니다. 벽의 안내문을 읽고 경쟁률을 입력하십시오.",
+      doc:'<h4>선발 안내문</h4><p style="margin:0">본 선발에는 <b>36,204명</b>이 지원했습니다. 최종 선발 인원은 <b>2명</b>입니다.</p>',
+      perk:"회의록에 경쟁률이 이미 계산되어 적혀 있습니다. <b>18,102 대 1</b>.",
+      ask:"경쟁률 (N 대 1 의 N, 정수)", answer:["18102","18,102"],
+      hints:["지원자 수를 선발 인원으로 나눕니다.","36,204 ÷ 2 입니다.","18102 입니다."],
+      digit:"1"
+    },
+    {
+      id:"pressure", n:2, title:"감압 챔버",
+      lead:"챔버 기압을 낮춥니다. 산소 공급 장치가 작동하기까지 <b>3분</b>이 걸립니다. 그 3분을 버틸 수 있는 가장 낮은 기압을 입력하십시오.",
+      doc:'<h4>고도별 유효의식시간 (TUC)</h4><table><tr><th>고도</th><th>기압</th><th>유효의식시간</th></tr>'+
+          '<tr><td>5,500 m</td><td>50.5 kPa</td><td>20분</td></tr>'+
+          '<tr><td>7,000 m</td><td>41.1 kPa</td><td>5분</td></tr>'+
+          '<tr class="hl"><td>8,500 m</td><td>33.3 kPa</td><td>3분</td></tr>'+
+          '<tr><td>10,000 m</td><td>26.5 kPa</td><td>1분</td></tr>'+
+          '<tr><td>12,000 m</td><td>19.4 kPa</td><td>30초</td></tr></table>'+
+          '<p class="dim" style="margin:8px 0 0;font-size:.82rem">유효의식시간: 산소 공급이 끊긴 뒤 의식을 유지하며 판단할 수 있는 시간.</p>',
+      perk:"표에서 3분 행이 <b>이미 표시</b>되어 있습니다. 8,500 m 구간입니다.",
+      ask:"기압 (kPa)", answer:["33.3","33,3"],
+      hints:["3분을 버텨야 하므로 유효의식시간이 3분 이상인 구간이어야 합니다.","3분 이상이면서 가장 낮은 기압은 8,500 m 행입니다.","33.3 입니다."],
+      digit:"3"
+    },
+    {
+      id:"dock", n:3, title:"접근 제동",
+      lead:"도킹 접근 중입니다. 현재 거리 <b>200 m</b>, 접근 속도 <b>0.5 m/s</b>로 일정합니다. 마지막 제동은 거리 20 m에서 시작합니다. 제동 시작까지 남은 시간을 초로 입력하십시오.",
+      doc:'<h4>접근 계기</h4><table><tr><th>항목</th><th>값</th></tr>'+
+          '<tr><td>상대 거리</td><td>200 m</td></tr>'+
+          '<tr><td>접근 속도</td><td>0.5 m/s (일정)</td></tr>'+
+          '<tr><td>제동 개시 거리</td><td>20 m</td></tr></table>',
+      perk:"계기판에 제동 카운트다운이 <b>자동으로 표시</b>됩니다. <b>T-360</b>.",
+      ask:"남은 시간 (초)", answer:["360"],
+      hints:["제동 개시까지 실제로 줄여야 하는 거리를 먼저 구합니다.","(200 − 20) ÷ 0.5 입니다.","360 입니다."],
+      digit:"6"
+    },
+    {
+      id:"orbit", n:4, title:"전이 창",
+      lead:"지구와 화성이 가까워지는 시점에만 출발할 수 있습니다. 직전 창이 <b>2024년 10월</b>이었습니다. <b>다음다음 창</b>은 몇 년입니까?",
+      doc:'<h4>궤도 자료</h4><table><tr><th>항목</th><th>값</th></tr>'+
+          '<tr><td>지구–화성 회합주기</td><td>약 780일</td></tr>'+
+          '<tr><td>직전 전이 창</td><td>2024년 10월</td></tr>'+
+          '<tr><td>1개월</td><td>약 30.4일</td></tr></table>',
+      perk:"연구 노트에 회합주기가 <b>개월로 환산</b>되어 있습니다. <b>약 26개월</b>.",
+      ask:"연도 (네 자리)", answer:["2029"],
+      hints:["780일이 몇 개월인지 먼저 바꿉니다.","약 26개월입니다. 2024년 10월에서 26개월씩 두 번 더합니다.","2026년 12월, 그다음이 2029년 2월. 답은 2029 입니다."],
+      digit:"9"
+    },
+    {
+      id:"fuel", n:5, title:"추진제 적재",
+      lead:"엔진은 액체산소와 메탄을 함께 씁니다. 메탄 <b>230 t</b>을 실었습니다. 필요한 액체산소는 몇 t입니까?",
+      doc:'<h4>엔진 사양서</h4><table><tr><th>항목</th><th>값</th></tr>'+
+          '<tr><td>추진제</td><td>액체산소 / 메탄</td></tr>'+
+          '<tr><td>혼합비 (O/F, 질량)</td><td>3.6 : 1</td></tr>'+
+          '<tr><td>적재된 메탄</td><td>230 t</td></tr></table>'+
+          '<p class="dim" style="margin:8px 0 0;font-size:.82rem">메탄을 고른 이유: 화성 대기의 이산화탄소와 얼음에서 뽑은 수소로 현지에서 만들 수 있기 때문입니다.</p>',
+      perk:"배관 도면에 혼합비가 <b>크게 적혀</b> 있습니다. <b>O/F = 3.6</b>.",
+      ask:"액체산소 (t, 정수)", answer:["828"],
+      hints:["혼합비는 산소가 메탄의 몇 배인지를 뜻합니다.","230 × 3.6 입니다.","828 입니다."],
+      digit:"8"
+    },
+    {
+      id:"delay", n:6, title:"통신 지연",
+      lead:"관제에 출입 코드 마지막 자리를 질의합니다. <b>응답까지 20초</b> 걸립니다. 기다리는 동안 밸브 네 개를 모두 잠그십시오.",
+      doc:'<h4>통신 규약</h4><p style="margin:0 0 6px">전파는 빛의 속도로 갑니다. 거리가 멀면 질문과 답 사이에 반드시 공백이 생깁니다.</p>'+
+          '<table><tr><th>구간</th><th>편도 지연</th></tr>'+
+          '<tr><td>지구 ↔ 달</td><td>약 1.3초</td></tr>'+
+          '<tr class="hl"><td>이 시험 (모의)</td><td>20초</td></tr>'+
+          '<tr><td>지구 ↔ 화성</td><td>5 ~ 20분</td></tr></table>'+
+          '<p class="dim" style="margin:8px 0 0;font-size:.82rem">기다리는 동안 손을 놓고 있으면 시간을 버리는 것입니다. 이 과제가 평가하는 것은 그 점입니다.</p>',
+      perk:"질의 양식을 외우고 있어 <b>지연이 20초에서 12초로</b> 줄어듭니다.",
+      special:"delay",
+      ask:"관제가 보낸 값", answer:["7"],
+      hints:["먼저 질의를 보내십시오. 보내 두고 밸브를 잠그면 됩니다.","밸브를 다 잠그기 전에 답이 와도 괜찮습니다. 받은 값을 그대로 넣으십시오.","관제가 보낸 값은 7 입니다."],
+      digit:"7"
+    }
+  ];
+
+  var FINAL_CODE = "136987";
+
+  /* ---------------- 상태 ---------------- */
+  var state = { role:null, solved:{}, hints:0, startedAt:0, timer:null, elapsed:0, done:false };
+
+  var $ = function(s){ return document.querySelector(s); };
+  var el = function(tag, cls, html){
+    var e = document.createElement(tag);
+    if(cls) e.className = cls;
+    if(html != null) e.innerHTML = html;
+    return e;
+  };
+  function show(id){
+    var list = document.querySelectorAll(".screen");
+    for(var i=0;i<list.length;i++) list[i].classList.remove("on");
+    $(id).classList.add("on");
+    window.scrollTo(0,0);
+  }
+  function norm(v){
+    return String(v).trim().toLowerCase().replace(/\s+/g,"").replace(/,/g,"");
+  }
+  function save(){
+    try{
+      localStorage.setItem("wipwip.escape.ep1", JSON.stringify({
+        role: state.role && state.role.id, elapsed: state.elapsed,
+        hints: state.hints, clearedAt: Date.now()
+      }));
+    }catch(e){ /* 사생활 보호 모드 등에서 실패할 수 있다. 게임은 그대로 진행된다. */ }
+  }
+
+  /* ---------------- 전공 선택 ---------------- */
+  (function buildRoles(){
+    var box = $("#roles");
+    ROLES.forEach(function(r){
+      var b = el("button","role",
+        "<b>"+r.name+"</b><span>"+r.desc+"</span>");
+      b.type = "button";
+      b.setAttribute("aria-pressed","false");
+      b.addEventListener("click", function(){
+        var all = box.querySelectorAll(".role");
+        for(var i=0;i<all.length;i++) all[i].setAttribute("aria-pressed","false");
+        b.setAttribute("aria-pressed","true");
+        state.role = r;
+        $("#start").disabled = false;
+      });
+      box.appendChild(b);
+    });
+  })();
+
+  /* ---------------- 시계 ---------------- */
+  function fmt(sec){
+    var neg = sec < 0; if(neg) sec = -sec;
+    var m = Math.floor(sec/60), s = sec%60;
+    return (neg?"+":"") + (m<10?"0":"")+m + ":" + (s<10?"0":"")+s;
+  }
+  function tick(){
+    state.elapsed = Math.floor((Date.now()-state.startedAt)/1000);
+    var left = 1800 - state.elapsed;
+    var c = $("#clock");
+    c.textContent = fmt(left);
+    if(left < 0) c.classList.add("over"); else c.classList.remove("over");
+  }
+
+  /* ---------------- 과제 렌더 ---------------- */
+  function renderTasks(){
+    var box = $("#tasks");
+    box.innerHTML = "";
+
+    TASKS.forEach(function(t){
+      var d = el("details","task");
+      d.id = "task-"+t.id;
+
+      var sum = el("summary","",
+        '<span class="num">'+t.n+'</span>'+
+        '<span class="ttl">'+t.title+'</span>'+
+        '<span class="st">미해결</span>');
+      d.appendChild(sum);
+
+      var body = el("div","body");
+      body.appendChild(el("p","",t.lead));
+      body.appendChild(el("div","doc",t.doc));
+
+      var isGood = state.role.good.indexOf(t.id) >= 0;
+      var isWeak = state.role.weak.indexOf(t.id) >= 0;
+      if(isGood && t.perk){
+        body.appendChild(el("div","perk","<b>["+state.role.name+"]</b> "+t.perk));
+      }
+      if(isWeak){
+        body.appendChild(el("p","dim",
+          '<small>전공 밖의 과제입니다. 자료를 직접 읽어야 합니다.</small>'));
+      }
+
+      if(t.special === "delay") body.appendChild(buildDelay(t, isGood));
+
+      var row = el("div","answer");
+      var inp = el("input");
+      inp.type = "text";
+      inp.setAttribute("inputmode","text");
+      inp.setAttribute("autocomplete","off");
+      inp.placeholder = t.ask;
+      inp.setAttribute("aria-label", t.title + " 답 입력: " + t.ask);
+      var sub = el("button","btn",'확인');
+      sub.type = "button";
+      row.appendChild(inp); row.appendChild(sub);
+      body.appendChild(row);
+
+      var msg = el("div","msg");
+      body.appendChild(msg);
+
+      var hintWrap = el("div","hintbox");
+      var hb = el("button","btn-ghost","힌트 보기");
+      hb.type = "button";
+      var hUsed = 0;
+      hb.addEventListener("click", function(){
+        if(hUsed >= t.hints.length){ return; }
+        hintWrap.appendChild(el("div","hintline","힌트 "+(hUsed+1)+". "+t.hints[hUsed]));
+        hUsed++; state.hints++; $("#chip-hint").textContent = state.hints;
+        if(hUsed >= t.hints.length){ hb.disabled = true; hb.textContent = "힌트를 모두 썼습니다"; }
+      });
+      hintWrap.appendChild(hb);
+      body.appendChild(hintWrap);
+
+      function submit(){
+        if(state.solved[t.id]) return;
+        var v = norm(inp.value);
+        if(!v){ msg.className = "msg bad"; msg.textContent = "값을 입력하십시오."; return; }
+        var ok = t.answer.some(function(a){ return norm(a) === v; });
+        if(ok){
+          state.solved[t.id] = true;
+          d.classList.add("done");
+          sum.querySelector(".st").textContent = "해결";
+          msg.className = "msg ok";
+          msg.textContent = "확인. 출입 코드 한 자리를 받았습니다 → " + t.digit;
+          inp.disabled = true; sub.disabled = true; hb.disabled = true;
+          updateProgress();
+        } else {
+          msg.className = "msg bad";
+          msg.textContent = "맞지 않습니다. 자료를 다시 보십시오.";
+        }
+      }
+      sub.addEventListener("click", submit);
+      inp.addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); submit(); } });
+
+      d.appendChild(body);
+      box.appendChild(d);
+    });
+
+    /* 최종 과제 */
+    var f = el("details","task final locked");
+    f.id = "task-final";
+    var fsum = el("summary","",
+      '<span class="num">7</span><span class="ttl">출입 코드</span><span class="st">잠김</span>');
+    f.appendChild(fsum);
+    var fb = el("div","body");
+    fb.appendChild(el("p","",
+      "과제 여섯 개에서 받은 숫자를 <b>과제 번호 순서대로</b> 이어 붙여 입력하십시오."));
+    var slots = el("div","doc",'<h4>받은 숫자</h4><p class="mono" id="slots" style="margin:0;font-size:1.3rem;letter-spacing:.35em">······</p>');
+    fb.appendChild(slots);
+    var frow = el("div","answer");
+    var finp = el("input"); finp.type="text"; finp.setAttribute("inputmode","numeric");
+    finp.setAttribute("autocomplete","off"); finp.placeholder="여섯 자리";
+    finp.setAttribute("aria-label","출입 코드 여섯 자리");
+    var fsub = el("button","btn","문 열기"); fsub.type="button";
+    frow.appendChild(finp); frow.appendChild(fsub);
+    fb.appendChild(frow);
+    var fmsg = el("div","msg"); fb.appendChild(fmsg);
+    function fsubmit(){
+      if(state.done) return;
+      if(norm(finp.value) === FINAL_CODE){ finish(); }
+      else { fmsg.className="msg bad"; fmsg.textContent="문이 열리지 않습니다."; }
+    }
+    fsub.addEventListener("click", fsubmit);
+    finp.addEventListener("keydown", function(e){ if(e.key==="Enter"){ e.preventDefault(); fsubmit(); } });
+    f.appendChild(fb);
+    box.appendChild(f);
+  }
+
+  /* ---------------- 통신 지연 과제 ---------------- */
+  function buildDelay(t, isGood){
+    var wait = isGood ? 12 : 20;
+    var box = el("div");
+    var btn = el("button","btn-ghost","관제에 질의 보내기"); btn.type="button";
+    var bar = el("div","delaybar",'<i></i>');
+    var note = el("div","msg dim");
+    var valves = el("div","valves");
+    var shut = 0;
+    ["밸브 A","밸브 B","밸브 C","밸브 D"].forEach(function(name){
+      var v = el("button","valve",name); v.type="button";
+      v.addEventListener("click", function(){
+        if(v.classList.contains("shut")) return;
+        v.classList.add("shut"); v.textContent = name + " 잠김"; shut++;
+        if(shut === 4) note.textContent = "밸브 네 개를 모두 잠갔습니다.";
+      });
+      valves.appendChild(v);
+    });
+    var sent = false;
+    btn.addEventListener("click", function(){
+      if(sent) return;
+      sent = true; btn.disabled = true; btn.textContent = "질의를 보냈습니다";
+      var t0 = Date.now(), fill = bar.querySelector("i");
+      note.className = "msg dim";
+      note.textContent = "응답을 기다리는 중입니다. 손을 놓지 마십시오.";
+      var iv = setInterval(function(){
+        var p = Math.min(1, (Date.now()-t0)/(wait*1000));
+        fill.style.width = (p*100) + "%";
+        if(p >= 1){
+          clearInterval(iv);
+          note.className = "msg ok";
+          note.textContent = "관제 응답 도착 — 마지막 자리는 7 입니다.";
+        }
+      }, 200);
+    });
+    box.appendChild(btn); box.appendChild(bar); box.appendChild(valves); box.appendChild(note);
+    return box;
+  }
+
+  /* ---------------- 진행 ---------------- */
+  function updateProgress(){
+    var n = 0, got = "";
+    TASKS.forEach(function(t){
+      if(state.solved[t.id]){ n++; got += t.digit; } else { got += "·"; }
+    });
+    $("#chip-prog").textContent = n;
+    var s = document.getElementById("slots");
+    if(s) s.textContent = got;
+    if(n === TASKS.length){
+      var f = $("#task-final");
+      f.classList.remove("locked");
+      f.querySelector(".st").textContent = "열림";
+      f.open = true;
+      $("#say").textContent = "여섯 과제를 모두 마쳤습니다. 출입 코드를 입력하십시오.";
+    }
+  }
+
+  function finish(){
+    state.done = true;
+    clearInterval(state.timer);
+    var over = state.elapsed > 1800;
+    $("#r-time").textContent = fmt(state.elapsed);
+    $("#r-hint").textContent = state.hints + "회";
+    var grade = (!over && state.hints === 0) ? "A"
+              : (!over && state.hints <= 3) ? "B"
+              : (!over) ? "C" : "D";
+    $("#r-grade").textContent = grade;
+    $("#end-title").textContent = over ? "시간은 넘겼지만, 나왔습니다" : "시험실을 나왔습니다";
+    $("#end-say").textContent = over
+      ? "제한 시간을 넘겼습니다. 다만 끝까지 풀었다는 것도 기록됩니다. 포기한 후보가 더 많았습니다."
+      : (grade === "A"
+         ? "힌트 없이 제한 시간 안에 나왔습니다. 올해 후보 중 드뭅니다."
+         : "제한 시간 안에 나왔습니다. 통과입니다.");
+    save();
+    show("#s-end");
+  }
+
+  /* ---------------- 시작 ---------------- */
+  $("#start").addEventListener("click", function(){
+    if(!state.role) return;
+    $("#chip-role").textContent = "전공 " + state.role.name;
+    renderTasks(); updateProgress();
+    state.startedAt = Date.now();
+    tick();
+    state.timer = setInterval(tick, 1000);
+    show("#s-room");
+  });
+  $("#again").addEventListener("click", function(){
+    location.reload();
+  });
+})();
+</script>
+</body>
+</html>

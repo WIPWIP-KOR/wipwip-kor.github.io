@@ -38,6 +38,23 @@
 </section>
 {{ end }}
 
+{{/* 직접 만든 게임. data/home.yaml 의 games 가 있을 때만. */}}
+{{ with $h.games }}
+<section class="home-section">
+  <div class="home-section-head">
+    <h2>만든 것</h2>
+  </div>
+  <ul class="home-links">
+    {{ range . }}
+    <li>
+      <a href="{{ .url | relURL }}">{{ .title }}</a>
+      {{ with .hook }}<span class="home-hook">{{ . }}</span>{{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+
 {{/* 계산기 — 발행된 것이 있을 때만. 9개 전부 비공개인 동안은 나오지 않는다. */}}
 {{ if and $tools $h.tools }}
 <section class="home-section">

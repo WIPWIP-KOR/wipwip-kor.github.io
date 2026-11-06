@@ -8,6 +8,14 @@ hero:
   title: "직접 돌려 보고, 측정한 것만 적습니다"
   lead: "AI로 무언가를 만들어 실제로 돌려 보고, 결과를 숫자로 남기는 기록입니다. 잘 된 것보다 안 된 것이 더 쓸모 있으므로, 실패 원인과 제가 틀렸던 가정까지 함께 적습니다."
 
+# 직접 만든 웹게임. layouts/index.html 이 읽는다.
+# static/ 아래의 정적 파일이라 Hugo 페이지가 아니다. 그래서 여기 적지 않으면
+# 사이트 어디에서도 링크되지 않는 고아가 된다.
+games:
+  - url: "/games/astronaut-selection/"
+    title: "상황대처능력 평가 — 우주인 선발 1화"
+    hook: "지원자 36,204명 중 최종 후보 10명. 30분 안에 시험실을 나가십시오."
+
 # 첫 화면 계산기 카드. 순서는 이 배열대로.
 tools:
   - page: "tools/basic-pension-calculator.md"

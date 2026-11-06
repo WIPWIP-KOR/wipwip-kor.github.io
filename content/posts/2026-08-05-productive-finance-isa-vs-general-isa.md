@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-08-05-productive-finance-isa-vs-general-isa.png"
 title: "생산적금융 ISA는 전액 비과세, 대신 국내 투자로만 묶입니다"
 date: 2026-08-05
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["재테크"]
 tags: ["투자·공모주", "절세·세금신고", "제도 비교", "2026년 제도 변경"]
 description: "2026년 세법개정안으로 국내 투자 전용 '생산적금융 ISA'가 신설됩니다. 이자·배당소득 전액 비과세 등 기존 ISA와 무엇이 다른지, 청년 소득공제 혜택까지 정리했습니다."

@@ -2,7 +2,7 @@
 title: "청년미래적금 계산기 — 만기 수령액과 정부기여금"
 date: 2026-10-27
 lastmod: 2026-10-27
-draft: false
+draft: true
 calculator: youth
 categories: ["재테크"]
 tags: ["청년 지원금", "투자·공모주"]

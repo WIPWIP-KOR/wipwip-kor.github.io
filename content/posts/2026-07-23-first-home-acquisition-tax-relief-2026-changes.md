@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-07-23-first-home-acquisition-tax-relief-2026-chan
 title: "생애최초 취득세 감면은 100%인데 왜 세금을 내라고 할까"
 date: 2026-07-23
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["재테크"]
 tags: ["절세·세금신고", "주거·전월세", "2026년 제도 변경"]
 description: "생애최초 주택 취득세 감면은 실거래가 12억 원 이하면 소득과 무관하게 받을 수 있고, 한도는 200만 원(인구감소지역 300만 원)입니다. 자격 요건과 3년 실거주 추징 조건, 그리고 청년 한도를 300만 원으로 올리는 개편안까지 정리했습니다."

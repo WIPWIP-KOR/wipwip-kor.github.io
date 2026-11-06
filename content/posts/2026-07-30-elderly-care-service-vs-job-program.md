@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-07-30-elderly-care-service-vs-job-program.png"
 title: "노인맞춤돌봄서비스와 노인일자리는 함께 받을 수 있습니다"
 date: 2026-07-30
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["부모님 복지", "제도 비교"]
 description: "돌봄서비스는 돌봄이 필요한 어르신에게 제공되는 무료 서비스, 노인일자리는 활동한 대가로 활동비를 받는 사업입니다. 둘은 함께 받을 수 있고, 갈림길은 기초연금입니다. 2026년 유형별 물량·활동비와 돌봄 시간 기준까지 정리했습니다."

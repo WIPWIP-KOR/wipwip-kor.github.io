@@ -5,6 +5,11 @@
      넘어갔는데, 중복이 없어도 아무 검색어와 매칭되지 않는 제목이었다. 구글이 색인하지
      않은 페이지가 정확히 이것들이다. description과 같은 방식으로 Kind별로 만든다. */}}
 {{ $pageTitle := .Title }}
+{{/* 2026-11-06 운영 중단. 글·계산기가 전부 draft가 되어 아래 Kind별 제목이
+     "글 0편", "계산기 0종"처럼 비어 버린다. 발행된 것이 없으면 Kind별 생성을
+     건너뛰고 페이지 자체 제목을 쓴다. 다시 발행하면 저절로 원래대로 돌아온다. */}}
+{{ $hasContent := gt (add (len (where .Site.RegularPages "Type" "posts")) (len (where .Site.RegularPages "Type" "tools"))) 0 }}
+{{ if $hasContent }}
 {{ if .IsHome }}
   {{ $pageTitle = "소득인정액·기초연금 계산기 — 복지 자격 판정" }}
 {{ else if eq .Kind "term" }}
@@ -26,6 +31,11 @@
     {{ $pageTitle = printf "복지·세금 제도 글 %d편 — 신청 방법과 제도 비교" (len .Pages) }}
   {{ end }}
 {{ end }}
+{{ else if .IsHome }}
+  {{/* 중단 상태의 홈은 사이트 제목만 남아 "WIPWIP · WIPWIP"이 되므로 따로 준다 */}}
+  {{ $pageTitle = "운영 중단 — 글과 계산기를 비공개로 돌렸습니다" }}
+{{ end }}
+{{ $retired := not $hasContent }}
 <title>{{ $pageTitle }} · {{ .Site.Title }}</title>
 {{/* 목록·분류 페이지는 프런트매터에 description이 없어 전부 사이트 기본값으로 폴백했다.
      20개 페이지가 같은 설명을 쓰고 있었으므로 Kind별로 고유 설명을 만든다. */}}
@@ -44,6 +54,7 @@
     {{ $desc = .Site.Params.description }}
   {{ end }}
 {{ end }}
+{{ if and $retired .IsHome }}{{ $desc = "운영을 중단해 글과 계산기를 비공개로 돌렸습니다. 기준 금액·소득 요건이 바뀌어도 확인할 수 없어, 낡은 수치를 남겨 두지 않기로 했습니다." }}{{ end }}
 <meta name="description" content="{{ $desc }}">
 <link rel="canonical" href="{{ .Permalink }}">
 {{ if and (eq .Kind "term") (lt (len .Pages) 2) }}
@@ -110,7 +121,10 @@
      홈은 2026-10-21 리뉴얼로 히어로·계산기 안내·주제 묶음 후크가 들어간 자체
      콘텐츠 페이지가 됐는데도 이 조건에서 빠져 있었다. 심사 봇이 가장 먼저 보는
      페이지에 광고 코드가 없던 셈이라 포함시킨다. */}}
-{{ $hasBody := or .IsHome (eq .Kind "page") (and (eq .Kind "section") .Content) }}
+{{/* 2026-11-06 운영 중단. 애드센스를 목표에서 내렸고, 글·계산기가 전부 비공개라
+     본문 없는 페이지에 광고 로더를 둘 이유가 없다. 발행된 것이 있을 때만 켠다
+     (hugo.toml의 googleAdsenseId를 비워도 같은 효과다). */}}
+{{ $hasBody := and $hasContent (or .IsHome (eq .Kind "page") (and (eq .Kind "section") .Content)) }}
 {{ if and .Site.Params.googleAdsenseId $hasBody }}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ .Site.Params.googleAdsenseId }}" crossorigin="anonymous"></script>
 {{ end }}

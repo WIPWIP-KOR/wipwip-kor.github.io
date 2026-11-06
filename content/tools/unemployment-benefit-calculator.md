@@ -2,7 +2,7 @@
 title: "실업급여 계산기 — 1일 수령액과 받을 수 있는 날짜 수"
 date: 2026-10-27
 lastmod: 2026-10-27
-draft: false
+draft: true
 calculator: unemployment
 categories: ["정책"]
 tags: ["취업·구직", "생활비 지원"]

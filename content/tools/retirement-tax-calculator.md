@@ -2,7 +2,7 @@
 title: "퇴직금 계산기 — 퇴직소득세가 나오는 과정을 단계별로"
 date: 2026-10-27
 lastmod: 2026-10-27
-draft: false
+draft: true
 calculator: retirement
 categories: ["세금"]
 tags: ["절세·세금신고", "취업·구직"]

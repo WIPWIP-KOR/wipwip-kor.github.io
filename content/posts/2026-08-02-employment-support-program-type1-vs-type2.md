@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-08-02-employment-support-program-type1-vs-type2.p
 title: "국민취업지원제도 1유형은 월 60만 원, 2유형은 얼마인가"
 date: 2026-08-02
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["취업·구직", "소득인정액", "제도 비교"]
 description: "국민취업지원제도는 1유형과 2유형의 소득·재산 기준과 지원금이 완전히 다릅니다. 1유형은 현금성 구직촉진수당이 크고, 2유형은 조건이 완화된 대신 현금 지원이 적습니다. 핵심 차이를 정리했습니다."

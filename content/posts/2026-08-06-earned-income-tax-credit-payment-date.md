@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-08-06-earned-income-tax-credit-payment-date.png"
 title: "근로장려금 신청자격 확인하는 법 (기한후신청 진행 중)"
 date: 2026-08-06
 lastmod: 2026-11-02
-draft: false
+draft: true
 categories: ["세금"]
 tags: ["절세·세금신고"]
 description: "정기신청분 지급은 끝났지만 기한후신청 기간은 아직 열려 있습니다. 가구 유형별 소득 기준, 재산 요건, 감액 구간과 홈택스로 내 지급액을 조회하는 방법을 정리했습니다."

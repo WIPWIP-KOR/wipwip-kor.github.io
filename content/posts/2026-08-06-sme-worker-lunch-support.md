@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-08-06-sme-worker-lunch-support.png"
 title: "직장인 든든한 점심밥 신청 방법 (점심값 20% 지원, 개인 신청은 안 됩니다)"
 date: 2026-08-06
 lastmod: 2026-11-02
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["생활비 지원", "소상공인·자영업"]
 description: "중소기업 재직자라면 평일 점심값의 20%, 월 최대 4만 원을 지원받을 수 있습니다. 다만 개인이 신청할 창구는 없고 회사가 참여 기업으로 선정되어야 합니다. 지원 조건과 사용 제외 업종, 회사를 통한 신청 절차를 정리했습니다."

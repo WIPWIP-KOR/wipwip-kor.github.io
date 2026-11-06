@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-08-01-long-term-care-insurance-vs-customized-care
 title: "장기요양 등급을 받으면 노인맞춤돌봄서비스는 못 받습니다"
 date: 2026-08-01
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["부모님 복지", "제도 비교"]
 description: "두 제도는 병행이 아니라 택일입니다. 장기요양 등급을 받으면 노인맞춤돌봄서비스 대상에서 제외되고, 등급을 포기하고 옮기는 것도 원칙적으로 막혀 있습니다. 어느 쪽을 먼저 신청할지 판단하는 기준과 2026년 등급별 월 한도액·실제 본인부담액을 정리했습니다."

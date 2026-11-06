@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-07-16-dividend-income-separate-taxation.png"
 title: "배당 분리과세 vs 종합과세, 갈림길은 한계세율 20%입니다"
 date: 2026-07-16
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["재테크"]
 tags: ["절세·세금신고", "투자·공모주", "제도 비교"]
 description: "고배당 상장법인에서 받은 배당소득이 연 2,000만 원을 넘는 투자자라면, 2026년 배당분부터 최고 45%인 종합과세 대신 최고 30% 분리과세를 선택할 수 있습니다. 종합소득세 신고 때 직접 신청해야 하며, 2028년까지 한시 시행됩니다."

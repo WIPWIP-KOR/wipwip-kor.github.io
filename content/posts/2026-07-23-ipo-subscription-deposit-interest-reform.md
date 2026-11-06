@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-07-23-ipo-subscription-deposit-interest-reform.pn
 title: "공모주 청약증거금 이자, 제도화보다 증권사가 먼저 시작했습니다"
 date: 2026-07-23
 lastmod: 2026-11-02
-draft: false
+draft: true
 categories: ["재테크"]
 tags: ["투자·공모주", "2026년 제도 변경"]
 description: "금융위원회의 제도화는 아직 추진 단계인데, 대신증권이 업계 최초로 청약증거금 이자를 지급하기 시작했습니다. 증거금 규모별로 실제 이자가 얼마인지 계산하고, 함께 내려간 매도대금 담보대출 금리까지 정리했습니다."

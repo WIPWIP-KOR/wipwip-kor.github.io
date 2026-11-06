@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-07-17-youth-dream-account-vs-subscription-savings
 title: "청년주택드림청약통장 연 4.5%, 연계대출은 아무 분양에나 안 됩니다"
 date: 2026-07-17
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["재테크"]
 tags: ["청년 지원금", "주거·전월세", "제도 비교"]
 description: "청년주택드림청약통장은 만 19~34세 무주택 청년 전용으로 연 4.5% 이자에 이자소득 비과세와 최저 연 2.2% 연계대출까지 주지만, 주택청약종합저축은 나이 제한 없이 누구나 가입할 수 있습니다. 두 통장의 이자율·가입조건·혜택 차이와 병역 복무기간 나이 차감까지 정리했습니다."

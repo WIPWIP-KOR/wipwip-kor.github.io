@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-07-14-basic-livelihood-security-benefits.png"
 title: "기초생활수급자 조건, 자녀 소득이 걸림돌인 건 사실상 의료급여뿐"
 date: 2026-07-14
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["소득인정액", "부모님 복지"]
 description: "기초생활수급자 대상 여부는 월급이 아니라 소득인정액으로 정해집니다. 근로소득 30% 공제와 재산의 소득환산 방식을 세 가지 가구 유형(4인 가구·부모님 2인 가구·외벌이 신혼부부)으로 직접 계산해 보여주고, 자녀 소득이 부모님 수급에 영향을 주는지까지 정리했습니다."

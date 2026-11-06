@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-07-21-single-parent-family-support-2026-changes.p
 title: "한부모가족 지원금 소득 기준, 중위소득 65%면 2인 가구 얼마인가"
 date: 2026-07-21
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["정책"]
 tags: ["양육·돌봄", "소득인정액", "2026년 제도 변경"]
 description: "2026년 복지급여 소득 기준이 기준 중위소득 63%에서 65%로 확대되고, 아동양육비는 월 23만 원, 추가아동양육비까지 받으면 월 33만 원으로 올랐습니다. 가구원 수별 소득 기준선과 본인이 어느 유형에 해당하는지 판단하는 기준까지 정리했습니다."

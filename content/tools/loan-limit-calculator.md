@@ -2,7 +2,7 @@
 title: "대출 한도 계산기 — 스트레스 DSR 반영 한도와 총이자"
 date: 2026-10-21
 lastmod: 2026-10-28
-draft: false
+draft: true
 calculator: loan
 categories: ["재테크"]
 tags: ["대출·금리", "주거·전월세", "제도 비교"]

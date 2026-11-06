@@ -2,7 +2,7 @@
 title: "취득세 계산기 — 생애최초 감면이 실제로 깎아주는 금액"
 date: 2026-10-27
 lastmod: 2026-10-27
-draft: false
+draft: true
 calculator: acquisition
 categories: ["세금"]
 tags: ["절세·세금신고", "주거·전월세"]

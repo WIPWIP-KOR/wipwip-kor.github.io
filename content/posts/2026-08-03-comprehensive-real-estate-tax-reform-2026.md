@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-08-03-comprehensive-real-estate-tax-reform-2026.p
 title: "1세대 1주택 종부세, 시가 20억 원 이하는 대상에서 제외 (개편안)"
 date: 2026-08-03
 lastmod: 2026-10-27
-draft: false
+draft: true
 categories: ["세금"]
 tags: ["절세·세금신고", "2026년 제도 변경"]
 description: "정부가 발표한 2026년 세법개정안으로 종합부동산세 과세 기준이 '주택 수'에서 '주택가액'과 '거주 여부' 중심으로 바뀝니다. 실거주·비거주 공제금액 차이와 세부담 변화를 정리했습니다."

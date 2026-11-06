@@ -2,7 +2,7 @@
 title: "장기요양 본인부담금 계산기 — 요양원·방문요양 월 얼마 내나"
 date: 2026-10-21
 lastmod: 2026-10-21
-draft: false
+draft: true
 calculator: ltc
 categories: ["정책"]
 tags: ["부모님 복지", "소득인정액"]

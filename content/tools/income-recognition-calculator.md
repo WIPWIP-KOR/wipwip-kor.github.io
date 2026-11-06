@@ -2,7 +2,7 @@
 title: "소득인정액 계산기 — 기초생활보장 네 급여 한 번에 판정"
 date: 2026-10-21
 lastmod: 2026-10-21
-draft: false
+draft: true
 calculator: income
 categories: ["정책"]
 tags: ["소득인정액", "부모님 복지", "제도 비교"]

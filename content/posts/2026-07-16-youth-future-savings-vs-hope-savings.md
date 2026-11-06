@@ -3,7 +3,7 @@ thumbnail: "/images/posts/2026-07-16-youth-future-savings-vs-hope-savings.png"
 title: "청년도약계좌는 신규 가입이 끝났습니다 (청년미래적금 우대형 요건)"
 date: 2026-07-16
 lastmod: 2026-11-02
-draft: false
+draft: true
 categories: ["재테크"]
 tags: ["청년 지원금", "제도 비교"]
 description: "청년도약계좌는 2025년 12월 31일로 신규 가입이 종료됐고, 지금 새로 가입할 수 있는 것은 청년미래적금뿐입니다. 두 상품의 차이와 기존 도약계좌 가입자의 갈아타기 조건, 그리고 잘못 알려진 우대형 요건을 정리했습니다."

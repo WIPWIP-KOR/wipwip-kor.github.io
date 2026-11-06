@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-11-06-why-google-skipped-the-homepage.png"
 title: "구글이 홈페이지조차 색인하지 않은 이유"
 date: 2026-11-06T07:00:00+09:00
 draft: false

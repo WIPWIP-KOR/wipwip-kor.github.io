@@ -35,12 +35,12 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y fonts-nanum
-          pip install pillow google-genai
+          pip install pillow
 
+      # 2026-11-06 — Gemini 이미지 생성을 걷어냈다. Pillow로 직접 그리므로
+      # API 키가 없어도 돌아가고, 장당 636KB -> 18KB로 줄었다.
       - name: Generate thumbnails
         if: steps.find.outputs.files != ''
-        env:
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         run: |
           echo "${{ steps.find.outputs.files }}" | while read -r f; do
             [ -z "$f" ] && continue

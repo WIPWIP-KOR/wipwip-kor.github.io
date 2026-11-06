@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-11-06-ai-posts-look-same-at-sixty.png"
 title: "AI가 쓴 글은 60편째에 들통납니다"
 date: 2026-11-06T09:00:00+09:00
 draft: false

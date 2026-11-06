@@ -1,4 +1,5 @@
 ---
+thumbnail: "/images/posts/2026-11-06-four-assumptions-i-got-wrong.png"
 title: "내가 틀렸던 가정 네 개"
 date: 2026-11-06T08:00:00+09:00
 draft: false

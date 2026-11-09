@@ -115,6 +115,16 @@
   .valve{background:var(--panel2);border:1px solid var(--line);color:var(--fg);border-radius:8px;padding:9px 13px;font-weight:600}
   .valve.shut{background:#17422c;border-color:#2a6b45;color:var(--ok)}
   .slots{font-size:1.25rem;letter-spacing:.35em;margin:0}
+  /* 조작형 퍼즐 */
+  .dialb{background:#17212e;border:1px solid var(--line);color:var(--accent);border-radius:6px;width:44px;height:30px;font-size:.8rem}
+  .dialb:hover{border-color:var(--accent)}
+  .dialn{width:44px;height:48px;display:grid;place-items:center;background:#0b1119;border:1px solid var(--line);border-radius:6px;font-family:ui-monospace,Menlo,monospace;font-size:1.5rem;font-weight:700}
+  .kpdisp{background:#0b1119;border:1px solid var(--line);border-radius:8px;padding:12px;text-align:center;font-size:1.6rem;letter-spacing:.4em;margin-bottom:10px}
+  .kpgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .kp{background:#17212e;border:1px solid var(--line);color:var(--fg);border-radius:8px;height:52px;font-size:1.15rem;font-weight:700}
+  .kp:hover{border-color:var(--accent)}
+  .kp.ok{background:#17422c;border-color:#2a6b45;color:var(--ok)}
+  input[type=range]{accent-color:var(--accent);height:30px}
 
   /* ---------- 결과 ---------- */
   .result-stat{display:grid;gap:8px;margin:14px 0}
@@ -219,63 +229,23 @@ var ROLES = [
 ];
 
 var TASKS = {
-  ratio:{ n:1, title:"선발 안내문", wall:2,
-    lead:"벽에 붙은 안내문입니다. 경쟁률을 입력하십시오.",
-    doc:'<h4>선발 안내문</h4><p style="margin:0">본 선발에는 <b>36,204명</b>이 지원했습니다. 최종 선발 인원은 <b>2명</b>입니다.</p>',
-    perk:"회의록에 경쟁률이 이미 계산되어 있습니다. <b>18,102 대 1</b>.",
-    ask:"경쟁률 (N 대 1 의 N)", answer:["18102"], digit:"1",
-    hints:["지원자 수를 선발 인원으로 나눕니다.","36,204 ÷ 2 입니다.","18102 입니다."] },
-
-  pressure:{ n:2, title:"감압 챔버", wall:1,
-    lead:"챔버 기압을 낮춥니다. 산소 공급 장치가 작동하기까지 <b>3분</b>이 걸립니다. 그 3분을 버틸 수 있는 가장 낮은 기압을 입력하십시오.",
-    doc:'<h4>고도별 유효의식시간 (TUC)</h4><table><tr><th>고도</th><th>기압</th><th>유효의식시간</th></tr>'+
-        '<tr><td>5,500 m</td><td>50.5 kPa</td><td>20분</td></tr>'+
-        '<tr><td>7,000 m</td><td>41.1 kPa</td><td>5분</td></tr>'+
-        '<tr class="hl"><td>8,500 m</td><td>33.3 kPa</td><td>3분</td></tr>'+
-        '<tr><td>10,000 m</td><td>26.5 kPa</td><td>1분</td></tr>'+
-        '<tr><td>12,000 m</td><td>19.4 kPa</td><td>30초</td></tr></table>'+
-        '<p class="dim" style="margin:8px 0 0;font-size:.8rem">유효의식시간: 산소가 끊긴 뒤 의식을 유지하며 판단할 수 있는 시간.</p>',
-    perk:"표에서 3분 행이 <b>이미 표시</b>되어 있습니다. 8,500 m 구간입니다.",
-    ask:"기압 (kPa)", answer:["33.3"], digit:"3",
-    hints:["유효의식시간이 3분 이상인 구간이어야 합니다.","3분 이상이면서 가장 낮은 기압은 8,500 m 행입니다.","33.3 입니다."] },
-
-  dock:{ n:3, title:"접근 모니터", wall:0,
-    lead:"도킹 접근 중입니다. 거리 <b>200 m</b>, 접근 속도 <b>0.5 m/s</b>로 일정합니다. 마지막 제동은 거리 20 m에서 시작합니다. 제동 시작까지 남은 시간을 초로 입력하십시오.",
-    doc:'<h4>접근 계기</h4><table><tr><th>항목</th><th>값</th></tr>'+
-        '<tr><td>상대 거리</td><td>200 m</td></tr><tr><td>접근 속도</td><td>0.5 m/s (일정)</td></tr>'+
-        '<tr><td>제동 개시 거리</td><td>20 m</td></tr></table>',
-    perk:"계기판에 제동 카운트다운이 <b>자동 표시</b>됩니다. <b>T-360</b>.",
-    ask:"남은 시간 (초)", answer:["360"], digit:"6",
-    hints:["줄여야 하는 거리를 먼저 구합니다.","(200 − 20) ÷ 0.5 입니다.","360 입니다."] },
-
-  orbit:{ n:4, title:"궤도 차트", wall:2,
-    lead:"지구와 화성이 가까워지는 시점에만 출발할 수 있습니다. 직전 창이 <b>2024년 10월</b>이었습니다. <b>다음다음 창</b>은 몇 년입니까?",
-    doc:'<h4>궤도 자료</h4><table><tr><th>항목</th><th>값</th></tr>'+
-        '<tr><td>지구–화성 회합주기</td><td>약 780일</td></tr>'+
-        '<tr><td>직전 전이 창</td><td>2024년 10월</td></tr><tr><td>1개월</td><td>약 30.4일</td></tr></table>',
-    perk:"연구 노트에 회합주기가 <b>개월로 환산</b>되어 있습니다. <b>약 26개월</b>.",
-    ask:"연도 (네 자리)", answer:["2029"], digit:"9",
-    hints:["780일이 몇 개월인지 먼저 바꿉니다.","약 26개월입니다. 2024년 10월에 26개월씩 두 번 더합니다.","2026년 12월, 그다음이 2029년 2월. 답은 2029 입니다."] },
-
-  fuel:{ n:5, title:"추진제 배관", wall:3,
-    lead:"엔진은 액체산소와 메탄을 함께 씁니다. 메탄 <b>230 t</b>을 실었습니다. 필요한 액체산소는 몇 t입니까?",
-    doc:'<h4>엔진 사양서</h4><table><tr><th>항목</th><th>값</th></tr>'+
-        '<tr><td>추진제</td><td>액체산소 / 메탄</td></tr><tr><td>혼합비 (O/F, 질량)</td><td>3.6 : 1</td></tr>'+
-        '<tr><td>적재된 메탄</td><td>230 t</td></tr></table>'+
-        '<p class="dim" style="margin:8px 0 0;font-size:.8rem">메탄을 고른 이유: 화성 대기의 이산화탄소와 얼음에서 뽑은 수소로 현지에서 만들 수 있기 때문입니다.</p>',
-    perk:"배관 도면에 혼합비가 <b>크게 적혀</b> 있습니다. <b>O/F = 3.6</b>.",
-    ask:"액체산소 (t)", answer:["828"], digit:"8",
-    hints:["혼합비는 산소가 메탄의 몇 배인지입니다.","230 × 3.6 입니다.","828 입니다."] },
-
-  delay:{ n:6, title:"통신 콘솔", wall:3, special:"delay",
-    lead:"관제에 출입 코드 마지막 자리를 질의합니다. <b>응답까지 20초</b> 걸립니다. 기다리는 동안 밸브 네 개를 모두 잠그십시오.",
-    doc:'<h4>통신 규약</h4><p style="margin:0 0 6px">전파는 빛의 속도로 갑니다. 거리가 멀면 질문과 답 사이에 반드시 공백이 생깁니다.</p>'+
-        '<table><tr><th>구간</th><th>편도 지연</th></tr><tr><td>지구 ↔ 달</td><td>약 1.3초</td></tr>'+
-        '<tr class="hl"><td>이 시험 (모의)</td><td>20초</td></tr><tr><td>지구 ↔ 화성</td><td>5 ~ 20분</td></tr></table>'+
-        '<p class="dim" style="margin:8px 0 0;font-size:.8rem">기다리는 동안 손을 놓고 있으면 시간을 버리는 것입니다. 이 과제가 평가하는 것은 그 점입니다.</p>',
-    perk:"질의 양식을 외우고 있어 지연이 <b>20초에서 12초로</b> 줄어듭니다.",
-    ask:"관제가 보낸 값", answer:["7"], digit:"7",
-    hints:["먼저 질의를 보내십시오. 보내 두고 밸브를 잠그면 됩니다.","밸브를 다 잠그기 전에 답이 와도 됩니다.","관제가 보낸 값은 7 입니다."] }
+  ratio:   { n:1, title:"선발 안내문",   wall:2, pz:"ratio",    digit:"1",
+             hints:["지원자 수를 선발 인원으로 나눕니다.","36,204 ÷ 2 입니다.","18102 입니다."] },
+  pressure:{ n:2, title:"감압 챔버",     wall:1, pz:"pressure", digit:"3",
+             perk:"생리 모니터에 <b>안전 구간이 미리 표시</b>됩니다.",
+             hints:["슬라이더를 내리면 유효의식시간이 단계적으로 줄어듭니다.","3분으로 바뀌는 지점을 찾고, 거기서 더 내리지 마십시오.","33.3 kPa 부근입니다."] },
+  dock:    { n:3, title:"접근 모니터",   wall:0, pz:"dock",     digit:"6",
+             perk:"계기에 <b>제동 지점이 노란 눈금</b>으로 표시됩니다.",
+             hints:["아래 눈금이 20 m 지점입니다.","거리 표시가 20에 닿을 때 제동하십시오.","오차 2.5 m까지는 인정됩니다."] },
+  orbit:   { n:4, title:"궤도 차트",     wall:2, pz:"orbit",    digit:"9",
+             perk:"연구 노트에 회합주기가 <b>약 780일</b>로 적혀 있습니다.",
+             hints:["슬라이더를 밀면 두 행성이 공전합니다.","약 780일마다 한 번 정렬됩니다. 램프가 켜집니다.","두 번째 정렬은 2029년입니다."] },
+  fuel:    { n:5, title:"추진제 배관",   wall:3, pz:"fuel",     digit:"8",
+             perk:"도면에 혼합비가 <b>O/F = 3.6</b>으로 크게 적혀 있습니다.",
+             hints:["O/F 게이지가 3.60이 되어야 합니다.","메탄 230 t의 3.6배입니다.","828 t 입니다."] },
+  delay:   { n:6, title:"통신 콘솔",     wall:3, pz:"delay",    digit:"7",
+             perk:"질의 양식을 외우고 있어 지연이 <b>20초에서 12초로</b> 줄어듭니다.",
+             hints:["질의를 먼저 보내고, 기다리는 동안 밸브를 잠그십시오.","밸브 아래 적힌 순위대로 눌러야 합니다.","3번 → 1번 → 4번 → 2번 순서입니다."] }
 };
 
 var ORDER = ["ratio","pressure","dock","orbit","fuel","delay"];
@@ -471,10 +441,401 @@ function drawRoom(){
 }
 function turn(d){ S.wall = (S.wall + d + 4) % 4; drawRoom(); }
 
+/* ===================== 퍼즐 위젯 (전부 직접 조작) ===================== */
+function svgPoint(svg, e){
+  var r = svg.getBoundingClientRect(), vb = svg.viewBox.baseVal;
+  return { x: (e.clientX - r.left) / r.width * vb.width,
+           y: (e.clientY - r.top) / r.height * vb.height };
+}
+function drag(el, onMove){
+  el.style.touchAction = "none";
+  el.addEventListener("pointerdown", function(e){
+    e.preventDefault(); el.setPointerCapture(e.pointerId); onMove(e);
+    function mv(ev){ onMove(ev); }
+    function up(ev){ el.releasePointerCapture(e.pointerId);
+      el.removeEventListener("pointermove", mv); el.removeEventListener("pointerup", up);
+      el.removeEventListener("pointercancel", up); }
+    el.addEventListener("pointermove", mv);
+    el.addEventListener("pointerup", up);
+    el.addEventListener("pointercancel", up);
+  });
+}
+function okMsg(t){ var m=$("#tm"); m.className="msg ok"; m.textContent=t; }
+function badMsg(t){ var m=$("#tm"); m.className="msg bad"; m.textContent=t; }
+function dimMsg(t){ var m=$("#tm"); m.className="msg dim"; m.textContent=t; }
+
+/* ---------- 1. 좌석 다이얼 ---------- */
+function pzRatio(host, solve){
+  var d = [0,0,0,0,0];
+  host.innerHTML =
+    '<div class="doc"><h4>선발 안내문</h4>'+
+      '<div style="display:flex;gap:18px;justify-content:center;text-align:center;padding:6px 0">'+
+        '<div><div style="font-size:1.5rem;font-weight:700">36,204</div><small class="dim">지원</small></div>'+
+        '<div style="align-self:center;color:var(--dim)">÷</div>'+
+        '<div><div style="font-size:1.5rem;font-weight:700">2</div><small class="dim">선발</small></div>'+
+      '</div></div>'+
+    '<p class="dim" style="font-size:.86rem">좌석 번호판을 경쟁률에 맞추십시오.</p>'+
+    '<div id="dials" style="display:flex;gap:6px;justify-content:center;margin:14px 0"></div>'+
+    '<div class="msg" id="tm"></div>';
+  var box = host.querySelector("#dials");
+  for(var i=0;i<5;i++){
+    (function(i){
+      var c = document.createElement("div");
+      c.style.cssText = "display:flex;flex-direction:column;align-items:center;gap:4px";
+      var up = document.createElement("button"); up.type="button"; up.className="dialb"; up.textContent="▲";
+      var num = document.createElement("div"); num.className="dialn"; num.textContent="0";
+      var dn = document.createElement("button"); dn.type="button"; dn.className="dialb"; dn.textContent="▼";
+      up.setAttribute("aria-label",(i+1)+"번째 자리 올리기");
+      dn.setAttribute("aria-label",(i+1)+"번째 자리 내리기");
+      function bump(n){ d[i]=(d[i]+n+10)%10; num.textContent=d[i]; check(); }
+      up.addEventListener("click",function(){ bump(1); });
+      dn.addEventListener("click",function(){ bump(-1); });
+      c.appendChild(up); c.appendChild(num); c.appendChild(dn); box.appendChild(c);
+    })(i);
+  }
+  function check(){
+    var v = d.join("");
+    if(v === "18102"){ okMsg("딸깍 — 좌석이 배정됐습니다."); solve(); }
+    else dimMsg("현재 " + v);
+  }
+  dimMsg("현재 00000");
+}
+
+/* ---------- 2. 감압 슬라이더 ---------- */
+var TUC = [ {p:50.5,alt:5500,s:"20분 이상"}, {p:41.1,alt:7000,s:"5분"},
+            {p:33.3,alt:8500,s:"3분"},      {p:26.5,alt:10000,s:"1분"},
+            {p:19.4,alt:12000,s:"30초"} ];
+function tucOf(p){
+  for(var i=0;i<TUC.length;i++) if(p >= TUC[i].p) return TUC[i];
+  return {p:0,alt:14000,s:"즉시 실신"};
+}
+function pzPressure(host, solve){
+  var p = 101.3;
+  host.innerHTML =
+    '<p class="dim" style="font-size:.88rem">산소 공급 장치가 작동하기까지 <b>3분</b>이 걸립니다. 그 3분을 버틸 수 있는 <b>가장 낮은 기압</b>까지 내리고 고정하십시오.</p>'+
+    '<svg id="pg" viewBox="0 0 320 210" style="width:100%;max-width:340px;display:block;margin:6px auto">'+
+      '<circle cx="104" cy="104" r="72" fill="#07121d" stroke="#2a3f55" stroke-width="3"/>'+
+      '<circle cx="104" cy="104" r="60" fill="none" stroke="#1d2f42"/>'+
+      '<path id="arc" d="" fill="none" stroke="#fbbf24" stroke-width="5" stroke-linecap="round"/>'+
+      '<line id="ndl" x1="104" y1="104" x2="104" y2="46" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/>'+
+      '<circle cx="104" cy="104" r="6" fill="#fbbf24"/>'+
+      '<text id="pv" x="104" y="146" text-anchor="middle" font-size="19" font-weight="700" fill="#e8eff7">101.3</text>'+
+      '<text x="104" y="166" text-anchor="middle" font-size="12" fill="#8da0b6">kPa</text>'+
+      '<rect x="222" y="20" width="26" height="168" rx="13" fill="#0b1119" stroke="#2a3a4c"/>'+
+      '<rect id="fill" x="226" y="24" width="18" height="160" rx="9" fill="#2b4a6b"/>'+
+      '<circle id="knob" cx="235" cy="28" r="15" fill="#19283a" stroke="#6ca3ff" stroke-width="3" style="cursor:grab"/>'+
+      '<text x="276" y="26" text-anchor="middle" font-size="11" fill="#8da0b6">높음</text>'+
+      '<text x="276" y="190" text-anchor="middle" font-size="11" fill="#8da0b6">낮음</text>'+
+    '</svg>'+
+    '<div class="doc" style="margin-top:6px"><h4>생리 모니터</h4>'+
+      '<div style="display:flex;justify-content:space-between"><span class="dim">환산 고도</span><b id="alt">0 m</b></div>'+
+      '<div style="display:flex;justify-content:space-between;margin-top:4px"><span class="dim">유효의식시간</span><b id="tuc" style="color:var(--ok)">20분 이상</b></div>'+
+    '</div>'+
+    '<button class="btn" id="lock" style="width:100%">이 기압으로 고정</button>'+
+    '<div class="msg" id="tm"></div>';
+  var svg = host.querySelector("#pg"), knob = host.querySelector("#knob");
+  function setP(v){
+    p = Math.max(15, Math.min(101.3, v));
+    var t = tucOf(p), frac = (101.3 - p) / (101.3 - 15);
+    knob.setAttribute("cy", 28 + frac*152);
+    host.querySelector("#fill").setAttribute("y", 24 + frac*152);
+    host.querySelector("#fill").setAttribute("height", Math.max(2,160 - frac*152));
+    host.querySelector("#pv").textContent = p.toFixed(1);
+    host.querySelector("#alt").textContent = t.alt.toLocaleString() + " m";
+    var tu = host.querySelector("#tuc");
+    tu.textContent = t.s;
+    tu.style.color = (t.s==="20분 이상"||t.s==="5분") ? "var(--ok)" : (t.s==="3분" ? "var(--warn)" : "var(--bad)");
+    var a = -120 + frac*240, rad = (a-90)*Math.PI/180;
+    host.querySelector("#ndl").setAttribute("x2", 104 + 58*Math.cos(rad));
+    host.querySelector("#ndl").setAttribute("y2", 104 + 58*Math.sin(rad));
+  }
+  drag(knob, function(e){
+    var pt = svgPoint(svg, e);
+    setP(101.3 - (Math.max(28, Math.min(180, pt.y)) - 28)/152 * (101.3-15));
+  });
+  host.querySelector("#lock").addEventListener("click", function(){
+    var t = tucOf(p);
+    if(t.s !== "3분"){
+      if(["20분 이상","5분"].indexOf(t.s) >= 0) badMsg("아직 더 낮출 수 있습니다. 3분까지 견디는 구간을 찾으십시오.");
+      else badMsg("너무 낮습니다. 3분을 버티지 못합니다.");
+      return;
+    }
+    if(p > 34.5){ badMsg("3분 구간에 들어왔습니다. 조금 더 낮출 수 있습니다."); return; }
+    okMsg("고정했습니다. " + p.toFixed(1) + " kPa — 유효의식시간 3분.");
+    solve();
+  });
+  setP(101.3);
+}
+
+/* ---------- 3. 도킹 제동 ---------- */
+function pzDock(host, solve){
+  var dist = 200, raf = null, running = false;
+  host.innerHTML =
+    '<p class="dim" style="font-size:.88rem">접근 속도 <b>0.5 m/s</b>로 일정합니다. 거리 <b>20 m</b>에서 제동해야 합니다. 화면은 30배속입니다.</p>'+
+    '<svg viewBox="0 0 320 130" style="width:100%;display:block;margin:8px auto">'+
+      '<rect x="0" y="0" width="320" height="130" fill="#060e16"/>'+
+      '<rect x="268" y="34" width="46" height="62" rx="6" fill="#16222e" stroke="#44566c" stroke-width="2"/>'+
+      '<circle cx="291" cy="65" r="12" fill="#0a1824" stroke="#3b5f80" stroke-width="2"/>'+
+      '<g id="ship"><polygon points="0,65 26,52 26,78" fill="#2b4a6b" stroke="#6ca3ff" stroke-width="2"/></g>'+
+      '<line x1="10" y1="112" x2="310" y2="112" stroke="#1d2a38" stroke-width="2"/>'+
+      '<line id="mark" x1="0" y1="104" x2="0" y2="120" stroke="#fbbf24" stroke-width="2"/>'+
+      '<text id="dd" x="160" y="24" text-anchor="middle" font-size="22" font-weight="700" fill="#e8eff7">200 m</text>'+
+    '</svg>'+
+    '<div style="display:flex;gap:8px"><button class="btn-ghost" id="go" style="flex:1">접근 시작</button>'+
+    '<button class="btn" id="brk" style="flex:1" disabled>제 동</button></div>'+
+    '<div class="msg" id="tm"></div>';
+  var markX = 268 - (20/200)*242;
+  host.querySelector("#mark").setAttribute("x1", markX);
+  host.querySelector("#mark").setAttribute("x2", markX);
+  function draw(){
+    var x = 268 - (dist/200)*242 - 26;
+    host.querySelector("#ship").setAttribute("transform","translate("+Math.max(0,x)+",0)");
+    host.querySelector("#dd").textContent = dist.toFixed(0) + " m";
+  }
+  function stop(){ running=false; if(raf) cancelAnimationFrame(raf); raf=null;
+    host.querySelector("#brk").disabled = true; host.querySelector("#go").disabled = false; }
+  host.querySelector("#go").addEventListener("click", function(){
+    dist = 200; running = true; this.disabled = true;
+    host.querySelector("#brk").disabled = false;
+    dimMsg("접근 중입니다.");
+    var t0 = performance.now();
+    (function loop(t){
+      if(!running) return;
+      dist = 200 - 0.5*30*((t-t0)/1000);
+      if(dist <= 0){ dist = 0; draw(); stop(); badMsg("충돌했습니다. 다시 접근하십시오."); return; }
+      draw(); raf = requestAnimationFrame(loop);
+    })(t0);
+  });
+  host.querySelector("#brk").addEventListener("click", function(){
+    if(!running) return;
+    var d = dist; stop(); draw();
+    if(Math.abs(d-20) <= 2.5){ okMsg("제동 성공 — " + d.toFixed(1) + " m. 도킹 준비 완료."); solve(); }
+    else if(d > 20) badMsg("너무 일렀습니다 (" + d.toFixed(1) + " m). 20 m에서 제동하십시오.");
+    else badMsg("너무 늦었습니다 (" + d.toFixed(1) + " m).");
+  });
+  draw(); dimMsg("접근을 시작하십시오.");
+}
+
+/* ---------- 4. 궤도 정렬 ---------- */
+function pzOrbit(host, solve){
+  var Te = 365.256, Tm = 686.980, t = 0, found = 0;
+  host.innerHTML =
+    '<p class="dim" style="font-size:.88rem">두 행성이 <b>정렬될 때만</b> 출발할 수 있습니다. 시간을 밀어 창을 찾고, <b>두 번째 창</b>에서 출발을 확정하십시오.</p>'+
+    '<svg viewBox="0 0 320 220" style="width:100%;max-width:360px;display:block;margin:6px auto">'+
+      '<rect x="0" y="0" width="320" height="220" fill="#060b12"/>'+
+      '<ellipse cx="160" cy="110" rx="56" ry="56" fill="none" stroke="#3a6a9a" stroke-width="1.5"/>'+
+      '<ellipse cx="160" cy="110" rx="86" ry="86" fill="none" stroke="#9a5a3a" stroke-width="1.5"/>'+
+      '<circle cx="160" cy="110" r="11" fill="#d8b878"/>'+
+      '<line id="ln" x1="160" y1="110" x2="160" y2="110" stroke="#4ade80" stroke-width="2" opacity="0"/>'+
+      '<circle id="ea" r="7" fill="#6ca3ff"/><circle id="ma" r="6" fill="#e08a5a"/>'+
+      '<text id="dt" x="160" y="206" text-anchor="middle" font-size="15" font-weight="700" fill="#e8eff7">2024년 10월</text>'+
+      '<g id="lamp"><circle cx="286" cy="24" r="9" fill="#2a1a1a" stroke="#5a3a3a" stroke-width="2"/>'+
+      '<text id="lt" x="286" y="48" text-anchor="middle" font-size="10" fill="#8da0b6">대기</text></g>'+
+    '</svg>'+
+    '<input id="tslide" type="range" min="0" max="2000" value="0" step="1" style="width:100%" aria-label="시간 이동">'+
+    '<div style="display:flex;justify-content:space-between;font-size:.76rem" class="dim"><span>2024년 10월</span><span>+2000일</span></div>'+
+    '<button class="btn" id="goW" style="width:100%;margin-top:10px" disabled>이 창에서 출발</button>'+
+    '<div class="msg" id="tm"></div>';
+  function upd(){
+    var ae = 2*Math.PI*t/Te - Math.PI/2, am = 2*Math.PI*t/Tm - Math.PI/2;
+    host.querySelector("#ea").setAttribute("cx", 160+56*Math.cos(ae));
+    host.querySelector("#ea").setAttribute("cy", 110+56*Math.sin(ae));
+    host.querySelector("#ma").setAttribute("cx", 160+86*Math.cos(am));
+    host.querySelector("#ma").setAttribute("cy", 110+86*Math.sin(am));
+    var diff = Math.abs(((ae-am)*180/Math.PI % 360 + 540) % 360 - 180);
+    /* diff 는 두 행성의 각도차를 [-180,180) 로 접은 절댓값이다.
+       합(정렬)일 때 0 에 가깝다. 처음에 > 172 로 써서 충(반대편)을 잡고 있었다. */
+    var aligned = diff < 8;
+    var ln = host.querySelector("#ln");
+    ln.setAttribute("x1",160+56*Math.cos(ae)); ln.setAttribute("y1",110+56*Math.sin(ae));
+    ln.setAttribute("x2",160+86*Math.cos(am)); ln.setAttribute("y2",110+86*Math.sin(am));
+    ln.setAttribute("opacity", aligned ? "0.9" : "0");
+    host.querySelector("#lamp").querySelector("circle")
+      .setAttribute("fill", aligned ? "#1d4d33" : "#2a1a1a");
+    host.querySelector("#lt").textContent = aligned ? "전이 창" : "대기";
+    host.querySelector("#goW").disabled = !aligned;
+    var d = new Date(2024,9,1); d.setDate(d.getDate()+Math.round(t));
+    host.querySelector("#dt").textContent = d.getFullYear()+"년 "+(d.getMonth()+1)+"월";
+    return {aligned:aligned, year:d.getFullYear()};
+  }
+  host.querySelector("#tslide").addEventListener("input", function(){ t = +this.value; upd(); });
+  host.querySelector("#goW").addEventListener("click", function(){
+    var s = upd();
+    if(!s.aligned) return;
+    if(s.year <= 2025){ badMsg("지금은 직전 창입니다. 더 뒤로 미십시오."); return; }
+    found++;
+    if(found === 1 && s.year < 2028){ badMsg("첫 번째 창입니다 ("+s.year+"년). 다음다음 창을 찾으십시오."); return; }
+    if(s.year >= 2028 && s.year <= 2029){ okMsg("두 번째 창 — "+s.year+"년. 출발 승인."); solve(); }
+    else badMsg("두 번째 창이 아닙니다 ("+s.year+"년).");
+  });
+  upd(); dimMsg("시간을 밀어 보십시오.");
+}
+
+/* ---------- 5. 추진제 비율 ---------- */
+function pzFuel(host, solve){
+  var ox = 0, hold = null;
+  host.innerHTML =
+    '<p class="dim" style="font-size:.88rem">엔진 혼합비는 <b>산소 : 메탄 = 3.6 : 1</b> (질량)입니다. 메탄은 230 t이 실려 있습니다. 밸브를 눌러 산소를 채우십시오.</p>'+
+    '<svg viewBox="0 0 320 190" style="width:100%;max-width:340px;display:block;margin:6px auto">'+
+      '<rect x="36" y="20" width="70" height="140" rx="12" fill="#0b1119" stroke="#2a3a4c" stroke-width="2"/>'+
+      '<rect x="40" y="26" width="62" height="128" rx="9" fill="#9a5a3a" opacity=".55"/>'+
+      '<text x="71" y="178" text-anchor="middle" font-size="12" fill="#8da0b6">메탄 230 t</text>'+
+      '<rect x="214" y="20" width="70" height="140" rx="12" fill="#0b1119" stroke="#2a3a4c" stroke-width="2"/>'+
+      '<rect id="oxf" x="218" y="154" width="62" height="0" rx="9" fill="#3a6a9a" opacity=".75"/>'+
+      '<text id="oxt" x="249" y="178" text-anchor="middle" font-size="12" fill="#8da0b6">산소 0 t</text>'+
+      '<line x1="106" y1="90" x2="214" y2="90" stroke="#24313f" stroke-width="6" stroke-linecap="round"/>'+
+      '<circle cx="160" cy="90" r="20" fill="#0f1a26" stroke="#44566c" stroke-width="2"/>'+
+      '<text id="rt" x="160" y="95" text-anchor="middle" font-size="14" font-weight="700" fill="#fbbf24">0.0</text>'+
+      '<text x="160" y="126" text-anchor="middle" font-size="10" fill="#8da0b6">O/F</text>'+
+    '</svg>'+
+    '<div style="display:flex;gap:8px;margin-top:4px">'+
+      '<button class="btn" id="vmain" style="flex:2">밸브 열기 (누르고 있기)</button>'+
+      '<button class="btn-ghost" id="vm">−1</button><button class="btn-ghost" id="vp">+1</button></div>'+
+    '<button class="btn-ghost" id="lockF" style="width:100%;margin-top:8px">적재 확정</button>'+
+    '<div class="msg" id="tm"></div>';
+  function upd(){
+    ox = Math.max(0, Math.min(1200, ox));
+    var f = Math.min(1, ox/1000);
+    host.querySelector("#oxf").setAttribute("height", 128*f);
+    host.querySelector("#oxf").setAttribute("y", 154 - 128*f);
+    host.querySelector("#oxt").textContent = "산소 " + Math.round(ox) + " t";
+    var r = ox/230;
+    var rt = host.querySelector("#rt");
+    rt.textContent = r.toFixed(2);
+    rt.setAttribute("fill", Math.abs(r-3.6) < 0.02 ? "#4ade80" : "#fbbf24");
+  }
+  var vb = host.querySelector("#vmain");
+  function start(){ hold = setInterval(function(){ ox += 4; upd(); }, 40); }
+  function end(){ if(hold) clearInterval(hold); hold = null; }
+  vb.addEventListener("pointerdown", function(e){ e.preventDefault(); start(); });
+  ["pointerup","pointerleave","pointercancel"].forEach(function(ev){ vb.addEventListener(ev, end); });
+  host.querySelector("#vp").addEventListener("click", function(){ ox += 1; upd(); });
+  host.querySelector("#vm").addEventListener("click", function(){ ox -= 1; upd(); });
+  host.querySelector("#lockF").addEventListener("click", function(){
+    end();
+    var r = ox/230;
+    if(Math.abs(r-3.6) < 0.015){ okMsg("적재 완료 — 산소 " + Math.round(ox) + " t, O/F 3.60."); solve(); }
+    else if(r < 3.6) badMsg("산소가 부족합니다. 현재 O/F " + r.toFixed(2));
+    else badMsg("산소가 많습니다. 현재 O/F " + r.toFixed(2));
+  });
+  upd(); dimMsg("밸브를 누르고 있으면 차오릅니다. ±1로 미세 조정하십시오.");
+}
+
+/* ---------- 6. 통신 지연 + 순서대로 잠그기 ---------- */
+function pzDelay(host, solve, good){
+  var wait = good ? 12 : 20;
+  var order = [3,1,4,2];           /* 배관도에 적힌 잠금 순서 */
+  var step = 0, sent = false, arrived = false, iv = null, shut = {};
+  host.innerHTML =
+    '<p class="dim" style="font-size:.88rem">관제에 질의를 보내면 <b>'+wait+'초</b> 뒤에 답이 옵니다. 기다리는 동안 배관도에 적힌 <b>순서대로</b> 밸브를 잠그십시오.</p>'+
+    '<svg viewBox="0 0 320 150" style="width:100%;max-width:340px;display:block;margin:6px auto">'+
+      '<rect x="0" y="0" width="320" height="150" fill="#070d14"/>'+
+      '<path d="M20 40 H300 M20 110 H300 M160 40 V110" stroke="#24313f" stroke-width="7" stroke-linecap="round" fill="none"/>'+
+      '<g id="vg"></g></svg>'+
+    '<button class="btn-ghost" id="dsend" style="width:100%">관제에 질의 보내기</button>'+
+    '<div class="delaybar"><i id="dbar"></i></div>'+
+    '<div class="doc" style="margin-top:4px"><h4>수신함</h4><p id="inbox" class="mono" style="margin:0;color:var(--dim)">(비어 있음)</p></div>'+
+    '<button class="btn" id="lockD" style="width:100%">수신값으로 확정</button>'+
+    '<div class="msg" id="tm"></div>';
+  var pos = [ {x:70,y:40},{x:250,y:40},{x:70,y:110},{x:250,y:110} ];
+  var vg = host.querySelector("#vg");
+  pos.forEach(function(q,i){
+    var n = i+1;
+    var g = document.createElementNS("http://www.w3.org/2000/svg","g");
+    g.setAttribute("tabindex","0"); g.setAttribute("role","button");
+    g.setAttribute("aria-label","밸브 "+n);
+    g.style.cursor = "pointer";
+    g.innerHTML =
+      '<circle cx="'+q.x+'" cy="'+q.y+'" r="19" fill="#13202c" stroke="#4e6b8a" stroke-width="3"/>'+
+      '<line x1="'+(q.x-11)+'" y1="'+q.y+'" x2="'+(q.x+11)+'" y2="'+q.y+'" stroke="#8fb4d8" stroke-width="4" stroke-linecap="round"/>'+
+      '<text x="'+q.x+'" y="'+(q.y+38)+'" text-anchor="middle" font-size="12" fill="#8da0b6">'+n+'번 · '+(order.indexOf(n)+1)+'순위</text>';
+    function hit(){
+      if(shut[n] || arrived && step>=4) return;
+      if(order[step] === n){
+        shut[n] = true; step++;
+        g.querySelector("circle").setAttribute("fill","#17422c");
+        g.querySelector("circle").setAttribute("stroke","#4ade80");
+        g.querySelector("line").setAttribute("transform","rotate(90 "+q.x+" "+q.y+")");
+        g.querySelector("line").setAttribute("stroke","#4ade80");
+        if(step===4) dimMsg("밸브 네 개를 순서대로 잠갔습니다.");
+        else dimMsg("잠김 "+step+"/4");
+      } else {
+        step = 0; shut = {};
+        Array.prototype.forEach.call(vg.children, function(c){
+          c.querySelector("circle").setAttribute("fill","#13202c");
+          c.querySelector("circle").setAttribute("stroke","#4e6b8a");
+          c.querySelector("line").removeAttribute("transform");
+          c.querySelector("line").setAttribute("stroke","#8fb4d8");
+        });
+        badMsg("순서가 틀렸습니다. 처음부터 다시 잠그십시오.");
+      }
+    }
+    g.addEventListener("click", hit);
+    g.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); hit(); } });
+    vg.appendChild(g);
+  });
+  host.querySelector("#dsend").addEventListener("click", function(){
+    if(sent) return;
+    sent = true; this.disabled = true; this.textContent = "질의를 보냈습니다";
+    var t0 = Date.now();
+    iv = setInterval(function(){
+      var p = Math.min(1,(Date.now()-t0)/(wait*1000));
+      var b = host.querySelector("#dbar"); if(b) b.style.width = (p*100)+"%";
+      if(p>=1){
+        clearInterval(iv); arrived = true;
+        var ib = host.querySelector("#inbox");
+        if(ib){ ib.style.color="var(--ok)"; ib.textContent="관제 → 마지막 자리는 7 입니다."; }
+      }
+    },120);
+  });
+  host.querySelector("#lockD").addEventListener("click", function(){
+    if(!sent){ badMsg("아직 질의를 보내지 않았습니다."); return; }
+    if(!arrived){ badMsg("응답이 아직 오지 않았습니다. 그동안 밸브를 잠그십시오."); return; }
+    if(step < 4){ badMsg("밸브를 순서대로 모두 잠가야 합니다. 현재 "+step+"/4"); return; }
+    okMsg("확정 — 수신값 7, 밸브 전부 잠김."); solve();
+  });
+  dimMsg("질의를 먼저 보내고, 기다리는 동안 밸브를 잠그십시오.");
+}
+
+/* ---------- 7. 키패드 ---------- */
+function pzKeypad(host, onOpen){
+  var buf = "";
+  host.innerHTML =
+    '<p class="dim" style="font-size:.88rem">과제에서 받은 숫자를 <b>번호 순서대로</b> 누르십시오.</p>'+
+    '<div class="doc"><h4>받은 숫자</h4><p class="mono slots" id="slots">'+slotText()+'</p></div>'+
+    '<div id="kpd" style="max-width:240px;margin:10px auto">'+
+      '<div class="kpdisp mono" id="disp">______</div>'+
+      '<div class="kpgrid" id="kg"></div></div>'+
+    '<div class="msg" id="tm"></div>';
+  var kg = host.querySelector("#kg");
+  ["1","2","3","4","5","6","7","8","9","←","0","✓"].forEach(function(k){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "kp" + (k==="✓" ? " ok" : "");
+    b.textContent = k; b.setAttribute("aria-label", k==="←"?"지우기":(k==="✓"?"확인":k));
+    b.addEventListener("click", function(){
+      if(k === "←"){ buf = buf.slice(0,-1); }
+      else if(k === "✓"){
+        if(buf === FINAL_CODE){ okMsg("해치가 열립니다."); setTimeout(onOpen, 450); }
+        else badMsg("문이 열리지 않습니다.");
+        buf = "";
+      }
+      else if(buf.length < 6){ buf += k; }
+      host.querySelector("#disp").textContent = (buf + "______").slice(0,6);
+    });
+    kg.appendChild(b);
+  });
+}
+
 /* ===================== 확대 패널 ===================== */
+function slotText(){
+  return ORDER.map(function(k){ return S.solved[k] ? TASKS[k].digit : "·"; }).join("");
+}
+var PZ = { ratio:pzRatio, pressure:pzPressure, dock:pzDock, orbit:pzOrbit, fuel:pzFuel };
+
 function openTask(id){
   S.open = id;
   var body = $("#sheet-body");
+
   if(id === "__final"){
     var all = ORDER.every(function(k){ return S.solved[k]; });
     $("#sheet-title").textContent = "출입 코드";
@@ -482,19 +843,7 @@ function openTask(id){
       body.innerHTML = '<p>키패드가 반응하지 않습니다. 과제 여섯 개를 모두 마쳐야 합니다.</p>'+
         '<div class="doc"><h4>받은 숫자</h4><p class="mono slots">'+slotText()+'</p></div>';
     } else {
-      body.innerHTML = '<p>과제에서 받은 숫자를 <b>번호 순서대로</b> 이어 붙여 입력하십시오.</p>'+
-        '<div class="doc"><h4>받은 숫자</h4><p class="mono slots">'+slotText()+'</p></div>'+
-        '<div class="answer"><input id="fin" type="text" inputmode="numeric" autocomplete="off" placeholder="여섯 자리" aria-label="출입 코드"><button class="btn" id="finb">문 열기</button></div>'+
-        '<div class="msg" id="finm"></div>';
-      setTimeout(function(){
-        var go = function(){
-          if(norm($("#fin").value) === FINAL_CODE){ closeModal(); finish(); }
-          else { var m=$("#finm"); m.className="msg bad"; m.textContent="문이 열리지 않습니다."; }
-        };
-        $("#finb").addEventListener("click", go);
-        $("#fin").addEventListener("keydown", function(e){ if(e.key==="Enter"){ e.preventDefault(); go(); } });
-        $("#fin").focus();
-      },0);
+      pzKeypad(body, function(){ closeModal(); finish(); });
     }
     $("#modal").classList.add("on");
     return;
@@ -503,103 +852,63 @@ function openTask(id){
   var t = TASKS[id];
   $("#sheet-title").textContent = t.n + ". " + t.title;
   var good = S.role.good.indexOf(id) >= 0, weak = S.role.weak.indexOf(id) >= 0;
-  var h = "<p>" + t.lead + "</p>" + '<div class="doc">' + t.doc + "</div>";
-  if(good && t.perk) h += '<div class="perk"><b>['+S.role.name+']</b> '+t.perk+'</div>';
-  if(weak) h += '<p class="dim" style="font-size:.85rem">전공 밖의 과제입니다. 자료를 직접 읽어야 합니다.</p>';
-  if(t.special === "delay") h += delayHtml();
+
   if(S.solved[id]){
-    h += '<div class="msg ok">해결했습니다. 받은 숫자 → '+t.digit+'</div>';
-  } else {
-    h += '<div class="answer"><input id="ta" type="text" autocomplete="off" placeholder="'+esc(t.ask)+'" aria-label="'+esc(t.ask)+'"><button class="btn" id="tb">확인</button></div>'+
-         '<div class="msg" id="tm"></div><div id="th"></div>'+
-         '<button class="btn-ghost" id="thb" style="margin-top:10px">힌트 보기</button>';
+    body.innerHTML = '<div class="msg ok">해결했습니다. 받은 숫자 → '+t.digit+'</div>';
+    $("#modal").classList.add("on");
+    return;
   }
-  $("#sheet-body").innerHTML = h;
-  $("#modal").classList.add("on");
 
-  if(t.special === "delay") wireDelay(good);
-  if(!S.solved[id]) setTimeout(function(){ wireAnswer(id, t); },0);
-}
+  var head = document.createElement("div");
+  if(good && t.perk) head.innerHTML = '<div class="perk"><b>['+S.role.name+']</b> '+t.perk+'</div>';
+  if(weak) head.innerHTML += '<p class="dim" style="font-size:.85rem">전공 밖의 과제입니다. 보조 표시가 없습니다.</p>';
 
-function slotText(){
-  return ORDER.map(function(k){ return S.solved[k] ? TASKS[k].digit : "·"; }).join("");
-}
+  var host = document.createElement("div");
+  body.innerHTML = ""; body.appendChild(head); body.appendChild(host);
 
-function wireAnswer(id, t){
-  var inp = $("#ta"), msg = $("#tm"), hb = $("#thb"), hbox = $("#th");
+  function solve(){
+    S.solved[id] = true;
+    updateProgress(); drawRoom();
+    var d = document.createElement("div");
+    d.className = "msg ok"; d.style.marginTop = "6px";
+    d.textContent = "출입 코드 한 자리를 받았습니다 → " + t.digit;
+    body.appendChild(d);
+  }
+
+  if(t.pz === "delay") pzDelay(host, solve, good);
+  else PZ[t.pz](host, solve);
+
+  /* 전공 보너스 표시 */
+  if(good){
+    if(id === "pressure"){
+      var sv = host.querySelector("#pg");
+      if(sv) sv.insertAdjacentHTML("beforeend",
+        '<rect x="252" y="'+(28+152*(101.3-41.1)/(101.3-15))+'" width="8" height="'+
+        (152*(41.1-33.3)/(101.3-15))+'" rx="4" fill="#4ade80" opacity=".8"/>');
+    }
+    if(id === "dock"){
+      var mk = host.querySelector("#mark");
+      if(mk){ mk.setAttribute("stroke","#4ade80"); mk.setAttribute("stroke-width","4"); }
+    }
+  }
+
+  /* 힌트 */
+  var hb = document.createElement("button");
+  hb.type="button"; hb.className="btn-ghost"; hb.style.marginTop="10px"; hb.textContent="힌트 보기";
+  var hbox = document.createElement("div");
   hintUsed[id] = hintUsed[id] || 0;
-  function go(){
-    var v = norm(inp.value);
-    if(!v){ msg.className="msg bad"; msg.textContent="값을 입력하십시오."; return; }
-    if(t.answer.some(function(a){ return norm(a) === v; })){
-      S.solved[id] = true;
-      msg.className = "msg ok";
-      msg.textContent = "확인. 출입 코드 한 자리를 받았습니다 → " + t.digit;
-      inp.disabled = true; $("#tb").disabled = true; hb.disabled = true;
-      updateProgress(); drawRoom();
-    } else { msg.className="msg bad"; msg.textContent="맞지 않습니다. 자료를 다시 보십시오."; }
-  }
-  $("#tb").addEventListener("click", go);
-  inp.addEventListener("keydown", function(e){ if(e.key==="Enter"){ e.preventDefault(); go(); } });
   hb.addEventListener("click", function(){
     var u = hintUsed[id];
     if(u >= t.hints.length) return;
     var d = document.createElement("div");
-    d.className = "hintline"; d.textContent = "힌트 "+(u+1)+". "+t.hints[u];
+    d.className="hintline"; d.textContent = "힌트 "+(u+1)+". "+t.hints[u];
     hbox.appendChild(d);
     hintUsed[id] = u+1; S.hints++; $("#chip-hint").textContent = S.hints;
-    if(hintUsed[id] >= t.hints.length){ hb.disabled = true; hb.textContent = "힌트를 모두 썼습니다"; }
+    if(hintUsed[id] >= t.hints.length){ hb.disabled=true; hb.textContent="힌트를 모두 썼습니다"; }
   });
-  inp.focus();
-}
+  body.appendChild(hb); body.appendChild(hbox);
 
-function delayHtml(){
-  return '<div id="dl">'+
-    '<button class="btn-ghost" id="dsend">관제에 질의 보내기</button>'+
-    '<div class="delaybar"><i id="dbar"></i></div>'+
-    '<div class="valves" id="dvalves"></div>'+
-    '<div class="msg dim" id="dmsg">아직 질의를 보내지 않았습니다.</div></div>';
-}
-function wireDelay(good){
-  var wait = good ? 12 : 20;
-  var names = ["밸브 A","밸브 B","밸브 C","밸브 D"];
-  var vb = $("#dvalves"), msg = $("#dmsg"), bar = $("#dbar");
-  names.forEach(function(n,i){
-    var b = document.createElement("button");
-    b.type="button"; b.className="valve"+(delayState["v"+i]?" shut":"");
-    b.textContent = delayState["v"+i] ? n+" 잠김" : n;
-    b.addEventListener("click", function(){
-      if(delayState["v"+i]) return;
-      delayState["v"+i] = true; delayState.shut++;
-      b.classList.add("shut"); b.textContent = n+" 잠김";
-      if(delayState.shut === 4 && !delayState.arrived) msg.textContent = "밸브 네 개를 모두 잠갔습니다. 응답을 기다립니다.";
-    });
-    vb.appendChild(b);
-  });
-  if(delayState.arrived){
-    bar.style.width = "100%"; msg.className="msg ok";
-    msg.textContent = "관제 응답 — 마지막 자리는 7 입니다.";
-    $("#dsend").disabled = true; $("#dsend").textContent = "응답 수신 완료";
-    return;
-  }
-  if(delayState.sent){ $("#dsend").disabled = true; $("#dsend").textContent = "질의를 보냈습니다"; }
-  $("#dsend").addEventListener("click", function(){
-    if(delayState.sent) return;
-    delayState.sent = true;
-    this.disabled = true; this.textContent = "질의를 보냈습니다";
-    var t0 = Date.now();
-    msg.className = "msg dim";
-    msg.textContent = "응답을 기다리는 중입니다. 손을 놓지 마십시오.";
-    delayState.iv = setInterval(function(){
-      var p = Math.min(1,(Date.now()-t0)/(wait*1000));
-      var b2 = document.getElementById("dbar"); if(b2) b2.style.width = (p*100)+"%";
-      if(p >= 1){
-        clearInterval(delayState.iv); delayState.arrived = true;
-        var m2 = document.getElementById("dmsg");
-        if(m2){ m2.className="msg ok"; m2.textContent="관제 응답 — 마지막 자리는 7 입니다."; }
-      }
-    },200);
-  });
+  $("#modal").classList.add("on");
 }
 
 function closeModal(){ $("#modal").classList.remove("on"); S.open = null; }

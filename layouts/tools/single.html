@@ -12,6 +12,22 @@
     </div>
   </header>
 
+  {{/* 기준값 유효기간.
+
+       Hugo 는 빌드 시점 날짜만 안다. 서버에서 판정하면 사이트를 다시 빌드하지
+       않는 한 경고가 영원히 안 뜬다. 그래서 날짜만 내보내고 판정은 방문자
+       브라우저가 한다. 재빌드 없이도 1월 1일에 경고가 뜬다.
+
+       2026-11-06 에 계산기를 전부 내린 이유가 "1월 1일에 틀린 금액을 내놓게
+       되는데 점검을 못 한다"였다. 그 이유를 사람이 아니라 데이터로 막는다. */}}
+  {{ $vu := or $w.valid_until $fin.valid_until }}
+  {{ with $vu }}
+  <div class="tool-validity" data-valid-until="{{ . }}" hidden>
+    <strong class="tool-validity-title"></strong>
+    <span class="tool-validity-body"></span>
+  </div>
+  {{ end }}
+
   {{ with .Params.key_points }}
   <div class="post-summary-box">
     <span class="post-summary-label">이 계산기로 확인하는 것</span>
@@ -58,12 +74,18 @@
       long_term_care: {{ (index $w.long_term_care (printf "%v" $year)) | jsonify | safeJS }},
       unemployment_benefit: {{ (index $w.unemployment_benefit (printf "%v" $year)) | jsonify | safeJS }},
       finance: {{ $fin | jsonify | safeJS }}
+      , valid_until: {{ $vu | jsonify | safeJS }}
     };
   </script>
   {{/* 계산기별 스크립트는 front matter의 calculator 값으로 고른다 */}}
   {{ with resources.Get (printf "js/%s-calc.js" .Params.calculator) }}
   {{ $js := . | minify | fingerprint }}
   <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+  {{ end }}
+
+  {{ with resources.Get "js/validity.js" }}
+  {{ $v := . | minify | fingerprint }}
+  <script src="{{ $v.RelPermalink }}" integrity="{{ $v.Data.Integrity }}" defer></script>
   {{ end }}
 
   {{ partial "feedback.html" . }}

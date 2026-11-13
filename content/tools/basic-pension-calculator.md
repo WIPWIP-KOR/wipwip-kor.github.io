@@ -2,7 +2,7 @@
 title: "기초연금 계산기 — 부모님이 실제로 얼마 받는지 감액까지 계산"
 date: 2026-10-21
 lastmod: 2026-10-21
-draft: true
+draft: false
 calculator: pension
 categories: ["정책"]
 tags: ["소득인정액", "부모님 복지", "제도 비교"]
@@ -12,10 +12,6 @@ key_points:
   - "단독·부부 선정기준액과 비교한 대상 여부"
   - "부부감액·소득역전방지 감액을 반영한 실제 예상 지급액"
   - "국민연금 연계감액 대상인지 여부 (A급여 확인이 필요한 경우 안내)"
-related:
-  - "posts/2026-07-28-basic-pension-2026-changes.md"
-  - "posts/2026-07-14-basic-livelihood-security-benefits.md"
-  - "posts/2026-07-31-farmland-pension-vs-reverse-mortgage.md"
 ---
 
 ## 자녀 소득은 넣는 칸이 아예 없다

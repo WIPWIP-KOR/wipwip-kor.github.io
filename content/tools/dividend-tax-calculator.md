@@ -2,7 +2,7 @@
 title: "배당소득 분리과세 계산기 — 종합과세와 어느 쪽이 유리한가"
 date: 2026-10-21
 lastmod: 2026-10-21
-draft: true
+draft: false
 calculator: dividend
 categories: ["세금"]
 tags: ["투자·공모주", "절세·세금신고", "제도 비교"]
@@ -12,10 +12,6 @@ key_points:
   - "한계세율이 바뀌면 유불리가 어떻게 뒤집히는지"
   - "갈림길인 한계세율 20%·과세표준 5,000만 원"
   - "분리과세를 고르면 손해인 구간"
-related:
-  - "posts/2026-07-16-dividend-income-separate-taxation.md"
-  - "posts/2026-08-05-productive-finance-isa-vs-general-isa.md"
-  - "posts/2026-07-18-ipo-subscription-equal-vs-proportional-allocation.md"
 ---
 
 ## "소득이 높을수록 유리하다"로는 판단이 안 된다
@@ -66,7 +62,7 @@ related:
 
 배당에 붙는 세금을 줄이는 다른 경로는 ISA 계좌다. 일반 ISA는 200만~400만 원까지 비과세이고 초과분도 9.9% 분리과세로 끝난다. 2027년 시행 예정인 생산적금융 ISA는 국내 투자 배당을 **전액 비과세**한다.
 
-배당 500만 원 기준으로 보면 일반 계좌 77만 원, 일반 ISA 일반형 29만 7천 원, 생산적금융 ISA 0원이다. **과세 방식을 고르는 것보다 어느 계좌에서 받느냐가 더 크게 작용한다.** 자세한 비교는 [생산적금융 ISA vs 일반 ISA](/posts/2026-08-05-productive-finance-isa-vs-general-isa/)에 정리해 뒀다.
+배당 500만 원 기준으로 보면 일반 계좌 77만 원, 일반 ISA 일반형 29만 7천 원, 생산적금융 ISA 0원이다. **과세 방식을 고르는 것보다 어느 계좌에서 받느냐가 더 크게 작용한다.** 자세한 비교는 생산적금융 ISA vs 일반 ISA에 정리해 뒀다.
 
 ## 이 계산기가 못 하는 것
 

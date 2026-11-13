@@ -1018,3 +1018,21 @@ h1, h2, h3 {
   padding: 0 0.1em;
   border-radius: 3px;
 }
+
+
+/* ── 계산기 기준값 유효기간 안내 (assets/js/validity.js) ───────────────── */
+.tool-validity{
+  display:block;margin:0 0 1.1rem;padding:.75rem .9rem;border-radius:8px;
+  border:1px solid var(--border,#d9dee5);background:var(--surface,#f6f8fa);
+  font-size:.92rem;line-height:1.55;
+}
+.tool-validity-title{display:block;margin-bottom:.2rem;font-weight:700}
+.tool-validity[data-state="ok"] .tool-validity-title{display:none}
+.tool-validity[data-state="ok"]{color:#5a6673;background:transparent;border-style:dashed}
+.tool-validity[data-state="soon"]{border-color:#e0a800;background:#fff8e6;color:#6b5200}
+.tool-validity[data-state="expired"]{border-color:#d33;background:#fdeded;color:#8a1f1f}
+.calc-result[data-stale="1"]::before{
+  content:"기준값 유효기간이 지났습니다. 최신 고시를 반영하지 못했을 수 있습니다.";
+  display:block;margin-bottom:.7rem;padding:.6rem .8rem;border-radius:6px;
+  background:#fdeded;border:1px solid #d33;color:#8a1f1f;font-size:.9rem;font-weight:600;
+}

@@ -1,0 +1,21 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  {{ range .Data.Pages }}
+  {{- if not (or (eq .Kind "taxonomy") (eq .Kind "term")) }}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    {{ if not .Lastmod.IsZero }}<lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>{{ end }}
+  </url>
+  {{- end }}
+  {{ end }}
+  {{/* static/ 아래 정적 파일은 Hugo 가 사이트맵에 넣지 않는다.
+       게임이 그래서 빠져 있었다. 직접 적는다.
+       새 게임을 추가하면 data/home.yaml 의 games 에 넣고 여기도 같이 본다. */}}
+  {{ range .Site.Data.home.games }}
+  <url>
+    <loc>{{ .url | absURL }}</loc>
+    <lastmod>{{ safeHTML (now.Format "2006-01-02T15:04:05-07:00") }}</lastmod>
+  </url>
+  {{ end }}
+</urlset>

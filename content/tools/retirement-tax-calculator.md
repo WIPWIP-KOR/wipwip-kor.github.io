@@ -2,7 +2,7 @@
 title: "퇴직금 계산기 — 퇴직소득세가 나오는 과정을 단계별로"
 date: 2026-10-27
 lastmod: 2026-10-27
-draft: true
+draft: false
 calculator: retirement
 categories: ["세금"]
 tags: ["절세·세금신고", "취업·구직"]
@@ -14,7 +14,6 @@ key_points:
   - "IRP 연금 수령 시 감면 30%(1~10년차)·40%(11~20년차) 비교"
 related:
   - "tools/unemployment-benefit-calculator.md"
-  - "posts/2026-08-02-employment-support-program-type1-vs-type2.md"
 ---
 
 ## 퇴직소득세는 "얼마냐"보다 "몇 년 다녔냐"로 정해진다

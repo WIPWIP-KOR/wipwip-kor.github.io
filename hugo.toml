@@ -45,12 +45,12 @@ hasCJKLanguage = true
     name = "기록"
     url = "/posts/"
     weight = 2
-  # 2026-11-06 — 계산기 9개가 전부 비공개이므로 메뉴에서 뺐다. 빈 섹션으로 보내는
-  # 메뉴 항목을 남겨 둘 이유가 없다. 다시 발행하면 이 블록을 되살린다.
-  # [[menu.main]]
-  #   name = "계산기"
-  #   url = "/tools/"
-  #   weight = 3
+  # 2026-11-06 비공개로 내렸다가 2026-11-13 되살렸다.
+  # "주거급여 계산기" 질의로 노출이 잡혀서, 색인에 남아 있는 동안 404를 되돌렸다.
+  [[menu.main]]
+    name = "계산기"
+    url = "/tools/"
+    weight = 3
   [[menu.main]]
     name = "카테고리"
     url = "/categories/"

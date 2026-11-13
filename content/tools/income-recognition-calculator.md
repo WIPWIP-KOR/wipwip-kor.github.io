@@ -2,7 +2,7 @@
 title: "소득인정액 계산기 — 기초생활보장 네 급여 한 번에 판정"
 date: 2026-10-21
 lastmod: 2026-10-21
-draft: true
+draft: false
 calculator: income
 categories: ["정책"]
 tags: ["소득인정액", "부모님 복지", "제도 비교"]
@@ -12,10 +12,6 @@ key_points:
   - "생계·의료·주거·교육 네 급여의 기준선과 동시 비교"
   - "생계급여 예상 지급액 (기준선 − 소득인정액)"
   - "자녀 소득이 영향을 주는 급여가 어느 것인지"
-related:
-  - "posts/2026-07-14-basic-livelihood-security-benefits.md"
-  - "posts/2026-07-30-emergency-welfare-vs-basic-livelihood-benefit.md"
-  - "posts/2026-07-28-basic-pension-2026-changes.md"
 ---
 
 ## 왜 월급으로는 판정이 안 되는가

@@ -2,7 +2,7 @@
 title: "장기요양 본인부담금 계산기 — 요양원·방문요양 월 얼마 내나"
 date: 2026-10-21
 lastmod: 2026-10-21
-draft: true
+draft: false
 calculator: ltc
 categories: ["정책"]
 tags: ["부모님 복지", "소득인정액"]
@@ -12,10 +12,6 @@ key_points:
   - "경감 구간(일반·40%·60%·의료급여)별 금액 비교"
   - "월 한도 초과분과 비급여를 더한 실제 지출"
   - "경감은 자동 적용이 아니라 공단 신청이 필요하다는 점"
-related:
-  - "posts/2026-08-01-long-term-care-insurance-vs-customized-care-service.md"
-  - "posts/2026-07-30-elderly-care-service-vs-job-program.md"
-  - "posts/2026-07-28-basic-pension-2026-changes.md"
 ---
 
 ## 요양원 비용을 20%로 계산하면 반드시 틀린다
@@ -68,7 +64,7 @@ related:
 - **등급 판정** — 공단 방문조사와 등급판정위원회 심의로 정해진다
 - **경감 해당 여부** — 건강보험료 순위 기준 금액은 매년 고시로 바뀐다
 
-제도 자체를 먼저 비교하려면 [노인장기요양보험 vs 노인맞춤돌봄서비스](/posts/2026-08-01-long-term-care-insurance-vs-customized-care-service/)를 보는 편이 순서다. 두 제도는 **동시에 받을 수 없고**, 등급을 받으면 돌봄서비스 쪽이 원칙적으로 닫힌다.
+제도 자체를 먼저 비교하려면 노인장기요양보험 vs 노인맞춤돌봄서비스를 보는 편이 순서다. 두 제도는 **동시에 받을 수 없고**, 등급을 받으면 돌봄서비스 쪽이 원칙적으로 닫힌다.
 
 ## 자주 묻는 질문
 
